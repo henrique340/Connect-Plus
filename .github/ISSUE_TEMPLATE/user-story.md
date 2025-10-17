@@ -1,3 +1,21 @@
+---
+name: User Story
+about: This template is used to create stories and requirements
+title: ''
+labels: ''
+assignees: henrique340
+
+---
+
+---
+name: User Story
+about: This template is used to create stories and requirements
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 **Como um(a)** [papel]  
 **Eu preciso** [função]  
 **Para que** [benefício]  
