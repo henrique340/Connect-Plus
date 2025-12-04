@@ -1,92 +1,246 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Connect+ — Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect+ — Minhas Missões</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3b82f6",
+            "primary-light": "#60a5fa",
+            "primary-dark": "#1e40af",
+            "background-light": "#f8fafc",
+            "background-dark": "#0f172a",
+            "card-light": "#ffffff",
+            "card-dark": "#1e293b",
+            "border-light": "#e2e8f0",
+            "border-dark": "#334155",
+            "text-light": "#475569",
+            "text-dark": "#94a3b8",
+            "heading-light": "#0f172a",
+            "heading-dark": "#f8fafc"
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
 </head>
-<body class="app">
-  <header class="topbar">
-    <div class="brand">
-      <h1>Connect+</h1>
-      <p class="muted">Gamificação do Onboarding</p>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-heading-light dark:text-heading-dark antialiased">
+
+<!-- NAVBAR -->
+<nav class="w-full bg-card-light dark:bg-card-dark border-b border-primary/30 mb-6">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <span class="material-icons-outlined text-primary text-3xl">workspace_premium</span>
+      <h1 class="text-xl font-bold text-primary">Connect+</h1>
     </div>
-    <nav>
-      <a href="index.html" class="navlink">Home</a>
-      <a href="explore.html" class="navlink">Explore</a>
-      <a href="ferramentas.html" class="navlink">Ferramentas</a>
-      <a href="cultura.html" class="navlink">Cultura</a>
-      <a href="impacto.html" class="navlink">Impacto</a>
-      <a href="conecte.html" class="navlink">Conecte-se</a>
-      <a href="admin.html" class="navlink">Painel RH</a>
-      <a href="login.html" class="navlink btn-ghost">Sair</a>
-    </nav>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+      <a href="index.html" class="hover:text-primary transition">Missões</a>
+      <a href="predio.html" class="hover:text-primary transition">Explorar o Prédio</a>
+      <a href="ferramentas.html" class="hover:text-primary transition">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-primary transition">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-primary transition">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-primary transition">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-primary transition">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-primary transition">Meu Perfil</a>
+    </div>
+
+    <!-- Mobile button -->
+    <button id="menu-btn" class="md:hidden text-primary">
+      <span class="material-icons-outlined text-3xl">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col bg-card-light dark:bg-card-dark border-t border-primary/20 px-4 py-4 text-sm">
+    <a href="index.html" class="py-2 hover:text-primary">Missões</a>
+    <a href="predio.html" class="py-2 hover:text-primary">Explorar o Prédio</a>
+    <a href="ferramentas.html" class="py-2 hover:text-primary">Ferramentas</a>
+    <a href="cultura.html" class="py-2 hover:text-primary">Cultura Oracle</a>
+    <a href="impacto.html" class="py-2 hover:text-primary">Impacto Social</a>
+    <a href="beneficios.html" class="py-2 hover:text-primary">Benefícios</a>
+    <a href="bemestar.html" class="py-2 hover:text-primary">Bem-estar</a>
+    <a href="perfil.html" class="py-2 hover:text-primary">Meu Perfil</a>
+  </div>
+</nav>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="max-w-7xl mx-auto p-4">
+
+  <header class="mb-8">
+    <h2 class="text-3xl font-bold bg-gradient-to-r from-primary-light to-primary text-transparent bg-clip-text">
+      Minhas Missões
+    </h2>
+    <p class="text-text-light dark:text-text-dark">Complete seu onboarding e avance de nível.</p>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h2>Minhas Missões</h2>
-        <p class="muted">Acompanhe seu progresso e complete suas tarefas de onboarding.</p>
-      </div>
-      <div class="level-pill">Nível <strong id="user-level">1</strong></div>
-    </section>
+  <!-- Dashboard -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
-    <section class="stats-grid">
-      <div class="card">
-        <div class="card-row">
-          <div>
-            <h3>Experiência</h3>
-            <p class="muted" id="xp-text">0 / 1000 XP</p>
-          </div>
-          <span class="material-icons-outlined icon">military_tech</span>
+    <div class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-sm">
+      <div class="flex justify-between mb-3">
+        <div class="flex gap-3 items-center">
+          <span class="material-icons-outlined text-primary-light">military_tech</span>
+          <h3 class="font-semibold">Experiência</h3>
         </div>
-        <div class="progress">
-          <div id="xp-bar" class="progress-fill" style="width: 0%"></div>
+        <span class="text-sm text-text-light dark:text-text-dark">130 / 500 XP</span>
+      </div>
+      <div class="w-full bg-gray-200 dark:bg-gray-700 h-2.5 rounded-full">
+        <div class="bg-primary h-2.5 rounded-full" style="width: 26%"></div>
+      </div>
+    </div>
+
+    <div class="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-sm">
+      <div class="flex justify-between mb-3">
+        <div class="flex gap-3 items-center">
+          <span class="material-icons-outlined text-primary-light">task_alt</span>
+          <h3 class="font-semibold">Missões Completas</h3>
         </div>
+        <span class="text-sm text-text-light dark:text-text-dark">3 / 9</span>
+      </div>
+      <div class="w-full bg-gray-200 dark:bg-gray-700 h-2.5 rounded-full">
+        <div class="bg-primary h-2.5 rounded-full" style="width: 33%"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GRID DE MISSÕES -->
+  <section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Missão 1 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M1 — Selecionar a sua área</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Escolha sua área de atuação dentro da Oracle.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
       </div>
 
-      <div class="card">
-        <div class="card-row">
-          <div>
-            <h3>Missões Completas</h3>
-            <p class="muted" id="completed-text">0 / 0</p>
-          </div>
-          <span class="material-icons-outlined icon">task_alt</span>
-        </div>
-        <div class="progress">
-          <div id="missions-bar" class="progress-fill" style="width: 0%"></div>
-        </div>
+      <!-- Missão 2 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M2 — Fazer Voluntários</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Participe de iniciativas de voluntariado.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
       </div>
-    </section>
 
-    <section class="filters">
-      <button class="btn primary" data-filter="all">Todas</button>
-      <button class="btn" data-filter="pending">Pendentes</button>
-      <button class="btn" data-filter="progress">Em Progresso</button>
-      <button class="btn" data-filter="done">Concluídas</button>
-    </section>
-
-    <section>
-      <h2>Missões</h2>
-      <div id="cards-grid" class="grid">
-        <!-- Cards gerados dinamicamente pelo app.js -->
+      <!-- Missão 3 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M3 — Fazer Certificações</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Conclua certificações iniciais recomendadas.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
       </div>
-    </section>
 
-    <aside class="sidebar">
-      <div class="card">
-        <h4>Ranking</h4>
-        <ol id="ranking-list" class="ranking muted">
-          <!-- Preenchido por JS -->
-        </ol>
+      <!-- Missão 4 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M4 — Fazer o Compliance</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Complete os treinamentos obrigatórios de compliance.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
       </div>
-    </aside>
-  </main>
 
-  <script src="js/app.js"></script>
+      <!-- Missão 5 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M5 — Conhecer o prédio</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Explore o prédio, seus andares e facilidades.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
+      </div>
+
+      <!-- Missão 6 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M6 — Conhecer Cases de Sucesso</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Veja histórias reais de impacto gerado pelos clientes Oracle.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
+      </div>
+
+      <!-- Missão 7 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M7 — Conhecer o Impacto Social</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Entenda como a Oracle contribui para o mundo.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
+      </div>
+
+      <!-- Missão 8 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M8 — Conhecer os seus Benefícios</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Descubra os benefícios oferecidos para você.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
+      </div>
+
+      <!-- Missão 9 -->
+      <div class="bg-card-light dark:bg-card-dark border border-primary/20 p-6 rounded-lg hover:border-primary/50 transition">
+        <h3 class="text-lg font-bold">M9 — Atividades de Bem Estar</h3>
+        <p class="text-sm text-text-light dark:text-text-dark mt-2">
+          Participe de iniciativas e atividades de bem-estar.
+        </p>
+        <button class="w-full mt-6 bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+          <span class="material-icons-outlined">play_circle</span> Iniciar Missão
+        </button>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- JS para menu mobile -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
 </body>
 </html>
