@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Connect+ — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app center">
+  <div class="auth-card">
+    <h2>Entrar no Connect+</h2>
+    <p class="muted">Login via Oracle SSO (simulado)</p>
+
+    <label>
+      Nome
+      <input id="login-name" type="text" placeholder="Seu nome" />
+    </label>
+    <label>
+      E-mail
+      <input id="login-email" type="email" placeholder="seu@empresa.com" />
+    </label>
+
+    <div class="actions">
+      <button id="btn-login" class="btn primary">Entrar</button>
+      <a href="index.html" class="btn btn-ghost">Continuar como convidado</a>
+    </div>
+    <p class="muted small">Ao logar, seus dados são salvos localmente (demo).</p>
+  </div>
+
+  <script>
+    // Login simples - salva usuário em localStorage e redireciona para dashboard
+    document.getElementById('btn-login').addEventListener('click', function(){
+      const name = document.getElementById('login-name').value || 'Usuário';
+      const email = document.getElementById('login-email').value || '';
+      localStorage.setItem('cp_user', JSON.stringify({name, email}));
+      // inicializa estado se não existir
+      if(!localStorage.getItem('cp_state')) {
+        const initial = {xp:0, level:1, missions: {}};
+        localStorage.setItem('cp_state', JSON.stringify(initial));
+      }
+      location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Connect+ — Painel RH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+  <header class="topbar">
+    <div class="brand"><h1>Painel RH</h1></div>
+    <nav><a href="index.html" class="navlink">Voltar</a></nav>
+  </header>
+
+  <main class="container">
+    <h2>Relatórios</h2>
+    <div class="card">
+      <p class="muted">Exemplo de métricas do onboarding (dados locais-demo).</p>
+      <ul id="admin-metrics" class="muted"></ul>
+      <button id="export-csv" class="btn">Exportar CSV (demo)</button>
+    </div>
+  </main>
+
+  <script>
+    // Popula métricas simples vindas do estado
+    (function(){
+      const el = document.getElementById('admin-metrics');
+      function refresh(){
+        const state = JSON.parse(localStorage.getItem('cp_state') || '{}');
+        el.innerHTML = '';
+        el.insertAdjacentHTML('beforeend', `<li>XP total: ${state.xp||0}</li>`);
+        const missions = state.missions || {};
+        const done = Object.keys(missions).filter(k=>missions[k].done).length;
+        el.insertAdjacentHTML('beforeend', `<li>Missões concluídas: ${done}</li>`);
+      }
+      refresh();
+
+      document.getElementById('export-csv').addEventListener('click', ()=>{
+        alert('Exportação demo — implemente integração real no backend.');
+      });
+    })();
+  </script>
+</body>
+</html>

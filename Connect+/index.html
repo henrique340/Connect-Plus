@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Connect+ — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+  <header class="topbar">
+    <div class="brand">
+      <h1>Connect+</h1>
+      <p class="muted">Gamificação do Onboarding</p>
+    </div>
+    <nav>
+      <a href="index.html" class="navlink">Home</a>
+      <a href="explore.html" class="navlink">Explore</a>
+      <a href="ferramentas.html" class="navlink">Ferramentas</a>
+      <a href="cultura.html" class="navlink">Cultura</a>
+      <a href="impacto.html" class="navlink">Impacto</a>
+      <a href="conecte.html" class="navlink">Conecte-se</a>
+      <a href="admin.html" class="navlink">Painel RH</a>
+      <a href="login.html" class="navlink btn-ghost">Sair</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Minhas Missões</h2>
+        <p class="muted">Acompanhe seu progresso e complete suas tarefas de onboarding.</p>
+      </div>
+      <div class="level-pill">Nível <strong id="user-level">1</strong></div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="card">
+        <div class="card-row">
+          <div>
+            <h3>Experiência</h3>
+            <p class="muted" id="xp-text">0 / 1000 XP</p>
+          </div>
+          <span class="material-icons-outlined icon">military_tech</span>
+        </div>
+        <div class="progress">
+          <div id="xp-bar" class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-row">
+          <div>
+            <h3>Missões Completas</h3>
+            <p class="muted" id="completed-text">0 / 0</p>
+          </div>
+          <span class="material-icons-outlined icon">task_alt</span>
+        </div>
+        <div class="progress">
+          <div id="missions-bar" class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters">
+      <button class="btn primary" data-filter="all">Todas</button>
+      <button class="btn" data-filter="pending">Pendentes</button>
+      <button class="btn" data-filter="progress">Em Progresso</button>
+      <button class="btn" data-filter="done">Concluídas</button>
+    </section>
+
+    <section>
+      <h2>Missões</h2>
+      <div id="cards-grid" class="grid">
+        <!-- Cards gerados dinamicamente pelo app.js -->
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="card">
+        <h4>Ranking</h4>
+        <ol id="ranking-list" class="ranking muted">
+          <!-- Preenchido por JS -->
+        </ol>
+      </div>
+    </aside>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

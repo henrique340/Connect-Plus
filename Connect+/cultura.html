@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Connect+ — Cultura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+  <header class="topbar">
+    <div class="brand"><h1>Cultura</h1></div>
+    <nav><a href="index.html" class="navlink">Voltar</a></nav>
+  </header>
+
+  <main class="container">
+    <h2>Conheça a Cultura Oracle</h2>
+    <p class="muted">Assista o vídeo de boas-vindas e faça o quiz.</p>
+
+    <div class="card">
+      <h3>Vídeo de boas-vindas</h3>
+      <p class="muted">(Vídeo demonstrativo)</p>
+      <button id="watch-welcome" class="btn primary">Marcar vídeo como assistido (50 XP)</button>
+    </div>
+
+    <div class="card mt-8">
+      <h3>Quiz</h3>
+      <p class="muted">Responda 3 perguntas rápidas.</p>
+      <div id="quiz-area">
+        <label>1) Valor principal?<br>
+          <input name="q1" type="text">
+        </label>
+        <label>2) Iniciativa importante?<br>
+          <input name="q2" type="text">
+        </label>
+        <label>3) Programa de diversidade?<br>
+          <input name="q3" type="text">
+        </label>
+        <button id="submit-quiz" class="btn">Enviar Quiz</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      document.getElementById('watch-welcome').addEventListener('click', ()=>{
+        window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'welcome_video', xp:50, badge:'Guardião da Cultura'}}));
+        alert('Vídeo marcado como assistido. +50 XP');
+      });
+
+      document.getElementById('submit-quiz').addEventListener('click', ()=>{
+        // simples: dá XP se preenchidas as 3 respostas
+        const a = document.querySelector('input[name=q1]').value;
+        const b = document.querySelector('input[name=q2]').value;
+        const c = document.querySelector('input[name=q3]').value;
+        if(a && b && c) {
+          window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'quiz_cultura', xp:150, badge:'Guardião da Cultura'}}));
+          alert('Quiz enviado. +150 XP');
+        } else alert('Responda todas as perguntas.');
+      });
+    })();
+  </script>
+</body>
+</html>

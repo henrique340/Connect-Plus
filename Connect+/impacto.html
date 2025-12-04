@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Connect+ — Impacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+  <header class="topbar">
+    <div class="brand"><h1>Impacto</h1></div>
+    <nav><a href="index.html" class="navlink">Voltar</a></nav>
+  </header>
+
+  <main class="container">
+    <h2>Impacte o Mundo</h2>
+    <p class="muted">Inscreva-se em iniciativas sociais.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Impacto Social LATAM</h3>
+        <p class="muted">Projeto de voluntariado regional.</p>
+        <button class="btn primary" id="join-latam">Quero Participar (100 XP)</button>
+      </div>
+
+      <div class="card">
+        <h3>Oracle Volunteers</h3>
+        <p class="muted">Programas locais de voluntariado.</p>
+        <button class="btn primary" id="join-vol">Quero Participar (100 XP)</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('join-latam').addEventListener('click', ()=>{
+      window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_latam', xp:100, badge:'Agente de Impacto'}}));
+      alert('Inscrição enviada! +100 XP');
+    });
+    document.getElementById('join-vol').addEventListener('click', ()=> {
+      window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_vol', xp:100, badge:'Agente de Impacto'}}));
+      alert('Inscrição enviada! +100 XP');
+    });
+  </script>
+</body>
+</html>
