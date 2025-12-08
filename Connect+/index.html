@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8"/>
@@ -106,8 +106,12 @@
           localStorage.setItem('cp_state', JSON.stringify(initial));
         }
 
-        // Redirecionar para index1.html
-        location.href = 'index1.html';
+        // Redirecionar baseado no email
+        if (email === 'geno@oracle.com') {
+          location.href = 'index1.html';
+        } else if (email === 'taci@admin.com') {
+          location.href = 'admin.html';
+        }
       } else {
         // Mostrar erro
         errorMsg.classList.remove('hidden');
