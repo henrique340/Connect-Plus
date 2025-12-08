@@ -42,25 +42,39 @@
   </script>
 
   <style>
-    /* Pequenas utilidades que replicam o visual dos botões e cards do painel principal usando classes utilitárias */
+    /* Correção: não usar @apply aqui (só CSS suportado no browser) */
     :root { --accent: #D64B36; }
-    /* Button "btn" visual (usado como fallback para elementos que precisam do mesmo visual) */
+
+    /* .btn-like equivalente em CSS puro */
     .btn-like {
-      @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
       background-color: var(--accent);
       color: white;
       box-shadow: 0 6px 18px rgba(214,75,54,0.12);
       transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      border: none;
+      cursor: pointer;
     }
     .btn-like:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(214,75,54,0.14); }
+    .btn-like:active { transform: translateY(0); }
+
     .card-surface {
       background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.03);
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
     }
-    /* Small responsive tweaks */
-    @media (prefers-reduced-motion: reduce) { .btn-like { transition: none; transform: none; } }
+
+    /* Mobile/menu small adjustments */
+    @media (prefers-reduced-motion: reduce) {
+      .btn-like { transition: none; transform: none; }
+    }
   </style>
 </head>
 <body class="bg-bg text-white antialiased font-sans">
@@ -108,7 +122,7 @@
     <p class="text-muted text-lg mt-2">Assista tutoriais, leia guias e marque missões concluídas para ganhar XP.</p>
   </header>
 
-  <!-- Painel resumo (opcional) -->
+  <!-- Painel resumo -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
     <div class="card-surface p-4">
       <div class="flex justify-between items-center mb-3">
@@ -196,3 +210,78 @@
           <p class="text-sm text-muted mt-2">Leitura obrigatória — políticas internas e dicas de segurança digital.</p>
         </div>
         <div class="mt-6">
+          <button data-mission="compliance" class="w-full btn-like" aria-label="Marcar Compliance como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (40 XP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Exemplo extra: Cultura Oracle -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">Cultura Oracle</h3>
+          <p class="text-sm text-muted mt-2">Conheça a cultura, valores e iniciativas sociais da empresa.</p>
+        </div>
+        <div class="mt-6">
+          <button data-mission="cultura" class="w-full btn-like" aria-label="Marcar Cultura como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (20 XP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Exemplo extra: Benefícios -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">Benefícios</h3>
+          <p class="text-sm text-muted mt-2">Explore seus benefícios e como acessá-los.</p>
+        </div>
+        <div class="mt-6">
+          <button data-mission="beneficios" class="w-full btn-like" aria-label="Marcar Benefícios como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (10 XP)
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Rodapé leve -->
+<footer class="max-w-7xl mx-auto px-4 py-6 text-sm text-muted">
+  <div class="flex justify-between items-center">
+    <div>© Connect+ — Todos os direitos reservados</div>
+    <div class="hidden sm:block">Versão do Onboarding • 1.0</div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuBtn?.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+
+  // Missões - comportamento (mantive a lógica original, adaptada)
+  (function(){
+    document.querySelectorAll('[data-mission]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const el = e.currentTarget;
+        const id = el.dataset.mission;
+        const xpMap = {slack:30,myoracle:30,learn:60,compliance:40,cultura:20,beneficios:10};
+        // Dispatch global event para integrar com o restante da aplicação (se existir)
+        window.dispatchEvent(new CustomEvent('cp:completeMission', { detail: { id: id, xp: xpMap[id]||10, badge: 'Conector Digital' } }));
+        // Visual feedback
+        el.innerHTML = '<span class="material-icons-outlined">check_circle</span> Concluído';
+        el.disabled = true;
+        el.classList.add('opacity-70', 'cursor-not-allowed');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
