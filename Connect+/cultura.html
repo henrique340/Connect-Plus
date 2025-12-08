@@ -3,62 +3,196 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Connect+ — Cultura</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Connect+ — Domine as Ferramentas</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind (com plugins forms e typography) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+  <!-- Tailwind theme config para manter as mesmas cores / tokens do site principal -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#1C1C1C',
+            surface: '#242424',
+            accent: '#D64B36',
+            white: '#FFFFFF',
+            muted: '#BDBDBD'
+          },
+          borderRadius: {
+            md: '12px'
+          },
+          boxShadow: {
+            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)'
+          },
+          spacing: {
+            'gap-md': '16px'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Pequenas utilidades que replicam o visual dos botões e cards do painel principal usando classes utilitárias */
+    :root { --accent: #D64B36; }
+    /* Button "btn" visual (usado como fallback para elementos que precisam do mesmo visual) */
+    .btn-like {
+      @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold;
+      background-color: var(--accent);
+      color: white;
+      box-shadow: 0 6px 18px rgba(214,75,54,0.12);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+    .btn-like:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(214,75,54,0.14); }
+    .card-surface {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    /* Small responsive tweaks */
+    @media (prefers-reduced-motion: reduce) { .btn-like { transition: none; transform: none; } }
+  </style>
 </head>
-<body class="app">
-  <header class="topbar">
-    <div class="brand"><h1>Cultura</h1></div>
-    <nav><a href="index.html" class="navlink">Voltar</a></nav>
+<body class="bg-bg text-white antialiased font-sans">
+
+<!-- NAVBAR (combina com a principal) -->
+<nav class="w-full border-b border-white/10 mb-8">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-6 rounded-full flex items-center justify-center" style="box-shadow: inset 0 0 0 4px #D64B36;"></div>
+      <h1 class="text-xl font-bold text-accent">Connect+</h1>
+    </div>
+
+    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+      <a href="index.html" class="hover:text-accent transition">Missões</a>
+      <a href="ferramentas.html" class="text-accent">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden text-accent">
+      <span class="material-icons-outlined text-3xl">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
+    <a href="index.html" class="py-2 hover:text-accent">Missões</a>
+    <a href="ferramentas.html" class="py-2 text-accent">Ferramentas</a>
+    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
+    <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
+    <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
+    <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
+    <a href="perfil.html" class="py-2 hover:text-accent">Meu Perfil</a>
+  </div>
+</nav>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main class="max-w-7xl mx-auto px-4 pb-12">
+
+  <header class="mb-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-white">Domine as Ferramentas</h2>
+    <p class="text-muted text-lg mt-2">Assista tutoriais, leia guias e marque missões concluídas para ganhar XP.</p>
   </header>
 
-  <main class="container">
-    <h2>Conheça a Cultura Oracle</h2>
-    <p class="muted">Assista o vídeo de boas-vindas e faça o quiz.</p>
-
-    <div class="card">
-      <h3>Vídeo de boas-vindas</h3>
-      <p class="muted">(Vídeo demonstrativo)</p>
-      <button id="watch-welcome" class="btn primary">Marcar vídeo como assistido (50 XP)</button>
-    </div>
-
-    <div class="card mt-8">
-      <h3>Quiz</h3>
-      <p class="muted">Responda 3 perguntas rápidas.</p>
-      <div id="quiz-area">
-        <label>1) Valor principal?<br>
-          <input name="q1" type="text">
-        </label>
-        <label>2) Iniciativa importante?<br>
-          <input name="q2" type="text">
-        </label>
-        <label>3) Programa de diversidade?<br>
-          <input name="q3" type="text">
-        </label>
-        <button id="submit-quiz" class="btn">Enviar Quiz</button>
+  <!-- Painel resumo (opcional) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="card-surface p-4">
+      <div class="flex justify-between items-center mb-3">
+        <div class="flex items-center gap-3">
+          <span class="material-icons-outlined text-accent text-2xl">insights</span>
+          <div>
+            <p class="text-sm text-muted">Progresso</p>
+            <p class="text-base font-semibold text-white">120 / 500 XP</p>
+          </div>
+        </div>
+        <div class="text-sm text-muted">Nível 3</div>
+      </div>
+      <div class="w-full bg-[rgba(255,255,255,0.03)] h-3 rounded-full overflow-hidden">
+        <div class="h-3 rounded-full" style="width:24%; background: linear-gradient(90deg,#D64B36,#ff7a5e)"></div>
       </div>
     </div>
-  </main>
 
-  <script>
-    (function(){
-      document.getElementById('watch-welcome').addEventListener('click', ()=>{
-        window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'welcome_video', xp:50, badge:'Guardião da Cultura'}}));
-        alert('Vídeo marcado como assistido. +50 XP');
-      });
+    <div class="card-surface p-4">
+      <div class="flex justify-between items-center mb-3">
+        <div class="flex items-center gap-3">
+          <span class="material-icons-outlined text-accent text-2xl">task_alt</span>
+          <div>
+            <p class="text-sm text-muted">Missões completas</p>
+            <p class="text-base font-semibold text-white">2 / 6</p>
+          </div>
+        </div>
+        <div class="text-sm text-muted">Conquistas</div>
+      </div>
+      <div class="w-full bg-[rgba(255,255,255,0.03)] h-3 rounded-full overflow-hidden">
+        <div class="h-3 rounded-full" style="width:33%; background: linear-gradient(90deg,#D64B36,#ff7a5e)"></div>
+      </div>
+    </div>
+  </div>
 
-      document.getElementById('submit-quiz').addEventListener('click', ()=>{
-        // simples: dá XP se preenchidas as 3 respostas
-        const a = document.querySelector('input[name=q1]').value;
-        const b = document.querySelector('input[name=q2]').value;
-        const c = document.querySelector('input[name=q3]').value;
-        if(a && b && c) {
-          window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'quiz_cultura', xp:150, badge:'Guardião da Cultura'}}));
-          alert('Quiz enviado. +150 XP');
-        } else alert('Responda todas as perguntas.');
-      });
-    })();
-  </script>
-</body>
-</html>
+  <!-- GRID DE CARTÕES (ferramentas) -->
+  <section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card: Slack -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">Slack</h3>
+          <p class="text-sm text-muted mt-2">Mini-tutorial em vídeo (demo) sobre uso e boas práticas.</p>
+        </div>
+        <div class="mt-6">
+          <button data-mission="slack" class="w-full btn-like" aria-label="Marcar Slack como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (30 XP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Card: MyOracle -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">MyOracle</h3>
+          <p class="text-sm text-muted mt-2">Guia rápido de login, single sign-on e telas principais.</p>
+        </div>
+        <div class="mt-6">
+          <button data-mission="myoracle" class="w-full btn-like" aria-label="Marcar MyOracle como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (30 XP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Card: Learn -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">Learn</h3>
+          <p class="text-sm text-muted mt-2">Acesse trilhas e cursos recomendados pela empresa.</p>
+        </div>
+        <div class="mt-6">
+          <button data-mission="learn" class="w-full btn-like" aria-label="Marcar Learn como visto">
+            <span class="material-icons-outlined">play_circle</span>
+            Marcar como visto (60 XP)
+          </button>
+        </div>
+      </article>
+
+      <!-- Exemplo extra: Política de segurança -->
+      <article class="card-surface p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-white">Compliance & Segurança</h3>
+          <p class="text-sm text-muted mt-2">Leitura obrigatória — políticas internas e dicas de segurança digital.</p>
+        </div>
+        <div class="mt-6">
