@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect+ — M1 — Selecionar a sua área</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#1C1C1C',        // Fundo principal
+            surface: '#242424',   // Superfícies / cards
+            accent: '#D64B36',    // Vermelho queimado (destaque)
+            white: '#FFFFFF',     // Textos principais
+            muted: '#BDBDBD',     // Textos secundários
+          },
+          borderRadius: {
+            'md': '12px',        // Bordas arredondadas padrão
+          },
+          boxShadow: {
+            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
+          },
+          spacing: {
+            'gap-md': '16px',    // Espaçamento base
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-bg text-white antialiased font-sans">
+
+<!-- NAVBAR -->
+<nav class="w-full border-b border-white/10 mb-8">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
+      <h1 class="text-xl font-bold text-accent">Connect+</h1>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+      <a href="index.html" class="hover:text-accent transition">Missões</a>
+      <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
+    </div>
+
+    <!-- Mobile button -->
+    <button id="menu-btn" class="md:hidden text-accent">
+      <span class="material-icons-outlined text-3xl">Menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
+    <a href="index.html" class="py-2 hover:text-accent">Missões</a>
+    <a href="predio.html" class="py-2 hover:text-accent">Explorar o Prédio</a>
+    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
+    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
+    <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
+    <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
+    <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
+    <a href="perfil.html" class="py-2 hover:text-accent">Meu Perfil</a>
+  </div>
+</nav>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="max-w-7xl mx-auto p-6">
+
+  <header class="mb-12">
+    <h2 class="text-4xl font-bold text-white">
+      M1 — Selecionar a sua área
+    </h2>
+    <p class="text-muted text-lg">Escolha sua área de atuação dentro da Oracle e entenda suas responsabilidades.</p>
+  </header>
+
+  <!-- Progresso da Missão -->
+  <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 mb-12">
+    <div class="flex justify-between mb-4">
+      <div class="flex gap-3 items-center">
+        <span class="material-icons-outlined text-accent text-2xl">task_alt</span>
+        <h3 class="font-semibold text-white">Progresso da Missão</h3>
+      </div>
+      <span class="text-sm text-muted">0 / 1 Tarefa</span>
+    </div>
+    <div class="w-full bg-surface h-3 rounded-full">
+      <div class="bg-accent h-3 rounded-full" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- Descrição da Missão -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-lg font-bold text-white mb-4">Sobre a Missão</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        Esta missão tem como objetivo ajudá-lo a escolher a área de atuação que melhor se alinha com seus interesses e habilidades dentro da Oracle. Explore as áreas abaixo, leia os resumos e selecione aquela que mais combina com você. Ao finalizar, você ganhará XP e avançará no seu onboarding.
+      </p>
+    </div>
+  </section>
+
+  <!-- Áreas Disponíveis -->
+  <section class="mb-12">
+    <h3 class="text-2xl font-bold text-white mb-8">Áreas Disponíveis</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Área 1: Alianças e Canais -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Alianças e Canais</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Trabalhe com parcerias estratégicas, canais de distribuição e expansão de mercado. Foque em alianças com terceiros e estratégias de vendas indiretas.
+        </p>
+      </div>
+
+      <!-- Área 2: Marketing -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Marketing</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Crie campanhas, conteúdo e estratégias de branding. Trabalhe com mídia digital, eventos e análise de dados para promover a Oracle globalmente.
+        </p>
+      </div>
+
+      <!-- Área 3: CSS -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">CSS</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Forneça suporte pós-venda, garanta satisfação do cliente e retenção. Trabalhe com onboarding de clientes e resolução de problemas para maximizar o valor das soluções Oracle.
+        </p>
+      </div>
+
+      <!-- Área 4: Consultoria em HCM -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Consultoria em HCM</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Ajude clientes a implementar soluções de gestão de recursos humanos. Trabalhe em projetos de consultoria para otimizar processos de RH, recrutamento e desenvolvimento de talento.
+        </p>
+      </div>
+
+      <!-- Área 5: Consultoria em ERP -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Consultoria em ERP</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Ofereça consultoria para sistemas de planejamento de recursos empresariais. Auxilie clientes na implementação e otimização de ERPs para melhorar eficiência operacional.
+        </p>
+      </div>
+
+      <!-- Área 6: Área Genérica 1 -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Área Genérica 1</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Descrição genérica para esta área. Trabalhe em funções diversas, contribuindo para o sucesso da Oracle com habilidades variadas.
+        </p>
+      </div>
+
+      <!-- Área 7: Área Genérica 2 -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Área Genérica 2</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Descrição genérica para esta área. Envolva-se em tarefas operacionais e estratégicas para apoiar os objetivos da empresa.
+        </p>
+      </div>
+
+      <!-- Área 8: Área Genérica 3 -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Área Genérica 3</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Descrição genérica para esta área. Foque em suporte e serviços para garantir satisfação e eficiência em processos internos.
+        </p>
+      </div>
+
+      <!-- Área 9: Área Genérica 4 -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h4 class="text-lg font-bold text-white mb-3">Área Genérica 4</h4>
+        <p class="text-sm text-muted leading-relaxed">
+          Descrição genérica para esta área. Trabalhe com finanças, planejamento e análise para contribuir com o crescimento sustentável da Oracle.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão de Finalizar -->
+  <section class="text-center mb-12">
+    <button class="flex items-center justify-center gap-2 p-3 px-8 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0">
+      <span class="material-icons-outlined">done</span> Finalizar Missão e Ganhar 50 XP
+    </button>
+  </section>
+
+  <!-- Recompensas -->
+  <section>
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-lg font-bold text-white mb-4">Recompensas</h3>
+      <div class="flex items-center gap-3">
+        <span class="material-icons-outlined text-accent text-2xl">military_tech</span>
+        <p class="text-muted">Ao completar esta missão, você ganhará <strong class="text-white">50 XP</strong> e desbloqueará a próxima missão.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JS para menu mobile -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+</body>
+</html>
