@@ -1,92 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Connect+ — Domine as Ferramentas</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect+ — Cultura Oracle</title>
 
   <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 
-  <!-- Tailwind (com plugins forms e typography) -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 
-  <!-- Tailwind theme config para manter as mesmas cores / tokens do site principal -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bg: '#1C1C1C',
-            surface: '#242424',
-            accent: '#D64B36',
-            white: '#FFFFFF',
-            muted: '#BDBDBD'
+            bg: '#1C1C1C',        // Fundo principal
+            surface: '#242424',   // Superfícies / cards
+            accent: '#D64B36',    // Vermelho queimado (destaque)
+            white: '#FFFFFF',     // Textos principais
+            muted: '#BDBDBD',     // Textos secundários
           },
           borderRadius: {
-            md: '12px'
+            'md': '12px',        // Bordas arredondadas padrão
           },
           boxShadow: {
-            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)'
+            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
           },
           spacing: {
-            'gap-md': '16px'
+            'gap-md': '16px',    // Espaçamento base
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial']
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
           }
         }
       }
-    }
+    };
   </script>
-
-  <style>
-    /* Correção: não usar @apply aqui (só CSS suportado no browser) */
-    :root { --accent: #D64B36; }
-
-    /* .btn-like equivalente em CSS puro */
-    .btn-like {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: 600;
-      background-color: var(--accent);
-      color: white;
-      box-shadow: 0 6px 18px rgba(214,75,54,0.12);
-      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-like:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(214,75,54,0.14); }
-    .btn-like:active { transform: translateY(0); }
-
-    .card-surface {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-    }
-
-    /* Mobile/menu small adjustments */
-    @media (prefers-reduced-motion: reduce) {
-      .btn-like { transition: none; transform: none; }
-    }
-  </style>
 </head>
+
 <body class="bg-bg text-white antialiased font-sans">
 
-<!-- NAVBAR (combina com a principal) -->
+<!-- NAVBAR -->
 <nav class="w-full border-b border-white/10 mb-8">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-6 rounded-full flex items-center justify-center" style="box-shadow: inset 0 0 0 4px #D64B36;"></div>
+    <!-- Logo -->
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
       <h1 class="text-xl font-bold text-accent">Connect+</h1>
     </div>
 
+    <!-- Desktop Menu -->
     <div class="hidden md:flex items-center gap-6 font-medium text-sm">
       <a href="index1.html" class="hover:text-accent transition">Missões</a>
       <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
@@ -97,16 +63,17 @@
       <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
     </div>
 
+    <!-- Mobile button -->
     <button id="menu-btn" class="md:hidden text-accent">
-      <span class="material-icons-outlined text-3xl">menu</span>
+      <span class="material-icons-outlined text-3xl">Menu</span>
     </button>
   </div>
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
     <a href="index1.html" class="py-2 hover:text-accent">Missões</a>
-    <a href="ferramentas.html" class="py-2 text-accent">Ferramentas</a>
-    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
+    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
+    <a href="cultura.html" class="py-2 text-accent">Cultura Oracle</a>
     <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
     <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
     <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
@@ -115,172 +82,84 @@
 </nav>
 
 <!-- CONTEÚDO PRINCIPAL -->
-<main class="max-w-7xl mx-auto px-4 pb-12">
+<div class="max-w-7xl mx-auto p-6">
 
-  <header class="mb-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-white">Domine as Ferramentas</h2>
-    <p class="text-muted text-lg mt-2">Assista tutoriais, leia guias e marque missões concluídas para ganhar XP.</p>
+  <header class="mb-12">
+    <h2 class="text-4xl font-bold text-white">
+      Cultura Oracle
+    </h2>
+    <p class="text-muted text-lg">Descubra os valores, a história e as iniciativas que definem a cultura da Oracle, uma empresa comprometida com inovação, diversidade e impacto positivo.</p>
   </header>
 
-  <!-- Painel resumo -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-    <div class="card-surface p-4">
-      <div class="flex justify-between items-center mb-3">
-        <div class="flex items-center gap-3">
-          <span class="material-icons-outlined text-accent text-2xl">insights</span>
-          <div>
-            <p class="text-sm text-muted">Progresso</p>
-            <p class="text-base font-semibold text-white">120 / 500 XP</p>
-          </div>
-        </div>
-        <div class="text-sm text-muted">Nível 3</div>
-      </div>
-      <div class="w-full bg-[rgba(255,255,255,0.03)] h-3 rounded-full overflow-hidden">
-        <div class="h-3 rounded-full" style="width:24%; background: linear-gradient(90deg,#D64B36,#ff7a5e)"></div>
-      </div>
-    </div>
-
-    <div class="card-surface p-4">
-      <div class="flex justify-between items-center mb-3">
-        <div class="flex items-center gap-3">
-          <span class="material-icons-outlined text-accent text-2xl">task_alt</span>
-          <div>
-            <p class="text-sm text-muted">Missões completas</p>
-            <p class="text-base font-semibold text-white">2 / 6</p>
-          </div>
-        </div>
-        <div class="text-sm text-muted">Conquistas</div>
-      </div>
-      <div class="w-full bg-[rgba(255,255,255,0.03)] h-3 rounded-full overflow-hidden">
-        <div class="h-3 rounded-full" style="width:33%; background: linear-gradient(90deg,#D64B36,#ff7a5e)"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GRID DE CARTÕES (ferramentas) -->
-  <section>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Card: Slack -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">Slack</h3>
-          <p class="text-sm text-muted mt-2">Mini-tutorial em vídeo (demo) sobre uso e boas práticas.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="slack" class="w-full btn-like" aria-label="Marcar Slack como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (30 XP)
-          </button>
-        </div>
-      </article>
-
-      <!-- Card: MyOracle -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">MyOracle</h3>
-          <p class="text-sm text-muted mt-2">Guia rápido de login, single sign-on e telas principais.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="myoracle" class="w-full btn-like" aria-label="Marcar MyOracle como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (30 XP)
-          </button>
-        </div>
-      </article>
-
-      <!-- Card: Learn -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">Learn</h3>
-          <p class="text-sm text-muted mt-2">Acesse trilhas e cursos recomendados pela empresa.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="learn" class="w-full btn-like" aria-label="Marcar Learn como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (60 XP)
-          </button>
-        </div>
-      </article>
-
-      <!-- Exemplo extra: Política de segurança -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">Compliance & Segurança</h3>
-          <p class="text-sm text-muted mt-2">Leitura obrigatória — políticas internas e dicas de segurança digital.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="compliance" class="w-full btn-like" aria-label="Marcar Compliance como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (40 XP)
-          </button>
-        </div>
-      </article>
-
-      <!-- Exemplo extra: Cultura Oracle -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">Cultura Oracle</h3>
-          <p class="text-sm text-muted mt-2">Conheça a cultura, valores e iniciativas sociais da empresa.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="cultura" class="w-full btn-like" aria-label="Marcar Cultura como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (20 XP)
-          </button>
-        </div>
-      </article>
-
-      <!-- Exemplo extra: Benefícios -->
-      <article class="card-surface p-6 flex flex-col justify-between">
-        <div>
-          <h3 class="text-lg font-bold text-white">Benefícios</h3>
-          <p class="text-sm text-muted mt-2">Explore seus benefícios e como acessá-los.</p>
-        </div>
-        <div class="mt-6">
-          <button data-mission="beneficios" class="w-full btn-like" aria-label="Marcar Benefícios como visto">
-            <span class="material-icons-outlined">play_circle</span>
-            Marcar como visto (10 XP)
-          </button>
-        </div>
-      </article>
-
+  <!-- Valores da Oracle -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Valores da Oracle</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        A Oracle é guiada por princípios fundamentais que moldam nossa cultura e nossas ações diárias. Inovação é o coração da nossa empresa, impulsionando-nos a criar tecnologias que transformam indústrias. Respeito e integridade são essenciais em todas as interações, garantindo um ambiente de confiança. Focamos em resultados excepcionais, mas sempre com responsabilidade social e ética. Esses valores nos ajudam a construir relacionamentos duradouros com clientes, parceiros e comunidades.
+      </p>
     </div>
   </section>
 
-</main>
+  <!-- História da Oracle -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">História da Oracle</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        Fundada em 1977 por Larry Ellison, Bob Miner e Ed Oates, a Oracle começou como uma empresa de software de banco de dados. Desde então, evoluímos para uma líder global em computação em nuvem e soluções empresariais. Nossa jornada incluiu inovações revolucionárias, como o primeiro banco de dados relacional comercial, e aquisições estratégicas que expandiram nosso portfólio. Hoje, a Oracle serve milhões de clientes em todo o mundo, ajudando empresas a operar com eficiência e segurança na era digital.
+      </p>
+    </div>
+  </section>
 
-<!-- Rodapé leve -->
-<footer class="max-w-7xl mx-auto px-4 py-6 text-sm text-muted">
-  <div class="flex justify-between items-center">
-    <div>© Connect+ — Todos os direitos reservados</div>
-    <div class="hidden sm:block">Versão do Onboarding • 1.0</div>
-  </div>
-</footer>
+  <!-- Diversidade e Inclusão -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Diversidade e Inclusão</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        Na Oracle, acreditamos que a diversidade impulsiona a inovação. Promovemos um ambiente inclusivo onde todas as vozes são ouvidas e valorizadas. Nossas iniciativas incluem programas de recrutamento diversificado, treinamentos de conscientização e grupos de afinidade para apoiar funcionários de diferentes origens. Estamos comprometidos em criar uma força de trabalho que reflita a sociedade global, garantindo oportunidades iguais para todos, independentemente de gênero, etnia, orientação sexual ou deficiência.
+      </p>
+    </div>
+  </section>
 
-<!-- Scripts -->
+  <!-- Inovação -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Inovação</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        A inovação é o DNA da Oracle. Investimos bilhões em pesquisa e desenvolvimento para liderar em tecnologias emergentes como inteligência artificial, machine learning e blockchain. Nossa nuvem Oracle Cloud oferece soluções escaláveis e seguras, permitindo que empresas transformem dados em insights acionáveis. Encorajamos uma cultura de experimentação, onde ideias ousadas são testadas e implementadas rapidamente, mantendo-nos à frente da concorrência e ajudando nossos clientes a prosperar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sustentabilidade -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Sustentabilidade</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        A Oracle está comprometida com a sustentabilidade ambiental e social. Definimos metas ambiciosas para reduzir nossas emissões de carbono e alcançar neutralidade até 2025. Nossas operações são otimizadas para eficiência energética, e apoiamos iniciativas globais como a redução de resíduos e o uso de energias renováveis. Além disso, contribuímos para comunidades através de programas de educação e voluntariado, garantindo que nosso crescimento beneficie o planeta e as pessoas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comunidade e Impacto -->
+  <section>
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Comunidade e Impacto</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        A Oracle vai além dos negócios para impactar positivamente as comunidades. Através do Oracle Volunteers, nossos funcionários dedicam tempo a causas sociais, como educação, saúde e meio ambiente. Doamos tecnologia e recursos para organizações sem fins lucrativos e apoiamos iniciativas globais de desenvolvimento. Nossa cultura de responsabilidade social nos motiva a ser um cidadão corporativo exemplar, criando um legado de mudança positiva.
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- JS para menu mobile -->
 <script>
-  // Mobile menu toggle
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-  menuBtn?.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
 
-  // Missões - comportamento (mantive a lógica original, adaptada)
-  (function(){
-    document.querySelectorAll('[data-mission]').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const el = e.currentTarget;
-        const id = el.dataset.mission;
-        const xpMap = {slack:30,myoracle:30,learn:60,compliance:40,cultura:20,beneficios:10};
-        // Dispatch global event para integrar com o restante da aplicação (se existir)
-        window.dispatchEvent(new CustomEvent('cp:completeMission', { detail: { id: id, xp: xpMap[id]||10, badge: 'Conector Digital' } }));
-        // Visual feedback
-        el.innerHTML = '<span class="material-icons-outlined">check_circle</span> Concluído';
-        el.disabled = true;
-        el.classList.add('opacity-70', 'cursor-not-allowed');
-      });
-    });
-  })();
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
 </script>
 
 </body>
