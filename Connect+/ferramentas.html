@@ -1,55 +1,26 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Connect+ — Domine as Ferramentas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="app">
-  <header class="topbar">
-    <div class="brand"><h1>Ferramentas</h1></div>
-    <nav><a href="index.html" class="navlink">Voltar</a></nav>
-  </header>
-
-  <main class="container">
-    <h2>Domine as Ferramentas</h2>
-    <p class="muted">Assista tutoriais ou leia guias para cada ferramenta.</p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Slack</h3>
-        <p class="muted">Mini-tutorial em vídeo (demo).</p>
-        <button data-mission="slack" class="btn primary">Marcar como visto (30 XP)</button>
+          <span class="material-icons-outlined">launch</span> Acessar
+        </button>
       </div>
-
-      <div class="card">
-        <h3>MyOracle</h3>
-        <p class="muted">Guia rápido de login e principais telas.</p>
-        <button data-mission="myoracle" class="btn primary">Marcar como visto (30 XP)</button>
-      </div>
-
-      <div class="card">
-        <h3>Learn</h3>
-        <p class="muted">Acesse trilhas de treinamento.</p>
-        <button data-mission="learn" class="btn primary">Marcar como visto (60 XP)</button>
+      <!-- Ferramenta 10 -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <h3 class="text-lg font-bold text-white">Salesforce</h3>
+        <p class="text-sm text-muted mt-3">
+          Plataforma de CRM para gestão de vendas e clientes.
+        </p>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full mt-8">
+          <span class="material-icons-outlined">launch</span> Acessar
+        </button>
       </div>
     </div>
-  </main>
-
-  <script>
-    (function(){
-      document.querySelectorAll('[data-mission]').forEach(btn=>{
-        btn.addEventListener('click', e=>{
-          const id = e.currentTarget.dataset.mission;
-          let xpMap = {slack:30,myoracle:30,learn:60};
-          window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:id, xp: xpMap[id]||10, badge: 'Conector Digital'}}));
-          e.currentTarget.textContent = 'Concluído';
-          e.currentTarget.disabled = true;
-        });
-      });
-    })();
-  </script>
+  </section>
+</div>
+<!-- JS para menu mobile -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
 </body>
 </html>
