@@ -1,46 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Connect+ — Impacto</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="app">
-  <header class="topbar">
-    <div class="brand"><h1>Impacto</h1></div>
-    <nav><a href="index.html" class="navlink">Voltar</a></nav>
-  </header>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect+ — Impacto Social</title>
 
-  <main class="container">
-    <h2>Impacte o Mundo</h2>
-    <p class="muted">Inscreva-se em iniciativas sociais.</p>
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Impacto Social LATAM</h3>
-        <p class="muted">Projeto de voluntariado regional.</p>
-        <button class="btn primary" id="join-latam">Quero Participar (100 XP)</button>
-      </div>
-
-      <div class="card">
-        <h3>Oracle Volunteers</h3>
-        <p class="muted">Programas locais de voluntariado.</p>
-        <button class="btn primary" id="join-vol">Quero Participar (100 XP)</button>
-      </div>
-    </div>
-  </main>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 
   <script>
-    document.getElementById('join-latam').addEventListener('click', ()=>{
-      window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_latam', xp:100, badge:'Agente de Impacto'}}));
-      alert('Inscrição enviada! +100 XP');
-    });
-    document.getElementById('join-vol').addEventListener('click', ()=> {
-      window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_vol', xp:100, badge:'Agente de Impacto'}}));
-      alert('Inscrição enviada! +100 XP');
-    });
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#1C1C1C',        // Fundo principal
+            surface: '#242424',   // Superfícies / cards
+            accent: '#D64B36',    // Vermelho queimado (destaque)
+            white: '#FFFFFF',     // Textos principais
+            muted: '#BDBDBD',     // Textos secundários
+          },
+          borderRadius: {
+            'md': '12px',        // Bordas arredondadas padrão
+          },
+          boxShadow: {
+            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
+          },
+          spacing: {
+            'gap-md': '16px',    // Espaçamento base
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+          }
+        }
+      }
+    };
   </script>
+</head>
+
+<body class="bg-bg text-white antialiased font-sans">
+
+<!-- NAVBAR -->
+<nav class="w-full border-b border-white/10 mb-8">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
+      <h1 class="text-xl font-bold text-accent">Connect+</h1>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+      <a href="index1.html" class="hover:text-accent transition">Missões</a>
+      <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
+    </div>
+
+    <!-- Mobile button -->
+    <button id="menu-btn" class="md:hidden text-accent">
+      <span class="material-icons-outlined text-3xl">Menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
+    <a href="index1.html" class="py-2 hover:text-accent">Missões</a>
+    <a href="predio.html" class="py-2 hover:text-accent">Explorar o Prédio</a>
+    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
+    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
+    <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
+    <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
+    <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
+    <a href="perfil.html" class="py-2 hover:text-accent">Meu Perfil</a>
+  </div>
+</nav>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="max-w-7xl mx-auto p-6">
+
+  <header class="mb-12">
+    <h2 class="text-4xl font-bold text-white">
+      Impacto Social
+    </h2>
+    <p class="text-muted text-lg">Descubra como a Oracle contribui para um mundo melhor e participe de iniciativas sociais para ganhar XP.</p>
+  </header>
+
+  <!-- Sobre o Impacto Social -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Sobre o Impacto Social da Oracle</h3>
+      <p class="text-muted text-sm leading-relaxed">
+        A Oracle está comprometida em criar um impacto positivo na sociedade. Através de programas de voluntariado, sustentabilidade e educação, ajudamos comunidades globais. Participe dessas iniciativas e contribua para causas importantes enquanto ganha experiência no Connect+.
+      </p>
+    </div>
+  </section>
+
+  <!-- Iniciativas Disponíveis -->
+  <section>
+    <h3 class="text-2xl font-bold text-white mb-8">Iniciativas Disponíveis</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Impacto Social LATAM -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">public</span>
+          <h4 class="text-lg font-bold text-white">Impacto Social LATAM</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Projeto de voluntariado regional focado em educação e sustentabilidade na América Latina. Participe de ações locais e faça a diferença.
+        </p>
+        <button id="join-latam" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">group_add</span> Quero Participar (100 XP)
+        </button>
+      </div>
+
+      <!-- Oracle Volunteers -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">volunteer_activism</span>
+          <h4 class="text-lg font-bold text-white">Oracle Volunteers</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Programas locais de voluntariado com foco em comunidades próximas. Envolva-se em projetos de ajuda social e ambiental.
+        </p>
+        <button id="join-vol" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">group_add</span> Quero Participar (100 XP)
+        </button>
+      </div>
+
+      <!-- Sustentabilidade Oracle -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">eco</span>
+          <h4 class="text-lg font-bold text-white">Sustentabilidade Oracle</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Iniciativas para reduzir o impacto ambiental, como plantio de árvores e programas de reciclagem. Contribua para um planeta mais verde.
+        </p>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">nature</span> Saiba Mais
+        </button>
+      </div>
+
+      <!-- Educação e Tecnologia -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">school</span>
+          <h4 class="text-lg font-bold text-white">Educação e Tecnologia</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Programas para ensinar tecnologia a jovens em comunidades carentes. Ajude a capacitar a próxima geração de inovadores.
+        </p>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">code</span> Saiba Mais
+        </button>
+      </div>
+
+      <!-- Apoio a Comunidades -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">home</span>
+          <h4 class="text-lg font-bold text-white">Apoio a Comunidades</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Doações e projetos para ajudar comunidades afetadas por desastres ou desigualdades. Faça parte de ações solidárias.
+        </p>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">favorite</span> Saiba Mais
+        </button>
+      </div>
+
+      <!-- Diversidade e Inclusão -->
+      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="material-icons-outlined text-accent text-2xl">diversity_3</span>
+          <h4 class="text-lg font-bold text-white">Diversidade e Inclusão</h4>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-4">
+          Iniciativas para promover igualdade e inclusão no mercado de trabalho. Participe de campanhas e treinamentos.
+        </p>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+          <span class="material-icons-outlined">groups</span> Saiba Mais
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JS para menu mobile e eventos -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Eventos para participação
+  document.getElementById('join-latam').addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_latam', xp:100, badge:'Agente de Impacto'}}));
+    alert('Inscrição enviada! +100 XP');
+  });
+
+  document.getElementById('join-vol').addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('cp:completeMission', {detail:{id:'impact_vol', xp:100, badge:'Agente de Impacto'}}));
+    alert('Inscrição enviada! +100 XP');
+  });
+</script>
+
 </body>
 </html>

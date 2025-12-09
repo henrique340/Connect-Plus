@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect+ — Bem-estar</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#1C1C1C',        // Fundo principal
+            surface: '#242424',   // Superfícies / cards
+            accent: '#D64B36',    // Vermelho queimado (destaque)
+            white: '#FFFFFF',     // Textos principais
+            muted: '#BDBDBD',     // Textos secundários
+          },
+          borderRadius: {
+            'md': '12px',        // Bordas arredondadas padrão
+          },
+          boxShadow: {
+            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
+          },
+          spacing: {
+            'gap-md': '16px',    // Espaçamento base
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-bg text-white antialiased font-sans">
+
+<!-- NAVBAR -->
+<nav class="w-full border-b border-white/10 mb-8">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
+      <h1 class="text-xl font-bold text-accent">Connect+</h1>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+      <a href="index1.html" class="hover:text-accent transition">Missões</a>
+      <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
+    </div>
+
+    <!-- Mobile button -->
+    <button id="menu-btn" class="md:hidden text-accent">
+      <span class="material-icons-outlined text-3xl">Menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
+    <a href="index1.html" class="py-2 hover:text-accent">Missões</a>
+    <a href="predio.html" class="py-2 hover:text-accent">Explorar o Prédio</a>
+    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
+    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
+    <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
+    <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
+    <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
+    <a href="perfil.html" class="py-2 hover:text-accent">Meu Perfil</a>
+  </div>
+</nav>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="max-w-7xl mx-auto p-6">
+
+  <header class="mb-12">
+    <h2 class="text-4xl font-bold text-white">
+      Bem-estar na Oracle
+    </h2>
+    <p class="text-muted text-lg">Descubra iniciativas e dicas para cuidar da sua saúde física e mental no trabalho.</p>
+  </header>
+
+  <!-- Massagens Oferecidas -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="material-icons-outlined text-accent text-4xl">spa</span>
+        <h3 class="text-2xl font-bold text-white">Massagens Relaxantes</h3>
+      </div>
+      <p class="text-muted text-sm leading-relaxed mb-6">
+        A Oracle oferece sessões de massagem gratuitas para promover o relaxamento e reduzir o estresse. As massagens são realizadas por profissionais qualificados e estão disponíveis no escritório.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Frequência</h4>
+          <p class="text-muted">Duas vezes por mês, agendadas previamente.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Duração</h4>
+          <p class="text-muted">Sessões de 20 minutos por colaborador.</p>
+        </div>
+      </div>
+      <button class="flex items-center justify-center gap-2 p-3 px-6 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 mt-6">
+        <span class="material-icons-outlined">event</span> Agendar Massagem
+      </button>
+    </div>
+  </section>
+
+  <!-- Home Office Melhor -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="material-icons-outlined text-accent text-4xl">home</span>
+        <h3 class="text-2xl font-bold text-white">Como Ter um Home Office Melhor</h3>
+      </div>
+      <p class="text-muted text-sm leading-relaxed mb-6">
+        Trabalhar em casa pode ser produtivo e confortável com as configurações certas. Aqui vão dicas para otimizar seu espaço de trabalho remoto.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Espaço Dedicado</h4>
+          <p class="text-muted">Crie um cantinho exclusivo para o trabalho, separado do lazer, para manter o foco.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Iluminação Adequada</h4>
+          <p class="text-muted">Use luz natural sempre que possível e adicione lâmpadas LED para reduzir fadiga ocular.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Equipamentos Ergonomicos</h4>
+          <p class="text-muted">Invista em cadeira confortável, mesa ajustável e teclado ergonômico.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Rotina de Pausas</h4>
+          <p class="text-muted">Faça pausas regulares para alongar, caminhar ou tomar ar fresco.</p>
+        </div>
+      </div>
+      <button class="flex items-center justify-center gap-2 p-3 px-6 rounded-[10px] bg-transparent text-accent border border-accent/18 cursor-pointer font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 mt-6">
+        <span class="material-icons-outlined">lightbulb</span> Ver Mais Dicas
+      </button>
+    </div>
+  </section>
+
+  <!-- Dicas de Postura -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="material-icons-outlined text-accent text-4xl">accessibility</span>
+        <h3 class="text-2xl font-bold text-white">Dicas de Postura</h3>
+      </div>
+      <p class="text-muted text-sm leading-relaxed mb-6">
+        Manter uma boa postura é essencial para evitar dores e lesões. Pratique esses hábitos diários para um corpo saudável.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Postura Sentada</h4>
+          <p class="text-muted">Mantenha os pés apoiados no chão, costas retas e tela na altura dos olhos.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Alongamentos</h4>
+          <p class="text-muted">Faça alongamentos do pescoço, ombros e punhos a cada hora de trabalho.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Movimentação</h4>
+          <p class="text-muted">Levante-se a cada 30 minutos para caminhar e mudar de posição.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Exercícios Respiratórios</h4>
+          <p class="text-muted">Pratique respiração profunda para reduzir tensão e melhorar concentração.</p>
+        </div>
+      </div>
+      <button class="flex items-center justify-center gap-2 p-3 px-6 rounded-[10px] bg-transparent text-accent border border-accent/18 cursor-pointer font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 mt-6">
+        <span class="material-icons-outlined">fitness_center</span> Ver Exercícios
+      </button>
+    </div>
+  </section>
+
+  <!-- Outras Iniciativas -->
+  <section>
+    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
+      <h3 class="text-2xl font-bold text-white mb-4">Outras Iniciativas de Bem-estar</h3>
+      <p class="text-muted text-sm leading-relaxed mb-6">
+        A Oracle também oferece programas de meditação guiada, aulas de yoga virtuais e suporte psicológico. Explore essas opções para equilibrar trabalho e vida pessoal.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0">
+          <span class="material-icons-outlined">self_improvement</span> Meditação
+        </button>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0">
+          <span class="material-icons-outlined">sports_yoga</span> Yoga
+        </button>
+        <button class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0">
+          <span class="material-icons-outlined">psychology</span> Suporte Psicológico
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JS para menu mobile -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+</body>
+</html>
