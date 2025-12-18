@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connect+ — Onboarding: Alianças e Canais</title>
+  <title>Connect+ — Alianças e Canais</title>
 
   <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -17,23 +17,19 @@
       theme: {
         extend: {
           colors: {
-            bg: '#1C1C1C',        // Fundo principal
-            surface: '#242424',   // Superfícies / cards
-            accent: '#D64B36',    // Vermelho queimado (destaque)
-            white: '#FFFFFF',     // Textos principais
-            muted: '#BDBDBD',     // Textos secundários
+            bg: '#1C1C1C',
+            surface: '#242424',
+            accent: '#D64B36',
+            muted: '#BDBDBD',
           },
           borderRadius: {
-            'md': '12px',        // Bordas arredondadas padrão
+            md: '12px',
           },
           boxShadow: {
-            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
-          },
-          spacing: {
-            'gap-md': '16px',    // Espaçamento base
+            elev: '0 8px 24px rgba(0,0,0,0.55)',
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+            sans: ['Inter', 'system-ui'],
           }
         }
       }
@@ -41,173 +37,151 @@
   </script>
 </head>
 
-<body class="bg-bg text-white antialiased font-sans">
+<body class="bg-bg text-white font-sans antialiased">
 
 <!-- NAVBAR -->
-<nav class="w-full border-b border-white/10 mb-8">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Logo -->
-    <div class="flex items-center gap-2.5">
-      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
-      <h1 class="text-xl font-bold text-accent">Connect+</h1>
+<nav class="border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-5 rounded-full shadow-[inset_0_0_0_4px_#D64B36]"></div>
+      <span class="text-xl font-bold text-accent">Connect+</span>
     </div>
 
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
-      <a href="index1.html" class="hover:text-accent transition">Missões</a>
-      <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
-      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
-      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
-      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
-      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
-      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
+    <div class="hidden md:flex gap-6 text-sm font-medium text-muted">
+      <a href="index1.html" class="hover:text-accent">Missões</a>
+      <a href="ferramentas.html" class="hover:text-accent">Ferramentas</a>
+      <a href="cultura.html" class="hover:text-accent">Cultura Oracle</a>
+      <a href="impacto.html" class="hover:text-accent">Impacto Social</a>
+      <a href="beneficios.html" class="hover:text-accent">Benefícios</a>
+      <a href="bemestar.html" class="hover:text-accent">Bem-estar</a>
+      <a href="perfil.html" class="hover:text-accent">Meu Perfil</a>
     </div>
-
-    <!-- Mobile button -->
-    <button id="menu-btn" class="md:hidden text-accent">
-      <span class="material-icons-outlined text-3xl">Menu</span>
-    </button>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
-    <a href="index1.html" class="py-2 hover:text-accent">Missões</a>
-    <a href="predio.html" class="py-2 hover:text-accent">Explorar o Prédio</a>
-    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
-    <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
-    <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
-    <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
-    <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
-    <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
   </div>
 </nav>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<div class="max-w-7xl mx-auto p-6">
+<!-- CONTEÚDO -->
+<main class="max-w-7xl mx-auto px-6 py-10">
 
-  <!-- Header da Área -->
-  <header class="mb-12 text-center">
-    <h1 class="text-5xl font-bold text-white mb-4">Alianças e Canais</h1>
-    <p class="text-2xl text-accent font-semibold mb-6">Seja Bem-Vindo ao Onboarding!</p>
-    <p class="text-muted text-lg max-w-3xl mx-auto leading-relaxed">
-      Parabéns por escolher a área de Alianças e Canais! Aqui, você se tornará um especialista em parcerias estratégicas, gestão de canais de distribuição e expansão de mercado. Prepare-se para uma jornada de aprendizado e crescimento profissional na Oracle.
+  <!-- Voltar -->
+  <div class="mb-8">
+    <a href="missao1.html"
+      class="inline-flex items-center gap-2 px-4 py-2 bg-surface rounded-md text-sm font-medium hover:bg-accent transition">
+      <span class="material-icons-outlined text-base">arrow_back</span>
+      Voltar
+    </a>
+  </div>
+
+  <!-- Header -->
+  <header class="text-center max-w-3xl mx-auto mb-14">
+    <h1 class="text-4xl font-bold mb-4">Alianças e Canais</h1>
+    <p class="text-accent text-xl font-semibold mb-4">Bem-vindo ao Onboarding</p>
+    <p class="text-muted leading-relaxed">
+      Você fará parte da área responsável por parcerias estratégicas, canais indiretos
+      e expansão de mercado. Aqui começa sua jornada de aprendizado e impacto na Oracle.
     </p>
   </header>
 
-  <!-- O que é a Área -->
-  <section class="mb-12">
-    <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
-      <h2 class="text-2xl font-bold text-white mb-4">O que é a Área de Alianças e Canais?</h2>
-      <p class="text-muted text-sm leading-relaxed">
-        A área de Alianças e Canais é o coração das parcerias estratégicas da Oracle. Você trabalhará com terceiros para expandir nosso alcance, gerenciar canais de vendas indiretas e criar alianças que impulsionam o crescimento mútuo. Isso inclui identificar parceiros potenciais, negociar acordos, otimizar canais de distribuição e analisar dados de mercado para maximizar oportunidades. É uma função dinâmica que combina estratégia, negociação e análise, permitindo que você contribua diretamente para o sucesso global da Oracle.
+  <!-- Card explicativo -->
+  <section class="mb-14">
+    <div class="bg-surface rounded-md p-6 shadow-elev border border-white/10">
+      <h2 class="text-2xl font-bold mb-3">O que é a área?</h2>
+      <p class="text-muted leading-relaxed text-sm">
+        Alianças e Canais conecta a Oracle a parceiros estratégicos globais,
+        impulsionando vendas indiretas, inovação conjunta e crescimento sustentável.
+        A atuação envolve estratégia, relacionamento, análise de mercado e execução.
       </p>
     </div>
   </section>
 
-  <!-- Abas de Navegação -->
-  <section class="mb-12">
-    <div class="flex flex-wrap gap-4 justify-center mb-8">
-      <button id="tab-sobre" class="tab-btn px-6 py-3 bg-accent text-white rounded-md font-semibold hover:bg-accent/80 transition active">Sobre</button>
-      <button id="tab-cursos" class="tab-btn px-6 py-3 bg-surface text-white rounded-md font-semibold hover:bg-accent transition">Cursos</button>
-      <button id="tab-videos" class="tab-btn px-6 py-3 bg-surface text-white rounded-md font-semibold hover:bg-accent transition">Vídeos</button>
-      <button id="tab-recursos" class="tab-btn px-6 py-3 bg-surface text-white rounded-md font-semibold hover:bg-accent transition">Recursos</button>
+  <!-- Abas -->
+  <section>
+    <div class="flex justify-center gap-3 mb-8">
+      <button id="tab-sobre" class="tab-btn px-5 py-2 rounded-md bg-accent font-semibold text-sm">Sobre</button>
+      <button id="tab-cursos" class="tab-btn px-5 py-2 rounded-md bg-surface text-sm">Cursos</button>
+      <button id="tab-videos" class="tab-btn px-5 py-2 rounded-md bg-surface text-sm">Vídeos</button>
+      <button id="tab-recursos" class="tab-btn px-5 py-2 rounded-md bg-surface text-sm">Recursos</button>
     </div>
 
-    <!-- Conteúdo das Abas -->
-    <div id="content-sobre" class="tab-content bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
-      <h3 class="text-xl font-bold text-white mb-4">Sobre a Área</h3>
+    <!-- Sobre -->
+    <div id="content-sobre" class="tab-content bg-surface rounded-md p-6 shadow-elev border border-white/10">
       <p class="text-muted text-sm leading-relaxed">
-        Nesta aba, você encontra informações detalhadas sobre responsabilidades, habilidades necessárias e oportunidades de carreira na área de Alianças e Canais. Explore como essa função se alinha com os valores da Oracle e como você pode crescer profissionalmente.
+        Nesta área, você desenvolverá habilidades de negociação, estratégia de canais,
+        gestão de parceiros e análise de dados, com oportunidades de crescimento
+        em carreira técnica e comercial.
       </p>
     </div>
 
-    <div id="content-cursos" class="tab-content hidden bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
-      <h3 class="text-xl font-bold text-white mb-4">Cursos Área de Alianças e Canais</h3>
-      <p class="text-muted text-sm leading-relaxed mb-6">
-        Acesse os cursos essenciais para se capacitar na área. Clique nos links abaixo para acessar no MyLearn.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-surface p-4 rounded-md border border-white/10 hover:border-accent transition">
-          <h4 class="text-lg font-semibold text-white mb-2">OCI Foundations</h4>
-          <p class="text-muted text-sm mb-4">Fundamentos da Oracle Cloud Infrastructure.</p>
-          <a href="https://mylearn.oracle.com" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-md hover:bg-accent/80 transition">
-            <span class="material-icons-outlined">school</span> CLIQUE PARA ACESSAR ESSE CURSO NO MYLEARN
+    <!-- Cursos -->
+    <div id="content-cursos" class="tab-content hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="bg-surface p-5 rounded-md border border-white/10 hover:border-accent transition">
+          <h4 class="font-semibold mb-2">OCI Foundations</h4>
+          <p class="text-muted text-sm mb-4">Fundamentos da Oracle Cloud.</p>
+          <a href="https://mylearn.oracle.com" target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-md text-sm font-semibold hover:bg-accent/80">
+            <span class="material-icons-outlined text-base">school</span>
+            Acessar
           </a>
         </div>
-        <div class="bg-surface p-4 rounded-md border border-white/10 hover:border-accent transition">
-          <h4 class="text-lg font-semibold text-white mb-2">OCI AI Foundations</h4>
-          <p class="text-muted text-sm mb-4">Introdução à Inteligência Artificial na Oracle Cloud.</p>
-          <a href="https://mylearn.oracle.com" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-md hover:bg-accent/80 transition">
-            <span class="material-icons-outlined">school</span> CLIQUE PARA ACESSAR ESSE CURSO NO MYLEARN
+
+        <div class="bg-surface p-5 rounded-md border border-white/10 hover:border-accent transition">
+          <h4 class="font-semibold mb-2">OCI AI Foundations</h4>
+          <p class="text-muted text-sm mb-4">Introdução à IA na OCI.</p>
+          <a href="https://mylearn.oracle.com" target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-md text-sm font-semibold hover:bg-accent/80">
+            <span class="material-icons-outlined text-base">school</span>
+            Acessar
           </a>
         </div>
-        <div class="bg-surface p-4 rounded-md border border-white/10 hover:border-accent transition">
-          <h4 class="text-lg font-semibold text-white mb-2">Winning with Partners</h4>
-          <p class="text-muted text-sm mb-4">Estratégias para vencer com parcerias estratégicas.</p>
-          <a href="https://mylearn.oracle.com" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-md hover:bg-accent/80 transition">
-            <span class="material-icons-outlined">school</span> CLIQUE PARA ACESSAR ESSE CURSO NO MYLEARN
+
+        <div class="bg-surface p-5 rounded-md border border-white/10 hover:border-accent transition">
+          <h4 class="font-semibold mb-2">Winning with Partners</h4>
+          <p class="text-muted text-sm mb-4">Estratégias de parceria.</p>
+          <a href="https://mylearn.oracle.com" target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-md text-sm font-semibold hover:bg-accent/80">
+            <span class="material-icons-outlined text-base">school</span>
+            Acessar
           </a>
         </div>
+
       </div>
     </div>
 
-    <div id="content-videos" class="tab-content hidden bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
-      <h3 class="text-xl font-bold text-white mb-4">Vídeos</h3>
-      <p class="text-muted text-sm leading-relaxed mb-6">
-        Assista aos vídeos de boas-vindas e treinamentos para se familiarizar com a área.
-      </p>
-      <div class="aspect-w-16 aspect-h-9">
-        <iframe src="https://youtu.be/D-TUEdZVwlU?si=FgdCM_nzBczWgAcx" title="Vídeo de Boas-Vindas - Alianças e Canais" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-64 rounded-md"></iframe>
-      </div>
-      <p class="text-muted text-sm mt-4">Vídeo de Boas-Vindas: Uma introdução à área de Alianças e Canais na Oracle.</p>
+    <!-- Vídeos -->
+    <div id="content-videos" class="tab-content hidden bg-surface rounded-md p-6 shadow-elev border border-white/10">
+      <p class="text-muted text-sm mb-4">Vídeo de boas-vindas à área:</p>
+      <iframe class="w-full h-72 rounded-md"
+        src="https://www.youtube.com/embed/D-TUEdZVwlU"
+        allowfullscreen></iframe>
     </div>
 
-    <div id="content-recursos" class="tab-content hidden bg-gradient-to-b from-white/2 to-transparent rounded-md p-6 shadow-aria-elev-1 border border-white/3">
-      <h3 class="text-xl font-bold text-white mb-4">Recursos Adicionais</h3>
-      <p class="text-muted text-sm leading-relaxed">
-        Aqui você encontra documentos, guias e ferramentas úteis para sua jornada na área de Alianças e Canais. Incluindo manuais de parceria, análises de mercado e ferramentas de CRM.
-      </p>
-      <ul class="list-disc list-inside mt-4 text-muted text-sm">
+    <!-- Recursos -->
+    <div id="content-recursos" class="tab-content hidden bg-surface rounded-md p-6 shadow-elev border border-white/10">
+      <ul class="list-disc list-inside text-muted text-sm space-y-2">
         <li>Manual de Parcerias Estratégicas</li>
         <li>Guia de Gestão de Canais</li>
         <li>Ferramentas de Análise de Mercado</li>
       </ul>
     </div>
-  </section>
 
-  <!-- Botão de Voltar -->
-  <section class="text-center mb-12">
-    <a href="missao1.html" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/80 transition font-semibold">
-      <span class="material-icons-outlined">arrow_back</span> Voltar à Seleção de Área
-    </a>
   </section>
-</div>
+</main>
 
-<!-- JS para menu mobile e abas -->
+<!-- JS abas -->
 <script>
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
 
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('bg-accent'));
+      tabs.forEach(t => t.classList.add('bg-surface'));
+      tab.classList.add('bg-accent');
+      tab.classList.remove('bg-surface');
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remover classe active de todos os botões
-      tabBtns.forEach(b => b.classList.remove('active', 'bg-accent'));
-      tabBtns.forEach(b => b.classList.add('bg-surface'));
-      // Adicionar active ao clicado
-      btn.classList.add('active', 'bg-accent');
-      btn.classList.remove('bg-surface');
-
-      // Esconder todos os conteúdos
-      tabContents.forEach(content => content.classList.add('hidden'));
-      // Mostrar o conteúdo correspondente
-      const target = btn.id.replace('tab-', 'content-');
-      document.getElementById(target).classList.remove('hidden');
+      contents.forEach(c => c.classList.add('hidden'));
+      document.getElementById(tab.id.replace('tab-', 'content-')).classList.remove('hidden');
     });
   });
 </script>
