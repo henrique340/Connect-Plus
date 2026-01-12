@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR"><head>
+<html class="dark" lang="pt-br"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Benefícios Oracle - Onboarding</title>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Benefícios Oracle Interativo</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -13,297 +13,339 @@
                 extend: {
                     colors: {
                         "primary": "#f20d0d",
-                        "primary-dark": "#b30000",
                         "background-light": "#f8f5f5",
-                        "background-dark": "#050000",
-                        "card-dark": "#120505",
-                        "accent-dark": "#2b0a0a",
+                        "background-dark": "#0a0a0a",
                     },
                     fontFamily: {
                         "display": ["Public Sans", "sans-serif"]
                     },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
                 },
             },
         }
     </script>
-<style>
-        ::-webkit-scrollbar {
-            width: 8px;
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: "Public Sans", sans-serif;
+            }
         }
-        ::-webkit-scrollbar-track {
-            background: #1a0f0f;
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #392828;
-            border-radius: 4px;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0a0a;
         }
-        ::-webkit-scrollbar-thumb:hover {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #331111;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #f20d0d;
-        }
-        .text-outline {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
-            color: transparent;
-        }
-        .timeline-line {
-            background: linear-gradient(to bottom, #f20d0d 0%, #2b0a0a 50%, #120505 100%);
-        }
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }.no-scrollbar {
+            -ms-overflow-style: none;scrollbar-width: none;}
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
-<header class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md">
-<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 text-primary">
-<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
-<path d="M2 17L12 22L22 17" fill="none" stroke="currentColor" stroke-width="2"></path>
-<path d="M2 12L12 17L22 12" fill="none" stroke="currentColor" stroke-width="2"></path>
-</svg>
+<body class="bg-background-dark text-white h-screen flex flex-col overflow-hidden">
+<header class="flex items-center justify-between border-b border-white/10 px-8 py-3 bg-[#181111] shrink-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded shadow-[0_0_15px_rgba(242,13,13,0.4)]">
+<span class="material-symbols-outlined text-2xl font-bold">token</span>
 </div>
-<h1 class="text-white font-bold text-xl tracking-tight">Oracle <span class="text-primary font-black">Benefits</span></h1>
+<h2 class="text-white text-lg font-black uppercase tracking-tighter leading-tight">Oracle <span class="text-primary">Benefits</span></h2>
 </div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-white hover:text-primary text-sm font-bold transition-colors" href="#">Meus Benefícios</a>
-<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">Dependentes</a>
-<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">Seguros</a>
-<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">FAQ</a>
-</nav>
-<div class="flex items-center gap-4">
-<div class="flex flex-col items-end mr-2 hidden sm:flex">
-<span class="text-xs text-primary font-semibold">Status</span>
-<span class="text-sm font-bold text-white">Beneficiário Ativo</span>
+<div class="hidden md:flex items-center">
+<label class="flex items-center min-w-64 h-10">
+<div class="flex w-full items-stretch rounded-lg bg-[#221010] border border-white/5 px-3 focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[#ba9c9c] self-center text-xl">search</span>
+<input class="w-full border-none bg-transparent focus:ring-0 text-sm placeholder-[#ba9c9c] text-white" placeholder="Search benefits..." type="text"/>
 </div>
-<div class="h-10 w-10 rounded-full border-2 border-primary p-0.5 cursor-pointer hover:scale-105 transition-transform relative group">
-<img alt="User avatar profile picture" class="rounded-full h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLEDCVKSMWIIehwQRQQJEgraKhy88pxiSgDn8TWAeKkqMWGhNPX9i-hI5Wpxn7jrLPk2DrdEF1ffBjMuWPuTk5k6TKFGP54nKHjZVMTSfYpANUlM24tncQw4SlEmf5L7WeZV73dBmj5qfeXaxkG7dqS62DGWK9UN8FHP3hHSoop2VxaklDTlh_0p1-YyZ8II8mZfh_zssqKxxB1ZteBhDnaKZP4bnbQpkGhLGAo-SX_hQwwh0yKVPSxtheZlTDEOVJj6Xvb6ECxU"/>
-<div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
+</label>
 </div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-white/10 pr-6">
+<div class="flex flex-col items-end">
+<p class="text-white text-xs font-bold uppercase tracking-widest opacity-60">Level 3</p>
+<p class="text-primary text-sm font-black">450 XP</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4AfqzkmxDO92BUPSqUWxtIsWt1z0pw9BxD5gV-QkNCDtiw6lD9MA6O00eL8PbxMpsM3E95ZkBxzvcPMsnrH2MWN8-KMecnc7eiKU8bIMw9lrWjUVmVgGUFMAJFRqvp2wHkUt5EaL6M4BTeSNIHCnl4A2ITiJIBSx9fKH5ytoHD1O3Q3QfifZrKcGsCgjRRUC-Bu2jtEshg-RTPjd9GOeYOHs22Ws9L16M2Gh926zwsFkBgj5kuSOi2yu2yZ2kj_pBLLBqOhuUcvo');"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#221010] hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-white text-xl">notifications</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#221010] hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-white text-xl">settings</span>
+</button>
 </div>
 </div>
 </header>
-<main class="flex-grow w-full max-w-[1400px] mx-auto px-6 py-8">
-<div class="mb-12 relative overflow-hidden rounded-3xl bg-card-dark border border-accent-dark">
-<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none"></div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 relative z-10">
-<div class="lg:col-span-7 flex flex-col justify-center">
-<div class="inline-flex items-center gap-2 mb-6">
-<span class="px-3 py-1 bg-primary text-white text-xs font-bold uppercase tracking-wider rounded-sm">Onboarding RH</span>
-<span class="text-white/40 text-sm font-medium">Pacote de Vantagens</span>
+<main class="flex flex-1 overflow-hidden">
+<aside class="w-80 border-r border-white/10 bg-[#0f0707] flex flex-col shrink-0">
+<div class="p-6 border-b border-white/10 bg-[#120808]">
+<h1 class="text-white text-xl font-bold">Benefit Catalog</h1>
+<p class="text-[#ba9c9c] text-sm mt-1">Select to view details</p>
 </div>
-<h1 class="text-5xl md:text-6xl font-black text-white leading-[0.95] mb-6 tracking-tight">
-                        MISSÕES DE <br/>
-<span class="text-primary">BENEFÍCIOS.</span>
-</h1>
-<p class="text-xl text-white/70 max-w-xl mb-8 leading-relaxed">
-                        Bem-vindo à Oracle! Sua saúde, bem-estar e segurança financeira são prioridades. Complete as missões abaixo para ativar seu plano de saúde, conta salário e benefícios de qualidade de vida.
-                    </p>
-<div class="flex flex-wrap gap-4">
-<button class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-lg transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(242,13,13,0.3)]">
-                            Ativar Próximo Benefício
-                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_downward</span>
+<nav class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl bg-primary/10 border border-primary/30 relative focus:outline-none transition-all">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-full"></div>
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shrink-0 shadow-[0_0_10px_rgba(242,13,13,0.3)]">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-bold">Porto Seguro</span>
+<span class="text-primary text-[10px] font-bold uppercase tracking-tighter">Current Plan</span>
+</div>
 </button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Banco Itaú</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Finance</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Gympass</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Well-being</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Education Aid</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Growth</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Retirement Fund</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Future</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Meal Voucher</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Daily</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Mobility Allowance</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Transport</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Home Office Stipend</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Workspace</span>
+</div>
+</button>
+<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
+<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">language</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Language Courses</span>
+<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Education</span>
+</div>
+</button>
+</nav>
+<div class="p-6 bg-[#1a0b0b] border-t border-white/10 shrink-0">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold uppercase text-[#ba9c9c]">Onboarding Progress</span>
+<span class="text-xs font-bold text-primary">75%</span>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4 shadow-[0_0_10px_#f20d0d]"></div>
 </div>
 </div>
-<div class="lg:col-span-5 flex flex-col justify-center">
-<div class="bg-background-dark/50 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-<div class="flex justify-between items-center mb-6">
-<h3 class="font-bold text-white text-lg">Seu Pacote</h3>
-<span class="bg-white/10 px-3 py-1 rounded-full text-xs font-mono text-white/80">EM PROGRESSO</span>
+</aside>
+<section class="flex-1 overflow-y-auto custom-scrollbar bg-background-dark">
+<div class="relative w-full h-[450px] shrink-0">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(0deg, #0a0a0a 0%, rgba(10,10,10,0.6) 50%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAphWmriHnaBh19W7Rb9zIdsCmHeCdxtndFyPq02U7xTm8LinuqBaLurKIQj_8wc5m6M6wPudmRqcTH0g4XUWmafGstv7-_6eam69_LoiFmavrZ6Qs8d2HAsqAekcEeqN2wjm8rIFfwtKP6JuImWo6tKHaHoOBKd7tirrF-DaAVet7BQXZongk7L9W0INBJKKRcIu1VlyzRLlzebWUL6RbsHbWfZcnx9zT1_AiCkMzRRHxJpcfKxp4-6R3nKnRZcgvu0CWdKeoJ79k');"></div>
+<div class="absolute inset-0 flex flex-col justify-end p-12">
+<div class="flex items-center gap-2 mb-6">
+<span class="px-3 py-1 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded">Premium Category</span>
+<span class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded border border-white/10">Health &amp; Dental</span>
 </div>
-<div class="space-y-6 mb-8">
+<h2 class="text-white text-7xl font-black tracking-tighter leading-[0.9] mb-6">Porto Seguro <br/> Health Plan</h2>
+<p class="text-[#ba9c9c] text-xl max-w-2xl font-normal leading-relaxed">
+                    Comprehensive medical coverage designed for Oracle employees and their dependents. Experience world-class healthcare with Brazil's most trusted network.
+                </p>
+</div>
+</div>
+<div class="px-12 py-16 max-w-6xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-8 space-y-12">
 <div>
-<div class="flex justify-between mb-2 text-sm">
-<span class="text-white/60">Benefícios Ativados</span>
-<span class="text-primary font-bold">2 / 6</span>
+<h3 class="text-white text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span> What's Included
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">medical_services</span>
+<h4 class="text-white font-bold text-lg mb-2">Full Coverage</h4>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">Access to premium hospitals like Albert Einstein and Sírio-Libanês across Brazil.</p>
 </div>
-<div class="h-2 bg-white/5 rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[33%] relative">
-<div class="absolute right-0 top-0 bottom-0 w-1 bg-white/50"></div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">dentistry</span>
+<h4 class="text-white font-bold text-lg mb-2">Dental Care</h4>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">Standard and aesthetic treatments included for all direct family members.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">family_restroom</span>
+<h4 class="text-white font-bold text-lg mb-2">Dependents</h4>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">Add your spouse and children up to 24 years old at no extra base monthly cost.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">travel_explore</span>
+<h4 class="text-white font-bold text-lg mb-2">Global Support</h4>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">International emergency travel insurance included for business or leisure.</p>
+</div>
+</div>
+</div>
+<div class="prose prose-invert max-w-none">
+<h3 class="text-white text-2xl font-bold mb-6">Plan Specifications</h3>
+<p class="text-[#ba9c9c] text-lg leading-relaxed mb-8">
+                            The Porto Seguro Premium Plan is Oracle's flagship healthcare offering. It includes $0 co-pay for essential consultations and a 90% reimbursement rate for out-of-network specialists. Our goal is to ensure you have peace of mind while focusing on your career growth.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-primary/5 border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
+<div>
+<p class="text-white font-bold mb-1 text-base">24/7 Telemedicine</p>
+<p class="text-[#ba9c9c] text-sm">Instant access to general practitioners and pediatricians via the Porto Seguro app.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
+<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
+<div>
+<p class="text-white font-bold mb-1 text-base">Pharmacy Program</p>
+<p class="text-[#ba9c9c] text-sm">Discounts up to 70% in partner drugstores including Drogasil and Raia.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
+<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
+<div>
+<p class="text-white font-bold mb-1 text-base">Maternity Care</p>
+<p class="text-[#ba9c9c] text-sm">Personalized health coaches and specialized programs for expecting parents.</p>
+</div>
 </div>
 </div>
 </div>
 <div>
-<div class="flex justify-between mb-2 text-sm">
-<span class="text-white/60">Documentação Enviada</span>
-<span class="text-primary font-bold">40%</span>
+<h3 class="text-white text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+<div class="space-y-4">
+<div class="p-5 bg-white/5 rounded-xl border border-white/5">
+<p class="text-white font-bold mb-2">When does the coverage start?</p>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">Coverage starts on your first day of employment at Oracle. You will receive your digital card via email within 48 hours.</p>
 </div>
-<div class="h-2 bg-white/5 rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[40%] relative">
-<div class="absolute right-0 top-0 bottom-0 w-1 bg-white/50"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-primary/50 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors relative overflow-hidden" title="Saúde">
-<div class="absolute inset-0 bg-primary/10"></div>
-<span class="material-symbols-outlined text-primary text-3xl">health_and_safety</span>
-</div>
-<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors" title="Finanças">
-<span class="material-symbols-outlined text-white/50 text-3xl group-hover:scale-110 group-hover:text-primary transition-all">account_balance</span>
-</div>
-<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors" title="Bem-estar">
-<span class="material-symbols-outlined text-white/30 text-3xl group-hover:scale-110 transition-transform">fitness_center</span>
+<div class="p-5 bg-white/5 rounded-xl border border-white/5">
+<p class="text-white font-bold mb-2">How do I add dependents?</p>
+<p class="text-[#ba9c9c] text-sm leading-relaxed">You can upload birth or marriage certificates directly through the Oracle Benefits Portal during the first 30 days.</p>
 </div>
 </div>
 </div>
 </div>
+<div class="lg:col-span-4">
+<div class="sticky top-0 space-y-6">
+<div class="p-8 rounded-2xl bg-[#1a1111] border border-primary/20 flex flex-col items-center text-center shadow-2xl">
+<div class="size-20 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-6 ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-4xl font-bold">military_tech</span>
 </div>
-</div>
-<div class="max-w-4xl mx-auto mb-20 relative">
-<h2 class="text-3xl font-black text-white mb-12 text-center uppercase tracking-widest">Jornada de Ativação</h2>
-<div class="relative pl-4 md:pl-0">
-<div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/5 md:-ml-[1px]"></div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-12 h-12 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(242,13,13,0.5)]">
-<span class="material-symbols-outlined text-white font-bold">check</span>
-</div>
-</div>
-<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
-<div class="bg-card-dark/80 backdrop-blur border border-primary/30 rounded-xl p-6 relative hover:bg-card-dark transition-colors">
-<span class="text-primary text-xs font-bold uppercase tracking-wider mb-2 block">Saúde • Ativado</span>
-<div class="flex items-center gap-2 mb-2 md:justify-end">
-<h3 class="text-xl font-bold text-white">Porto Seguro Saúde</h3>
-<span class="material-symbols-outlined text-white/60">health_and_safety</span>
-</div>
-<p class="text-white/60 text-sm mb-4">Plano de saúde nacional com ampla rede credenciada e acomodação em apartamento.</p>
-<button class="text-xs font-bold text-white flex items-center gap-1 md:ml-auto hover:text-primary transition-colors">
-                                Ver Carteirinha <span class="material-symbols-outlined text-base">badge</span>
+<h4 class="text-white font-black text-2xl mb-2">Earn 100 XP</h4>
+<p class="text-[#ba9c9c] text-base mb-8">Complete your health enrollment today to unlock your first achievement badge.</p>
+<button class="w-full py-5 bg-primary hover:bg-red-600 text-white font-black uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(242,13,13,0.4)] flex items-center justify-center gap-3 active:scale-95">
+<span>Enroll Now</span>
+<span class="material-symbols-outlined">arrow_forward</span>
 </button>
+<button class="w-full mt-4 py-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl transition-all border border-white/10">
+                                Download Network PDF
+                            </button>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+<h5 class="text-white font-bold text-sm mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">analytics</span>
+                                Benefit Statistics
+                            </h5>
+<div class="space-y-5">
+<div class="flex items-center justify-between">
+<span class="text-[#ba9c9c] text-sm">Employee Adoption</span>
+<span class="text-white text-sm font-bold">98.4%</span>
+</div>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[#ba9c9c] text-sm">Satisfaction Score</span>
+<div class="flex items-center gap-1">
+<span class="text-primary text-sm font-bold">4.9/5.0</span>
+<span class="material-symbols-outlined text-xs text-primary fill-1">star</span>
 </div>
 </div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-12 h-12 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(242,13,13,0.5)]">
-<span class="material-symbols-outlined text-white font-bold">check</span>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-<div class="md:w-1/2 pl-20 md:pl-16">
-<div class="bg-card-dark/80 backdrop-blur border border-primary/30 rounded-xl p-6 relative hover:bg-card-dark transition-colors">
-<span class="text-primary text-xs font-bold uppercase tracking-wider mb-2 block">Odontológico • Ativado</span>
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-white/60">dentistry</span>
-<h3 class="text-xl font-bold text-white">Care Plus Dental</h3>
-</div>
-<p class="text-white/60 text-sm mb-4">Cobertura odontológica completa, incluindo procedimentos estéticos e ortodontia.</p>
-<button class="text-xs font-bold text-white flex items-center gap-1 hover:text-primary transition-colors">
-                                Consultar Rede <span class="material-symbols-outlined text-base">map</span>
-</button>
-</div>
-</div>
-</div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-12 h-12 rounded-full bg-background-dark border-2 border-primary flex items-center justify-center relative">
-<div class="absolute inset-0 rounded-full border border-primary animate-ping opacity-75"></div>
-<span class="material-symbols-outlined text-primary">priority_high</span>
-</div>
-</div>
-<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
-<div class="bg-gradient-to-r from-[#1a0505] to-card-dark border border-primary rounded-xl p-6 relative shadow-[0_0_30px_rgba(242,13,13,0.1)] transform md:translate-x-2 transition-transform hover:-translate-y-1">
-<span class="bg-primary text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-3 inline-block">Ação Necessária</span>
-<div class="flex items-center gap-2 mb-2 md:justify-end">
-<h3 class="text-xl font-bold text-white">Banco Itaú</h3>
-<span class="material-symbols-outlined text-white/80">account_balance</span>
-</div>
-<p class="text-white/70 text-sm mb-4">Ative sua conta salário para recebimento mensal. Isenção total de tarifas.</p>
-<div class="flex gap-3 md:justify-end">
-<button class="px-4 py-2 bg-white/5 hover:bg-white/10 text-white text-sm font-bold rounded transition-colors border border-white/10">
-                                    Vincular Conta
-                                </button>
-<button class="py-2 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold rounded transition-colors flex items-center justify-center gap-2">
-                                    Abrir Conta <span class="material-symbols-outlined text-base">open_in_new</span>
-</button>
+<div class="flex items-center justify-between">
+<span class="text-[#ba9c9c] text-sm">Reimbursement Speed</span>
+<span class="text-white text-sm font-bold">Avg. 3 days</span>
 </div>
 </div>
 </div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-80 hover:opacity-100 transition-opacity">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-white/40 text-sm">lock_open</span>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-<div class="md:w-1/2 pl-20 md:pl-16">
-<div class="bg-card-dark border border-white/10 rounded-xl p-6 relative">
-<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Alimentação • Disponível</span>
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-white/40">restaurant</span>
-<h3 class="text-white font-bold text-xl">Ticket Restaurante</h3>
-</div>
-<p class="text-white/40 text-sm mb-4">Cartão flexível para refeição e alimentação. Configure sua distribuição de saldo.</p>
-<button class="text-xs font-bold text-primary flex items-center gap-1 hover:text-white transition-colors">
-                                Configurar Saldo <span class="material-symbols-outlined text-base">tune</span>
-</button>
-</div>
-</div>
-</div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-60 hover:opacity-100 transition-opacity">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-white/40 text-sm">lock</span>
-</div>
-</div>
-<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
-<div class="bg-card-dark border border-white/5 rounded-xl p-6 relative border-dashed">
-<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Bem-estar • Bloqueado</span>
-<div class="flex items-center gap-2 mb-2 md:justify-end">
-<h3 class="text-white font-bold text-xl">Wellhub</h3>
-<span class="material-symbols-outlined text-white/40">fitness_center</span>
-</div>
-<p class="text-white/40 text-sm">Antigo Gympass. Acesso a milhares de academias e apps de bem-estar com subsídio Oracle.</p>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-60 hover:opacity-100 transition-opacity">
-<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
-<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-white/40 text-sm">lock</span>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-<div class="md:w-1/2 pl-20 md:pl-16">
-<div class="bg-card-dark border border-white/5 rounded-xl p-6 relative border-dashed">
-<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Seguros • Bloqueado</span>
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-white/40">verified_user</span>
-<h3 class="text-white font-bold text-xl">WtW Programa Affinity</h3>
-</div>
-<p class="text-white/40 text-sm">Seguros de vida, automóvel, residência e eletrônicos com condições exclusivas para colaboradores.</p>
+<div class="p-6 rounded-2xl bg-gradient-to-br from-[#221010] to-background-dark border border-white/5">
+<p class="text-white font-bold text-sm mb-2">Need help?</p>
+<p class="text-[#ba9c9c] text-xs leading-relaxed mb-4">Our HR support team is available 24/7 for benefit queries.</p>
+<a class="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1" href="#">
+                                Contact Support <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="bg-[#0f0505] border-t border-accent-dark rounded-t-2xl mt-auto py-12 px-8">
-<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-5xl mx-auto">
-<div>
-<h3 class="text-white font-bold text-2xl mb-2">Dúvidas sobre benefícios?</h3>
-<p class="text-white/50 max-w-md">Consulte a política completa na intranet ou abra um chamado para o time de People.</p>
-</div>
-<button class="px-8 py-3 rounded-full border-2 border-white/10 hover:border-primary text-white hover:text-primary font-bold transition-all flex items-center gap-2 group">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform">support_agent</span>
-                    Falar com RH
-                </button>
-</div>
-<div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-<p>© 2024 Oracle Benefits. All rights reserved.</p>
-<div class="flex gap-6">
-<a class="hover:text-white transition-colors" href="#">Política de Benefícios</a>
-<a class="hover:text-white transition-colors" href="#">Privacidade</a>
-<a class="hover:text-white transition-colors" href="#">Helpdesk RH</a>
-</div>
-</div>
-</div>
+</section>
 </main>
+<footer class="h-10 bg-black border-t border-white/10 flex items-center justify-between px-8 text-[10px] text-[#ba9c9c] font-medium uppercase tracking-[0.2em] shrink-0 z-50">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5"><span class="size-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></span> Systems Active</span>
+<span class="opacity-50">|</span>
+<span>Benefícios Oracle - Split View</span>
+<span class="opacity-50">|</span>
+<span class="text-primary">Interactive Mode</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Region: Latin America</span>
+<span class="opacity-50">|</span>
+<span>Oracle Onboarding Experience © 2024</span>
+</div>
+</footer>
 
 </body></html>
