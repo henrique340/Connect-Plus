@@ -1,289 +1,226 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html class="dark" lang="pt-br">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M1 — Selecionar sua Área | Connect+</title>
+  <title>M1 — Missões por Departamento</title>
 
   <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200..700&display=swap" rel="stylesheet"/>
-
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .glow-hover:hover {
-        box-shadow: 0 0 20px rgba(214, 75, 54, 0.25);
-      }
-    }
-
-    :root {
-      --accent: #D64B36;
-      --bg: #050505;
-      --card: #111111;
-      --card-hover: #1a1a1a;
-    }
-
-    body {
-      background-color: var(--bg);
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
   <script>
     tailwind.config = {
+      darkMode: "class",
       theme: {
         extend: {
           colors: {
-            accent: "#D64B36",
-            bg: "#050505",
-            card: "#111111",
-            cardhover: "#1a1a1a"
+            primary: "#f20d0d",
+            bgDark: "#050505",
+            cardDark: "rgba(20,20,20,.6)"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"]
           }
         }
       }
     }
   </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .glass-card {
+        background: rgba(20, 20, 20, 0.65);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .red-glow {
+        box-shadow: 0 0 25px -5px rgba(242, 13, 13, 0.25);
+      }
+      .mission-card:hover {
+        background: rgba(30, 30, 30, 0.7);
+        border-color: rgba(242, 13, 13, 0.4);
+        box-shadow: 0 0 35px -5px rgba(242, 13, 13, 0.45);
+      }
+      .hexagon-mask {
+        clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+      }
+      .bg-radial {
+        background: radial-gradient(circle at 50% 50%, #1a0505 0%, #050505 100%);
+      }
+    }
+  </style>
 </head>
 
-<body class="text-gray-300 min-h-screen flex flex-col selection:bg-accent selection:text-white">
+<body class="bg-bgDark bg-radial text-white font-display min-h-screen">
 
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-bg/80 backdrop-blur-md border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-6 rounded-full border-4 border-accent"></div>
-        <span class="text-white font-bold text-xl">Connect<span class="text-accent">+</span></span>
-      </div>
-
-      <div class="hidden md:flex gap-8 text-sm font-medium">
-        <a class="hover:text-accent" href="home.html">Home</a>
-        <a class="hover:text-accent" href="ferramentas.html">Ferramentas</a>
-        <a class="hover:text-accent" href="cultura.html">Cultura</a>
-        <a class="hover:text-accent" href="impacto.html">Impacto</a>
-        <a class="hover:text-accent" href="perfil.html">Perfil</a>
-      </div>
-
-      <span class="material-symbols-outlined md:hidden text-white cursor-pointer">menu</span>
-    </div>
+<!-- HEADER (HOME STYLE) -->
+<header class="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
+  <div class="max-w-[1400px] mx-auto px-6 h-16 flex justify-between items-center">
+    <h1 class="font-extrabold text-lg">Hub de Carreira</h1>
+    <nav class="hidden md:flex gap-8 text-sm">
+      <a class="text-zinc-400 hover:text-primary">Dashboard</a>
+      <a class="text-primary font-bold">Missões Ativas</a>
+      <a class="text-zinc-400 hover:text-primary">Treinamentos</a>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- MAIN -->
-<main class="flex-grow pt-28 pb-24 px-6 max-w-7xl mx-auto w-full">
+<main class="max-w-[1200px] mx-auto px-6 py-14">
 
-  <!-- Breadcrumb -->
-  <div class="mb-8 flex items-center gap-2 text-sm text-gray-500">
-    <span>Missões</span>
-    <span class="material-symbols-outlined text-xs">chevron_right</span>
-    <span class="text-accent">M1 — Selecionar sua área</span>
-  </div>
+  <!-- HERO -->
+  <section class="text-center mb-24 relative">
+    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary/10 blur-[120px] rounded-full -z-10"></div>
 
-  <!-- Header -->
-  <header class="mb-16">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold uppercase tracking-wider mb-6">
-      <span class="material-symbols-outlined text-sm">flag</span>
-      Missão Ativa
-    </div>
-
-    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
-      M1 — Selecionar a sua área
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+      Selecione sua <span class="text-primary drop-shadow-[0_0_20px_rgba(242,13,13,.6)]">Área</span>
     </h1>
-    <p class="text-gray-400 max-w-2xl">
-      Escolha sua área de atuação dentro da Oracle e entenda suas responsabilidades.
+    <p class="text-zinc-400 max-w-2xl mx-auto">
+      Escolha sua área de atuação e inicie sua jornada tecnológica rumo à maestria.
     </p>
-  </header>
-
-  <!-- Progresso -->
-  <section class="bg-card border border-white/10 rounded-xl p-6 mb-16">
-    <div class="flex justify-between mb-3">
-      <h3 class="font-bold text-white text-sm uppercase">Progresso da Missão</h3>
-      <span class="text-gray-400 text-sm">0 / 1 tarefa</span>
-    </div>
-
-    <div class="w-full h-4 bg-white/5 rounded-full overflow-hidden">
-      <div class="h-full bg-gradient-to-r from-accent to-red-600 w-[0%] transition-all"></div>
-    </div>
   </section>
 
-  <!-- Sobre -->
-  <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-    <div class="lg:col-span-8">
-      <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-        <span class="material-symbols-outlined text-accent">info</span>
-        Sobre a Missão
-      </h2>
+  <!-- MISSIONS GRID -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
 
-      <div class="prose prose-invert text-gray-400 max-w-none">
-        <p>
-          Esta missão tem como objetivo ajudá-lo a escolher a área de atuação que melhor se alinha
-          com seus interesses e habilidades dentro da Oracle.
+    <!-- CARD -->
+    <div class="mission-card glass-card red-glow relative rounded-[2rem] p-8 pt-20 transition-all">
+      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-32 h-32">
+        <div class="hexagon-mask w-full h-full bg-gradient-to-b from-primary to-transparent p-1">
+          <div class="hexagon-mask w-full h-full bg-zinc-900 bg-cover bg-center"
+               style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978')">
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-8">
+        <span class="inline-flex px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">
+          Recomendado
+        </span>
+        <h3 class="text-2xl font-bold mb-3">CSS — Customer Success</h3>
+        <p class="text-zinc-400 text-sm">
+          Domine a jornada do cliente com dados, retenção e inteligência artificial.
         </p>
-        <p>
-          Explore as áreas abaixo, leia os resumos e selecione aquela que mais combina com você.
-          Ao finalizar, você ganhará XP e avançará no seu onboarding.
-        </p>
+      </div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-zinc-800">
+        <div>
+          <span class="text-[10px] uppercase text-zinc-500 font-bold">Duração</span>
+          <p class="text-xs text-zinc-300">12 Módulos • Nível 4</p>
+        </div>
+        <button class="bg-primary hover:bg-primary/90 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+          Start Mission
+          <span class="material-symbols-outlined">bolt</span>
+        </button>
       </div>
     </div>
 
-    <div class="lg:col-span-4">
-      <div class="bg-gradient-to-br from-accent/10 to-transparent border border-accent/20 rounded-xl p-6">
-        <h3 class="text-lg font-bold text-white mb-4">Objetivos</h3>
-        <ul class="space-y-3 text-sm">
-          <li class="flex gap-3">
-            <span class="material-symbols-outlined text-accent">check_circle</span>
-            Ler sobre as áreas disponíveis
-          </li>
-          <li class="flex gap-3">
-            <span class="material-symbols-outlined text-accent">check_circle</span>
-            Escolher uma área de atuação
-          </li>
-          <li class="flex gap-3 text-gray-500">
-            <span class="material-symbols-outlined">radio_button_unchecked</span>
-            Confirmar seleção
-          </li>
-        </ul>
+    <!-- ALIANÇAS -->
+    <div class="mission-card glass-card red-glow relative rounded-[2rem] p-8 pt-20 transition-all">
+      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-32 h-32">
+        <div class="hexagon-mask w-full h-full bg-gradient-to-b from-primary/40 to-transparent p-1">
+          <div class="hexagon-mask w-full h-full bg-zinc-900 bg-cover bg-center"
+               style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d')">
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-8">
+        <span class="inline-flex px-3 py-1 mb-4 rounded-full bg-zinc-800 text-zinc-400 text-[10px] font-bold uppercase">
+          Ecossistema
+        </span>
+        <h3 class="text-2xl font-bold mb-3">Alianças e Canais</h3>
+        <p class="text-zinc-400 text-sm">
+          Construa redes de parcerias estratégicas e canais indiretos.
+        </p>
+      </div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-zinc-800">
+        <div>
+          <span class="text-[10px] uppercase text-zinc-500 font-bold">Duração</span>
+          <p class="text-xs text-zinc-300">8 Módulos • Nível 3</p>
+        </div>
+        <button class="bg-primary hover:bg-primary/90 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+          Start Mission
+          <span class="material-symbols-outlined">bolt</span>
+        </button>
       </div>
     </div>
+
+    <!-- RETAIL -->
+    <div class="mission-card glass-card red-glow relative rounded-[2rem] p-8 pt-20 transition-all">
+      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-32 h-32">
+        <div class="hexagon-mask w-full h-full bg-gradient-to-b from-primary/40 to-transparent p-1">
+          <div class="hexagon-mask w-full h-full bg-zinc-900 bg-cover bg-center"
+               style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d')">
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-8">
+        <span class="inline-flex px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">
+          Novo Conteúdo
+        </span>
+        <h3 class="text-2xl font-bold mb-3">Retail</h3>
+        <p class="text-zinc-400 text-sm">
+          Supply Chain, logística 4.0 e tendências globais de consumo.
+        </p>
+      </div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-zinc-800">
+        <div>
+          <span class="text-[10px] uppercase text-zinc-500 font-bold">Duração</span>
+          <p class="text-xs text-zinc-300">15 Módulos • Nível 5</p>
+        </div>
+        <button class="bg-primary hover:bg-primary/90 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+          Start Mission
+          <span class="material-symbols-outlined">bolt</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONSULTORIA ERP -->
+    <div class="mission-card glass-card red-glow relative rounded-[2rem] p-8 pt-20 transition-all">
+      <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-32 h-32">
+        <div class="hexagon-mask w-full h-full bg-gradient-to-b from-primary/40 to-transparent p-1">
+          <div class="hexagon-mask w-full h-full bg-zinc-900 bg-cover bg-center"
+               style="background-image:url('https://images.unsplash.com/photo-1523952578875-e6bb18b26645')">
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-8">
+        <span class="inline-flex px-3 py-1 mb-4 rounded-full bg-zinc-800 text-zinc-400 text-[10px] font-bold uppercase">
+          Estratégico
+        </span>
+        <h3 class="text-2xl font-bold mb-3">Consultoria ERP</h3>
+        <p class="text-zinc-400 text-sm">
+          Liderança em transformação digital com Oracle ERP Cloud.
+        </p>
+      </div>
+
+      <div class="flex justify-between items-center pt-6 border-t border-zinc-800">
+        <div>
+          <span class="text-[10px] uppercase text-zinc-500 font-bold">Duração</span>
+          <p class="text-xs text-zinc-300">20 Módulos • Nível 6</p>
+        </div>
+        <button class="bg-primary hover:bg-primary/90 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+          Start Mission
+          <span class="material-symbols-outlined">bolt</span>
+        </button>
+      </div>
+    </div>
+
   </section>
-
-  <!-- Áreas -->
-  <section class="mb-20">
-  <h3 class="text-2xl font-bold text-white mb-8">Áreas Disponíveis</h3>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-    <!-- CSS -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">CSS</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Suporte pós-venda, onboarding de clientes e garantia de sucesso e retenção.
-      </p>
-      <a href="css.html" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- Alianças -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">Alianças e Canais</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Parcerias estratégicas, canais indiretos e expansão de mercado.
-      </p>
-      <a href="onboardingAliancas.html" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- Localizações -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">Localizações</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Consultoria focada em requisitos fiscais, legais e geográficos.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- Foundation Receivables -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">Foundation Receivables</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Atuação em módulos financeiros com foco em contas a receber.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- Consultoria ERP -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">Consultoria ERP</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Implementação e suporte de soluções Oracle ERP Cloud.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- NetSuite SDR -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">NetSuite – Sales (SDR)</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Prospecção, geração de leads e apoio ao time comercial NetSuite.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- Consultoria Retail -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">Consultoria Retail</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Soluções Oracle Retail para operações e merchandising.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- ERP Cloud Consulting -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">ERP Cloud Consulting</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Consultoria técnica e funcional em Oracle ERP Cloud.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- AI Strategy -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">AI Strategy – AI Hub</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Estratégia, inovação e soluções baseadas em Inteligência Artificial.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-    <!-- OCS -->
-    <div class="bg-card hover:bg-cardhover border border-white/5 hover:border-accent/50 rounded-xl p-6 transition-all glow-hover group">
-      <h4 class="text-xl font-bold text-white mb-3">OCS</h4>
-      <p class="text-sm text-gray-400 mb-6">
-        Oracle Consulting Services: projetos estratégicos e enterprise.
-      </p>
-      <a href="#" class="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-        Acessar Onboarding
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-
-  </div>
-</section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="border-t border-white/10 py-10 text-center text-sm text-gray-500">
-  © 2025 Connect+ • Oracle Onboarding Experience
+<footer class="mt-24 py-10 border-t border-zinc-900 text-center text-xs text-zinc-500">
+  © 2025 Oracle Corporate Onboarding
 </footer>
 
 </body>

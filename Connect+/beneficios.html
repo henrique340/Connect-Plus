@@ -1,234 +1,309 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connect+ — Benefícios</title>
-
-  <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#1C1C1C',        // Fundo principal
-            surface: '#242424',   // Superfícies / cards
-            accent: '#D64B36',    // Vermelho queimado (destaque)
-            white: '#FFFFFF',     // Textos principais
-            muted: '#BDBDBD',     // Textos secundários
-          },
-          borderRadius: {
-            'md': '12px',        // Bordas arredondadas padrão
-          },
-          boxShadow: {
-            'aria-elev-1': '0 6px 20px rgba(0,0,0,0.6)',  // Elevação
-          },
-          spacing: {
-            'gap-md': '16px',    // Espaçamento base
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
-          }
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Benefícios Oracle - Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "primary-dark": "#b30000",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#050000",
+                        "card-dark": "#120505",
+                        "accent-dark": "#2b0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
         }
-      }
-    };
-  </script>
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0f0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #392828;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f20d0d;
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            color: transparent;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #f20d0d 0%, #2b0a0a 50%, #120505 100%);
+        }
+    </style>
 </head>
-
-<body class="bg-bg text-white antialiased font-sans">
-
-<!-- NAVBAR -->
-<nav class="w-full border-b border-white/10 mb-8">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Logo -->
-    <div class="flex items-center gap-2.5">
-      <div class="w-9 h-5 rounded-full bg-transparent shadow-[inset_0_0_0_4px_#D64B36]"></div>
-      <h1 class="text-xl font-bold text-accent">Connect+</h1>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-6 font-medium text-sm">
-      <a href="home.html" class="hover:text-accent transition">Home</a>
-      <a href="ferramentas.html" class="hover:text-accent transition">Ferramentas</a>
-      <a href="cultura.html" class="hover:text-accent transition">Cultura Oracle</a>
-      <a href="impacto.html" class="hover:text-accent transition">Impacto Social</a>
-      <a href="beneficios.html" class="hover:text-accent transition">Benefícios</a>
-      <a href="bemestar.html" class="hover:text-accent transition">Bem-estar</a>
-      <a href="perfil.html" class="hover:text-accent transition">Meu Perfil</a>
-    </div>
-
-    <!-- Mobile button -->
-    <button id="menu-btn" class="md:hidden text-accent">
-      <span class="material-icons-outlined text-3xl">Menu</span>
-    </button>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden flex-col bg-surface border-t border-white/10 px-4 py-4 text-sm">
-    <a href="index1.html" class="py-2 hover:text-accent">Missões</a>
-    <a href="predio.html" class="py-2 hover:text-accent">Explorar o Prédio</a>
-    <a href="ferramentas.html" class="py-2 hover:text-accent">Ferramentas</a>
-    <a href="cultura.html" class="py-2 hover:text-accent">Cultura Oracle</a>
-    <a href="impacto.html" class="py-2 hover:text-accent">Impacto Social</a>
-    <a href="beneficios.html" class="py-2 hover:text-accent">Benefícios</a>
-    <a href="bemestar.html" class="py-2 hover:text-accent">Bem-estar</a>
-    <a href="perfil.html" class="py-2 hover:text-accent">Meu Perfil</a>
-  </div>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 text-primary">
+<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+<path d="M2 17L12 22L22 17" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path d="M2 12L12 17L22 12" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-white font-bold text-xl tracking-tight">Oracle <span class="text-primary font-black">Benefits</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white hover:text-primary text-sm font-bold transition-colors" href="#">Meus Benefícios</a>
+<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">Dependentes</a>
+<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">Seguros</a>
+<a class="text-white/60 hover:text-white text-sm font-medium transition-colors" href="#">FAQ</a>
 </nav>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-2 hidden sm:flex">
+<span class="text-xs text-primary font-semibold">Status</span>
+<span class="text-sm font-bold text-white">Beneficiário Ativo</span>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary p-0.5 cursor-pointer hover:scale-105 transition-transform relative group">
+<img alt="User avatar profile picture" class="rounded-full h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLEDCVKSMWIIehwQRQQJEgraKhy88pxiSgDn8TWAeKkqMWGhNPX9i-hI5Wpxn7jrLPk2DrdEF1ffBjMuWPuTk5k6TKFGP54nKHjZVMTSfYpANUlM24tncQw4SlEmf5L7WeZV73dBmj5qfeXaxkG7dqS62DGWK9UN8FHP3hHSoop2VxaklDTlh_0p1-YyZ8II8mZfh_zssqKxxB1ZteBhDnaKZP4bnbQpkGhLGAo-SX_hQwwh0yKVPSxtheZlTDEOVJj6Xvb6ECxU"/>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1400px] mx-auto px-6 py-8">
+<div class="mb-12 relative overflow-hidden rounded-3xl bg-card-dark border border-accent-dark">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 relative z-10">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 mb-6">
+<span class="px-3 py-1 bg-primary text-white text-xs font-bold uppercase tracking-wider rounded-sm">Onboarding RH</span>
+<span class="text-white/40 text-sm font-medium">Pacote de Vantagens</span>
+</div>
+<h1 class="text-5xl md:text-6xl font-black text-white leading-[0.95] mb-6 tracking-tight">
+                        MISSÕES DE <br/>
+<span class="text-primary">BENEFÍCIOS.</span>
+</h1>
+<p class="text-xl text-white/70 max-w-xl mb-8 leading-relaxed">
+                        Bem-vindo à Oracle! Sua saúde, bem-estar e segurança financeira são prioridades. Complete as missões abaixo para ativar seu plano de saúde, conta salário e benefícios de qualidade de vida.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-lg transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(242,13,13,0.3)]">
+                            Ativar Próximo Benefício
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_downward</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col justify-center">
+<div class="bg-background-dark/50 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-white text-lg">Seu Pacote</h3>
+<span class="bg-white/10 px-3 py-1 rounded-full text-xs font-mono text-white/80">EM PROGRESSO</span>
+</div>
+<div class="space-y-6 mb-8">
+<div>
+<div class="flex justify-between mb-2 text-sm">
+<span class="text-white/60">Benefícios Ativados</span>
+<span class="text-primary font-bold">2 / 6</span>
+</div>
+<div class="h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[33%] relative">
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-white/50"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2 text-sm">
+<span class="text-white/60">Documentação Enviada</span>
+<span class="text-primary font-bold">40%</span>
+</div>
+<div class="h-2 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[40%] relative">
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-white/50"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-primary/50 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors relative overflow-hidden" title="Saúde">
+<div class="absolute inset-0 bg-primary/10"></div>
+<span class="material-symbols-outlined text-primary text-3xl">health_and_safety</span>
+</div>
+<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors" title="Finanças">
+<span class="material-symbols-outlined text-white/50 text-3xl group-hover:scale-110 group-hover:text-primary transition-all">account_balance</span>
+</div>
+<div class="h-16 w-16 rounded-xl bg-gradient-to-br from-gray-800 to-black border border-white/10 flex items-center justify-center group cursor-pointer hover:border-primary transition-colors" title="Bem-estar">
+<span class="material-symbols-outlined text-white/30 text-3xl group-hover:scale-110 transition-transform">fitness_center</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-4xl mx-auto mb-20 relative">
+<h2 class="text-3xl font-black text-white mb-12 text-center uppercase tracking-widest">Jornada de Ativação</h2>
+<div class="relative pl-4 md:pl-0">
+<div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/5 md:-ml-[1px]"></div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-12 h-12 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(242,13,13,0.5)]">
+<span class="material-symbols-outlined text-white font-bold">check</span>
+</div>
+</div>
+<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
+<div class="bg-card-dark/80 backdrop-blur border border-primary/30 rounded-xl p-6 relative hover:bg-card-dark transition-colors">
+<span class="text-primary text-xs font-bold uppercase tracking-wider mb-2 block">Saúde • Ativado</span>
+<div class="flex items-center gap-2 mb-2 md:justify-end">
+<h3 class="text-xl font-bold text-white">Porto Seguro Saúde</h3>
+<span class="material-symbols-outlined text-white/60">health_and_safety</span>
+</div>
+<p class="text-white/60 text-sm mb-4">Plano de saúde nacional com ampla rede credenciada e acomodação em apartamento.</p>
+<button class="text-xs font-bold text-white flex items-center gap-1 md:ml-auto hover:text-primary transition-colors">
+                                Ver Carteirinha <span class="material-symbols-outlined text-base">badge</span>
+</button>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+</div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-12 h-12 rounded-full bg-primary border-4 border-background-dark flex items-center justify-center shadow-[0_0_15px_rgba(242,13,13,0.5)]">
+<span class="material-symbols-outlined text-white font-bold">check</span>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+<div class="md:w-1/2 pl-20 md:pl-16">
+<div class="bg-card-dark/80 backdrop-blur border border-primary/30 rounded-xl p-6 relative hover:bg-card-dark transition-colors">
+<span class="text-primary text-xs font-bold uppercase tracking-wider mb-2 block">Odontológico • Ativado</span>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-white/60">dentistry</span>
+<h3 class="text-xl font-bold text-white">Care Plus Dental</h3>
+</div>
+<p class="text-white/60 text-sm mb-4">Cobertura odontológica completa, incluindo procedimentos estéticos e ortodontia.</p>
+<button class="text-xs font-bold text-white flex items-center gap-1 hover:text-primary transition-colors">
+                                Consultar Rede <span class="material-symbols-outlined text-base">map</span>
+</button>
+</div>
+</div>
+</div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-12 h-12 rounded-full bg-background-dark border-2 border-primary flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border border-primary animate-ping opacity-75"></div>
+<span class="material-symbols-outlined text-primary">priority_high</span>
+</div>
+</div>
+<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
+<div class="bg-gradient-to-r from-[#1a0505] to-card-dark border border-primary rounded-xl p-6 relative shadow-[0_0_30px_rgba(242,13,13,0.1)] transform md:translate-x-2 transition-transform hover:-translate-y-1">
+<span class="bg-primary text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-3 inline-block">Ação Necessária</span>
+<div class="flex items-center gap-2 mb-2 md:justify-end">
+<h3 class="text-xl font-bold text-white">Banco Itaú</h3>
+<span class="material-symbols-outlined text-white/80">account_balance</span>
+</div>
+<p class="text-white/70 text-sm mb-4">Ative sua conta salário para recebimento mensal. Isenção total de tarifas.</p>
+<div class="flex gap-3 md:justify-end">
+<button class="px-4 py-2 bg-white/5 hover:bg-white/10 text-white text-sm font-bold rounded transition-colors border border-white/10">
+                                    Vincular Conta
+                                </button>
+<button class="py-2 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold rounded transition-colors flex items-center justify-center gap-2">
+                                    Abrir Conta <span class="material-symbols-outlined text-base">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+</div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/40 text-sm">lock_open</span>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+<div class="md:w-1/2 pl-20 md:pl-16">
+<div class="bg-card-dark border border-white/10 rounded-xl p-6 relative">
+<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Alimentação • Disponível</span>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-white/40">restaurant</span>
+<h3 class="text-white font-bold text-xl">Ticket Restaurante</h3>
+</div>
+<p class="text-white/40 text-sm mb-4">Cartão flexível para refeição e alimentação. Configure sua distribuição de saldo.</p>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:text-white transition-colors">
+                                Configurar Saldo <span class="material-symbols-outlined text-base">tune</span>
+</button>
+</div>
+</div>
+</div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-60 hover:opacity-100 transition-opacity">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/40 text-sm">lock</span>
+</div>
+</div>
+<div class="md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right">
+<div class="bg-card-dark border border-white/5 rounded-xl p-6 relative border-dashed">
+<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Bem-estar • Bloqueado</span>
+<div class="flex items-center gap-2 mb-2 md:justify-end">
+<h3 class="text-white font-bold text-xl">Wellhub</h3>
+<span class="material-symbols-outlined text-white/40">fitness_center</span>
+</div>
+<p class="text-white/40 text-sm">Antigo Gympass. Acesso a milhares de academias e apps de bem-estar com subsídio Oracle.</p>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+</div>
+<div class="relative mb-16 group w-full flex flex-col md:flex-row md:items-center opacity-60 hover:opacity-100 transition-opacity">
+<div class="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 z-20">
+<div class="w-10 h-10 rounded-full bg-background-dark border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/40 text-sm">lock</span>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2"></div>
+<div class="md:w-1/2 pl-20 md:pl-16">
+<div class="bg-card-dark border border-white/5 rounded-xl p-6 relative border-dashed">
+<span class="text-white/40 text-xs font-bold uppercase tracking-wider mb-2 block">Seguros • Bloqueado</span>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-white/40">verified_user</span>
+<h3 class="text-white font-bold text-xl">WtW Programa Affinity</h3>
+</div>
+<p class="text-white/40 text-sm">Seguros de vida, automóvel, residência e eletrônicos com condições exclusivas para colaboradores.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#0f0505] border-t border-accent-dark rounded-t-2xl mt-auto py-12 px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-5xl mx-auto">
+<div>
+<h3 class="text-white font-bold text-2xl mb-2">Dúvidas sobre benefícios?</h3>
+<p class="text-white/50 max-w-md">Consulte a política completa na intranet ou abra um chamado para o time de People.</p>
+</div>
+<button class="px-8 py-3 rounded-full border-2 border-white/10 hover:border-primary text-white hover:text-primary font-bold transition-all flex items-center gap-2 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">support_agent</span>
+                    Falar com RH
+                </button>
+</div>
+<div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+<p>© 2024 Oracle Benefits. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Política de Benefícios</a>
+<a class="hover:text-white transition-colors" href="#">Privacidade</a>
+<a class="hover:text-white transition-colors" href="#">Helpdesk RH</a>
+</div>
+</div>
+</div>
+</main>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<div class="max-w-7xl mx-auto p-6">
-
-  <header class="mb-12">
-    <h2 class="text-4xl font-bold text-white">
-      Benefícios
-    </h2>
-    <p class="text-muted text-lg">Conheça todos os benefícios aos quais você tem direito como funcionário da Oracle.</p>
-  </header>
-
-  <!-- GRID DE BENEFÍCIOS -->
-  <section>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Porto Saúde -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">local_hospital</span>
-          <h3 class="text-lg font-bold text-white">Porto Saúde</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Plano de saúde completo com cobertura nacional, incluindo consultas, exames e internações. Acesso a uma rede ampla de médicos e hospitais.
-        </p>
-        <a href="https://www.portoseguro.com.br/porto-saude" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- Benefícios banco itaú -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">account_balance</span>
-          <h3 class="text-lg font-bold text-white">Benefícios Banco Itaú</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Conta salário com vantagens exclusivas, como tarifas reduzidas, empréstimos facilitados e acesso a produtos financeiros personalizados.
-        </p>
-        <a href="https://www.itau.com.br/beneficios" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- Plano odontológico Core Plus -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">healing</span>
-          <h3 class="text-lg font-bold text-white">Plano Odontológico Core Plus</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Cobertura odontológica completa, incluindo limpeza, tratamentos e ortodontia. Rede de dentistas credenciados para cuidados preventivos e emergenciais.
-        </p>
-        <a href="https://www.coreplus.com.br" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- Wellhub -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">fitness_center</span>
-          <h3 class="text-lg font-bold text-white">Wellhub</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Plataforma de bem-estar com acesso a academias, aulas online, nutrição e saúde mental. Descontos em atividades físicas e programas de incentivo.
-        </p>
-        <a href="https://www.wellhub.com" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- RH Operações Férias -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">beach_access</span>
-          <h3 class="text-lg font-bold text-white">RH Operações Férias</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Programa de férias remuneradas com bônus adicionais. Planeje suas férias com antecedência e aproveite períodos de descanso prolongados.
-        </p>
-        <a href="#" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- telus Oraganização Financeira na prática -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">attach_money</span>
-          <h3 class="text-lg font-bold text-white">Telus Organização Financeira na Prática</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Programa de educação financeira com cursos e ferramentas para gerenciar orçamento, investimentos e planejamento financeiro pessoal.
-        </p>
-        <a href="https://www.telus.com/financas" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- WtW Programa Affinity -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">group</span>
-          <h3 class="text-lg font-bold text-white">WtW Programa Affinity</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Programa de afinidade com descontos em produtos e serviços, como seguros, viagens e entretenimento, através de parcerias exclusivas.
-        </p>
-        <a href="https://www.wtw.com/affinity" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- Gattaz Health - Checkpu Emocional -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">psychology</span>
-          <h3 class="text-lg font-bold text-white">Gattaz Health - Checkup Emocional</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Avaliação de saúde mental com check-ups emocionais, sessões de terapia e suporte psicológico para promover equilíbrio emocional.
-        </p>
-        <a href="https://www.gattazhealth.com" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- Tiket - Beneficios ticket -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">restaurant</span>
-          <h3 class="text-lg font-bold text-white">Tiket - Benefícios Ticket</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Vale-refeição e vale-alimentação com aceitação em milhares de estabelecimentos. Facilita compras de alimentos e refeições diárias.
-        </p>
-        <a href="https://www.tiket.com" target="_blank" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
-          <span class="material-icons-outlined">open_in_new</span> Acessar
-        </a>
-      </div>
-
-      <!-- RH Operações Employee Stock Purchase Plan -->
-      <div class="bg-gradient-to-b from-white/2 to-transparent rounded-md p-4 shadow-aria-elev-1 border border-white/3 hover:shadow-aria-elev-1 transition">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="material-icons-outlined text-accent text-2xl">trending_up</span>
-          <h3 class="text-lg font-bold text-white">RH Operações Employee Stock Purchase Plan</h3>
-        </div>
-        <p class="text-sm text-muted leading-relaxed mb-4">
-          Programa de compra de ações da Oracle com desconto, permitindo investir no crescimento da empresa e construir patrimônio a longo prazo.
-        </p>
-        <a href="#" class="flex items-center justify-center gap-2 p-2.5 px-4 rounded-[10px] bg-accent text-white border-none cursor-pointer font-semibold shadow-[0_6px_18px_rgba(214,75,54,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(214,75,54,0.14)] active:translate-y-0 w-full">
+</body></html>
