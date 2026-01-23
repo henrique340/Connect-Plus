@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Pixel Beach - Gamificação Social</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+html,body {
+  margin:0;
+  background:#0a0a0a;
+  color:white;
+  font-family:system-ui;
+}
+
+#ui {
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  background:#000;
+  padding:12px;
+  border:3px solid #222;
+  width:260px;
+}
+
+#ui label {
+  font-family:'Press Start 2P';
+  font-size:10px;
+}
+
+#ui input {
+  width:100%;
+  margin-top:8px;
+  padding:6px;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+}
+
+#bar {
+  height:10px;
+  background:#222;
+  margin-top:8px;
+}
+
+#fill {
+  height:100%;
+  width:75%;
+  background:#22c55e;
+  transition:0.3s;
+}
+
+#status {
+  margin-top:6px;
+  font-family:'Press Start 2P';
+  font-size:10px;
+  color:#22c55e;
+}
+</style>
+</head>
+<body>
+
+<canvas id="game" width="1100" height="600"></canvas>
+
+<div id="ui">
+  <label>ENGAJAMENTO SOCIAL</label>
+  <input id="eng" type="number" min="0" max="100" value="75">
+
+  <div id="bar"><div id="fill"></div></div>
+  <div id="status">Praia saudável 🌴</div>
+</div>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const input = document.getElementById("eng");
+const fill = document.getElementById("fill");
+const statusTxt = document.getElementById("status");
+
+let engagement = 75;
+
+const trashItems = [
+  {x:650,y:350},
+  {x:750,y:330},
+  {x:820,y:370},
+  {x:720,y:400},
+];
+
+function drawSky(){
+  const g = ctx.createLinearGradient(0,0,0,300);
+  g.addColorStop(0,"#3bb6ff");
+  g.addColorStop(1,"#bfe9ff");
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,1100,300);
+
+  // sun
+  ctx.beginPath();
+  ctx.arc(850,80,35,0,Math.PI*2);
+  ctx.fillStyle="#fff3a0";
+  ctx.fill();
+}
+
+function drawSea(){
+  let color;
+  if(engagement>=70) color="#2da9ff";
+  else if(engagement>=40) color="#5f9ea0";
+  else color="#2f3f3f";
+
+  ctx.fillStyle = color;
+  ctx.fillRect(0,260,1100,180);
+
+  // waves
+  ctx.fillStyle="rgba(255,255,255,0.25)";
+  for(let i=0;i<40;i++){
+    ctx.fillRect(i*30+((Date.now()/50)%30),430,20,3);
+  }
+}
+
+function drawSand(){
+  let color;
+  if(engagement>=70) color="#f7d27c";
+  else if(engagement>=40) color="#d1b36c";
+  else color="#a89055";
+
+  ctx.fillStyle = color;
+  ctx.fillRect(0,440,1100,160);
+}
+
+function drawTrash(){
+  if(engagement>=70) return;
+
+  ctx.fillStyle="#444";
+  trashItems.forEach(t=>{
+    ctx.fillRect(t.x,t.y,18,12);
+    ctx.strokeStyle="#000";
+    ctx.strokeRect(t.x,t.y,18,12);
+  });
+}
+
+function drawPalm(x,y){
+  ctx.fillStyle="#7a4a20";
+  ctx.fillRect(x,y,10,50);
+  ctx.fillStyle="#3fa34d";
+  ctx.beginPath();
+  ctx.arc(x+5,y,25,0,Math.PI*2);
+  ctx.fill();
+}
+
+function drawHUD(){
+  fill.style.width = engagement+"%";
+
+  if(engagement>=70){
+    fill.style.background="#22c55e";
+    statusTxt.textContent="Praia saudável 🌴";
+    statusTxt.style.color="#22c55e";
+  }
+  else if(engagement>=40){
+    fill.style.background="#eab308";
+    statusTxt.textContent="Praia em recuperação ⚠️";
+    statusTxt.style.color="#eab308";
+  }
+  else{
+    fill.style.background="#ef4444";
+    statusTxt.textContent="Praia poluída ☠️";
+    statusTxt.style.color="#ef4444";
+  }
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  drawSky();
+  drawSea();
+  drawSand();
+  drawTrash();
+
+  drawPalm(120,360);
+  drawPalm(200,380);
+
+  drawHUD();
+
+  requestAnimationFrame(draw);
+}
+
+input.addEventListener("input",()=>{
+  engagement = Math.max(0,Math.min(100,Number(input.value)));
+});
+
+draw();
+</script>
+
+</body>
+</html>
