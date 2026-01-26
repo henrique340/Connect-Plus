@@ -2,61 +2,72 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pixel Beach - Gamificação Social</title>
+<title>Pixel City - Gamificação Social</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-html,body {
-  margin:0;
-  background:#0a0a0a;
-  color:white;
-  font-family:system-ui;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  color: white;
+  font-family: system-ui;
+  overflow: hidden;
+}
+
+#game {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #222;
 }
 
 #ui {
-  position:fixed;
-  left:20px;
-  bottom:20px;
-  background:#000;
-  padding:12px;
-  border:3px solid #222;
-  width:260px;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  background: #000;
+  padding: 12px;
+  border: 3px solid #222;
+  width: 260px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
 }
 
 #ui label {
-  font-family:'Press Start 2P';
-  font-size:10px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 #ui input {
-  width:100%;
-  margin-top:8px;
-  padding:6px;
-  background:#111;
-  border:1px solid #333;
-  color:white;
+  width: 100%;
+  margin-top: 8px;
+  padding: 6px;
+  background: #111;
+  border: 1px solid #333;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
 }
 
 #bar {
-  height:10px;
-  background:#222;
-  margin-top:8px;
+  height: 10px;
+  background: #222;
+  margin-top: 8px;
+  border: 1px solid #333;
 }
 
 #fill {
-  height:100%;
-  width:75%;
-  background:#22c55e;
-  transition:0.3s;
+  height: 100%;
+  width: 75%;
+  background: #22c55e;
+  transition: width 0.5s ease;
 }
 
 #status {
-  margin-top:6px;
-  font-family:'Press Start 2P';
-  font-size:10px;
-  color:#22c55e;
+  margin-top: 6px;
+  color: #22c55e;
 }
 </style>
 </head>
@@ -69,12 +80,13 @@ html,body {
   <input id="eng" type="number" min="0" max="100" value="75">
 
   <div id="bar"><div id="fill"></div></div>
-  <div id="status">Praia saudável 🌴</div>
+  <div id="status">Cidade sustentável 🌆</div>
 </div>
 
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+ctx.imageSmoothingEnabled = false;
 
 const input = document.getElementById("eng");
 const fill = document.getElementById("fill");
@@ -83,110 +95,204 @@ const statusTxt = document.getElementById("status");
 let engagement = 75;
 
 const trashItems = [
-  {x:650,y:350},
-  {x:750,y:330},
-  {x:820,y:370},
-  {x:720,y:400},
+  {x: 650, y: 350, type: 'bottle'},
+  {x: 750, y: 330, type: 'bag'},
+  {x: 820, y: 370, type: 'can'},
+  {x: 720, y: 400, type: 'plastic'},
 ];
 
-function drawSky(){
-  const g = ctx.createLinearGradient(0,0,0,300);
-  g.addColorStop(0,"#3bb6ff");
-  g.addColorStop(1,"#bfe9ff");
-  ctx.fillStyle = g;
-  ctx.fillRect(0,0,1100,300);
+const cars = [
+  {x: 300, y: 480, vx: 1},
+  {x: 500, y: 500, vx: -0.5},
+];
 
-  // sun
-  ctx.beginPath();
-  ctx.arc(850,80,35,0,Math.PI*2);
-  ctx.fillStyle="#fff3a0";
-  ctx.fill();
+const people = [
+  {x: 400, y: 450, vx: 0.5},
+  {x: 600, y: 470, vx: -0.3},
+];
+
+let time = 0;
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
 }
 
-function drawSea(){
-  let color;
-  if(engagement>=70) color="#2da9ff";
-  else if(engagement>=40) color="#5f9ea0";
-  else color="#2f3f3f";
+function getSkyColor(eng) {
+  const clean = [135, 206, 235];
+  const polluted = [169, 169, 169];
+  const t = Math.max(0, Math.min(1, (eng - 40) / 30));
+  return `rgb(${Math.round(lerp(polluted[0], clean[0], t))}, ${Math.round(lerp(polluted[1], clean[1], t))}, ${Math.round(lerp(polluted[2], clean[2], t))})`;
+}
 
-  ctx.fillStyle = color;
-  ctx.fillRect(0,260,1100,180);
+function drawSky() {
+  const color = getSkyColor(engagement);
+  const g = ctx.createLinearGradient(0, 0, 0, 300);
+  g.addColorStop(0, color);
+  g.addColorStop(1, "#E0F6FF");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 1100, 300);
 
-  // waves
-  ctx.fillStyle="rgba(255,255,255,0.25)";
-  for(let i=0;i<40;i++){
-    ctx.fillRect(i*30+((Date.now()/50)%30),430,20,3);
+  // Sol
+  ctx.beginPath();
+  ctx.arc(850, 80, 35, 0, Math.PI * 2);
+  ctx.fillStyle = "#FFF8A8";
+  ctx.fill();
+
+  // Nuvens
+  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+  for (let i = 0; i < 6; i++) {
+    const x = (i * 180 + time * 0.3) % 1200 - 100;
+    const y = 80 + Math.sin(i * 0.5) * 30;
+    ctx.fillRect(x, y, 80, 25);
+  }
+
+  // Poluição se engajamento < 70
+  if (engagement < 70) {
+    ctx.fillStyle = "rgba(128, 128, 128, 0.3)";
+    for (let i = 0; i < 50; i++) {
+      const x = Math.random() * 1100;
+      const y = Math.random() * 300;
+      ctx.fillRect(x, y, 2, 2);
+    }
   }
 }
 
-function drawSand(){
-  let color;
-  if(engagement>=70) color="#f7d27c";
-  else if(engagement>=40) color="#d1b36c";
-  else color="#a89055";
+function drawBuildings() {
+  // Prédios isométricos
+  ctx.fillStyle = "#696969";
+  // Prédio 1
+  ctx.beginPath();
+  ctx.moveTo(200, 300);
+  ctx.lineTo(250, 280);
+  ctx.lineTo(250, 200);
+  ctx.lineTo(200, 220);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = "#FFFF00"; // Janelas
+  ctx.fillRect(210, 210, 5, 5);
+  ctx.fillRect(220, 210, 5, 5);
 
-  ctx.fillStyle = color;
-  ctx.fillRect(0,440,1100,160);
+  // Prédio 2
+  ctx.fillStyle = "#696969";
+  ctx.beginPath();
+  ctx.moveTo(400, 320);
+  ctx.lineTo(450, 300);
+  ctx.lineTo(450, 220);
+  ctx.lineTo(400, 240);
+  ctx.closePath();
+  ctx.fill();
+
+  // Sombras
+  ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+  ctx.fillRect(205, 305, 50, 15);
 }
 
-function drawTrash(){
-  if(engagement>=70) return;
+function drawStreets() {
+  // Ruas
+  ctx.fillStyle = "#333";
+  ctx.fillRect(0, 440, 1100, 160);
+  // Linhas da rua
+  ctx.fillStyle = "#FFF";
+  for (let i = 0; i < 10; i++) {
+    ctx.fillRect(100 + i * 100, 520, 50, 2);
+  }
 
-  ctx.fillStyle="#444";
-  trashItems.forEach(t=>{
-    ctx.fillRect(t.x,t.y,18,12);
-    ctx.strokeStyle="#000";
-    ctx.strokeRect(t.x,t.y,18,12);
+  // Calçadas
+  ctx.fillStyle = "#D2B48C";
+  ctx.fillRect(0, 430, 1100, 10);
+}
+
+function drawTrash() {
+  if (engagement >= 70) return;
+
+  trashItems.forEach((t, i) => {
+    if (engagement < 40 || (engagement < 70 && i % 2 === 0)) {
+      ctx.fillStyle = "#444";
+      if (t.type === 'bottle') ctx.fillRect(t.x, t.y, 8, 15);
+      else if (t.type === 'bag') ctx.fillRect(t.x, t.y, 15, 12);
+      else if (t.type === 'can') ctx.fillRect(t.x, t.y, 6, 10);
+      else if (t.type === 'plastic') ctx.fillRect(t.x, t.y, 12, 8);
+    }
   });
 }
 
-function drawPalm(x,y){
-  ctx.fillStyle="#7a4a20";
-  ctx.fillRect(x,y,10,50);
-  ctx.fillStyle="#3fa34d";
-  ctx.beginPath();
-  ctx.arc(x+5,y,25,0,Math.PI*2);
-  ctx.fill();
+function drawCars() {
+  cars.forEach(car => {
+    car.x += car.vx;
+    if (car.x < 0) car.x = 1100;
+    if (car.x > 1100) car.x = 0;
+
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(car.x, car.y, 20, 10);
+    // Fumaça se poluído
+    if (engagement < 70) {
+      ctx.fillStyle = "rgba(128, 128, 128, 0.5)";
+      ctx.fillRect(car.x + 5, car.y - 5, 3, 3);
+    }
+  });
 }
 
-function drawHUD(){
-  fill.style.width = engagement+"%";
+function drawPeople() {
+  people.forEach(person => {
+    person.x += person.vx;
+    if (person.x < 0) person.x = 1100;
+    if (person.x > 1100) person.x = 0;
 
-  if(engagement>=70){
-    fill.style.background="#22c55e";
-    statusTxt.textContent="Praia saudável 🌴";
-    statusTxt.style.color="#22c55e";
-  }
-  else if(engagement>=40){
-    fill.style.background="#eab308";
-    statusTxt.textContent="Praia em recuperação ⚠️";
-    statusTxt.style.color="#eab308";
-  }
-  else{
-    fill.style.background="#ef4444";
-    statusTxt.textContent="Praia poluída ☠️";
-    statusTxt.style.color="#ef4444";
+    ctx.fillStyle = "#000";
+    ctx.fillRect(person.x, person.y, 5, 10); // Corpo
+    ctx.fillStyle = "#FFD700";
+    ctx.fillRect(person.x - 1, person.y - 3, 7, 3); // Cabeça
+  });
+}
+
+function drawParks() {
+  if (engagement >= 70) {
+    // Árvores
+    ctx.fillStyle = "#228B22";
+    ctx.beginPath();
+    ctx.arc(800, 450, 20, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#8B4513";
+    ctx.fillRect(795, 470, 10, 20);
   }
 }
 
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+function drawHUD() {
+  fill.style.width = engagement + "%";
+
+  if (engagement >= 70) {
+    fill.style.background = "#22c55e";
+    statusTxt.textContent = "Cidade sustentável 🌆";
+    statusTxt.style.color = "#22c55e";
+  } else if (engagement >= 40) {
+    fill.style.background = "#eab308";
+    statusTxt.textContent = "Cidade em recuperação ⚠️";
+    statusTxt.style.color = "#eab308";
+  } else {
+    fill.style.background = "#ef4444";
+    statusTxt.textContent = "Cidade poluída ☠️";
+    statusTxt.style.color = "#ef4444";
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   drawSky();
-  drawSea();
-  drawSand();
+  drawBuildings();
+  drawStreets();
   drawTrash();
-
-  drawPalm(120,360);
-  drawPalm(200,380);
-
+  drawCars();
+  drawPeople();
+  drawParks();
   drawHUD();
 
+  time++;
   requestAnimationFrame(draw);
 }
 
-input.addEventListener("input",()=>{
-  engagement = Math.max(0,Math.min(100,Number(input.value)));
+input.addEventListener("input", () => {
+  engagement = Math.max(0, Math.min(100, Number(input.value)));
 });
 
 draw();
