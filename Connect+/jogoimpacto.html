@@ -2,260 +2,193 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pixel Beach — Gamificação Social</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>Eco Beach – MVP</title>
 
 <style>
 html, body {
-  margin: 0;
-  padding: 0;
-  background: #0b1020;
-  color: #fff;
-  font-family: system-ui;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #0d1b2a;
+    font-family: Arial, sans-serif;
+    height: 100%;
 }
 
-#container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+#gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 canvas {
-  border-radius: 12px;
-  background: #000;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
-}
-
-#hud {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  width: 280px;
-  background: rgba(0,0,0,0.85);
-  border: 3px solid #222;
-  border-radius: 12px;
-  padding: 14px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-}
-
-#title {
-  margin-bottom: 10px;
-  color: #38bdf8;
-}
-
-#bar {
-  height: 12px;
-  background: #111;
-  border: 1px solid #333;
-  margin-top: 6px;
-}
-
-#fill {
-  height: 100%;
-  width: 0%;
-  background: #22c55e;
-  transition: width 0.3s linear, background 0.3s linear;
-}
-
-#status {
-  margin-top: 8px;
+    background: #1b263b;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 </style>
 </head>
 <body>
 
-<div id="container">
-  <canvas id="game" width="1100" height="600"></canvas>
-</div>
-
-<div id="hud">
-  <div id="title">PIXEL BEACH</div>
-  <div>Engajamento Social</div>
-  <div id="bar"><div id="fill"></div></div>
-  <div id="status">Praia poluída ☠️</div>
-  <div style="margin-top:10px; color:#888">Clique no lixo para limpar</div>
+<div id="gameContainer">
+    <canvas id="gameCanvas" width="900" height="520"></canvas>
 </div>
 
 <script>
-const canvas = document.getElementById("game");
+// ====================
+// CONFIGURAÇÃO
+// ====================
+const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-ctx.imageSmoothingEnabled = false;
 
-const fill = document.getElementById("fill");
-const statusTxt = document.getElementById("status");
+const WIDTH = canvas.width;
+const HEIGHT = canvas.height;
 
-let time = 0;
-let engagement = 15;
+// ====================
+// ASSETS
+// ====================
+const assets = {
+    beach: new Image(),
+    trash: [
+        new Image(),
+        new Image(),
+        new Image()
+    ]
+};
 
-// Lixos interativos
-let trash = [];
+assets.beach.src = "assets/beach.png";
+assets.trash[0].src = "assets/trash1.png";
+assets.trash[1].src = "assets/trash2.png";
+assets.trash[2].src = "assets/trash3.png";
+
+let assetsLoaded = 0;
+let totalAssets = 4;
+
+function assetLoaded() {
+    assetsLoaded++;
+}
+
+assets.beach.onload = assetLoaded;
+assets.trash.forEach(img => img.onload = assetLoaded);
+
+// ====================
+// GAME STATE
+// ====================
+let score = 0;
+let beachHealth = 40;
+
+const trashItems = [];
 
 function spawnTrash() {
-  trash = [];
-  for (let i = 0; i < 10; i++) {
-    trash.push({
-      x: 600 + Math.random() * 350,
-      y: 380 + Math.random() * 120,
-      r: 12,
-      alive: true
+    const size = 48;
+    trashItems.push({
+        x: Math.random() * (WIDTH - 200) + 100,
+        y: Math.random() * (HEIGHT - 200) + 120,
+        size: size,
+        sprite: Math.floor(Math.random() * assets.trash.length),
+        alive: true
     });
-  }
-}
-spawnTrash();
-
-// Utilidades
-function lerp(a, b, t) {
-  return a + (b - a) * t;
 }
 
-function seaColor() {
-  const clean = [40, 160, 255];
-  const dirty = [70, 90, 60];
-  const t = Math.min(1, engagement / 70);
-  return `rgb(${lerp(dirty[0], clean[0], t)},${lerp(dirty[1], clean[1], t)},${lerp(dirty[2], clean[2], t)})`;
-}
+for (let i = 0; i < 8; i++) spawnTrash();
 
-function sandColor() {
-  const clean = [244, 190, 120];
-  const dirty = [150, 110, 80];
-  const t = Math.min(1, engagement / 70);
-  return `rgb(${lerp(dirty[0], clean[0], t)},${lerp(dirty[1], clean[1], t)},${lerp(dirty[2], clean[2], t)})`;
-}
+// ====================
+// INPUT
+// ====================
+canvas.addEventListener("click", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
 
-// Desenho
-function drawSky() {
-  const g = ctx.createLinearGradient(0, 0, 0, 280);
-  g.addColorStop(0, "#4facfe");
-  g.addColorStop(1, "#c2e9fb");
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, 1100, 280);
+    trashItems.forEach(t => {
+        if (!t.alive) return;
 
-  ctx.fillStyle = "#fff6b0";
-  ctx.beginPath();
-  ctx.arc(900, 80, 35, 0, Math.PI * 2);
-  ctx.fill();
-}
+        if (mx >= t.x && mx <= t.x + t.size &&
+            my >= t.y && my <= t.y + t.size) {
 
-function drawSea() {
-  ctx.fillStyle = seaColor();
-  ctx.fillRect(0, 260, 1100, 180);
+            t.alive = false;
+            score += 10;
+            beachHealth = Math.min(100, beachHealth + 5);
+        }
+    });
+});
 
-  ctx.fillStyle = "rgba(255,255,255,0.3)";
-  for (let i = 0; i < 60; i++) {
-    const x = i * 20 + (time % 20);
-    const y = 420 + Math.sin(time * 0.05 + i) * 6;
-    ctx.fillRect(x, y, 16, 4);
-  }
+// ====================
+// DRAW FUNCTIONS
+// ====================
+function drawBackground() {
+    if (assets.beach.complete && assets.beach.naturalWidth > 0) {
+        ctx.drawImage(assets.beach, 0, 0, WIDTH, HEIGHT);
+    } else {
+        // fallback bonito
+        ctx.fillStyle = "#4ea8de";
+        ctx.fillRect(0,0,WIDTH,HEIGHT);
 
-  if (engagement >= 70) {
-    ctx.fillStyle = "#00e5ff";
-    for (let i = 0; i < 4; i++) {
-      const fx = 300 + Math.sin(time * 0.02 + i) * 120;
-      const fy = 330 + i * 25;
-      ctx.fillRect(fx, fy, 24, 10);
-      ctx.fillRect(fx + 22, fy + 3, 6, 4);
+        ctx.fillStyle = "#ffd166";
+        ctx.fillRect(0, HEIGHT*0.65, WIDTH, HEIGHT*0.35);
+
+        ctx.fillStyle = "#118ab2";
+        ctx.fillRect(0, HEIGHT*0.55, WIDTH, HEIGHT*0.1);
     }
-  }
-}
-
-function drawSand() {
-  ctx.fillStyle = sandColor();
-  ctx.fillRect(0, 440, 1100, 160);
-
-  ctx.fillStyle = "rgba(0,0,0,0.08)";
-  for (let i = 0; i < 1200; i++) {
-    ctx.fillRect(Math.random() * 1100, 440 + Math.random() * 160, 1, 1);
-  }
-}
-
-function drawPalm(x, y) {
-  ctx.fillStyle = "#8b5a2b";
-  ctx.fillRect(x, y, 14, 70);
-
-  const sway = Math.sin(time * 0.03) * 4;
-  ctx.fillStyle = "#1fa84f";
-  ctx.beginPath();
-  ctx.arc(x + 7 + sway, y, 34, 0, Math.PI * 2);
-  ctx.fill();
 }
 
 function drawTrash() {
-  trash.forEach(t => {
-    if (!t.alive) return;
-    ctx.fillStyle = "#444";
-    ctx.beginPath();
-    ctx.arc(t.x, t.y, t.r, 0, Math.PI * 2);
-    ctx.fill();
+    trashItems.forEach(t => {
+        if (!t.alive) return;
 
-    ctx.fillStyle = "#222";
-    ctx.beginPath();
-    ctx.arc(t.x + 3, t.y + 3, t.r - 4, 0, Math.PI * 2);
-    ctx.fill();
-  });
+        const img = assets.trash[t.sprite];
+        if (img.complete && img.naturalWidth > 0) {
+            ctx.drawImage(img, t.x, t.y, t.size, t.size);
+        } else {
+            ctx.fillStyle = "#444";
+            ctx.fillRect(t.x, t.y, t.size, t.size);
+        }
+    });
 }
 
 function drawHUD() {
-  fill.style.width = engagement + "%";
+    ctx.fillStyle = "rgba(0,0,0,0.6)";
+    ctx.fillRect(20, 20, 260, 90);
+    ctx.fillRect(WIDTH - 280, 20, 260, 90);
 
-  if (engagement >= 70) {
-    fill.style.background = "#22c55e";
-    statusTxt.textContent = "Praia saudável 🌴";
-    statusTxt.style.color = "#22c55e";
-  } else if (engagement >= 40) {
-    fill.style.background = "#eab308";
-    statusTxt.textContent = "Em recuperação ⚠️";
-    statusTxt.style.color = "#eab308";
-  } else {
-    fill.style.background = "#ef4444";
-    statusTxt.textContent = "Praia poluída ☠️";
-    statusTxt.style.color = "#ef4444";
-  }
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "18px Arial";
+    ctx.fillText("Pontuação", 40, 50);
+    ctx.fillText(score, 40, 75);
+
+    ctx.fillText("Saúde da Praia", WIDTH - 260, 50);
+
+    // barra
+    ctx.fillStyle = "#333";
+    ctx.fillRect(WIDTH - 260, 65, 220, 20);
+
+    const barWidth = (beachHealth / 100) * 220;
+
+    ctx.fillStyle = beachHealth > 60 ? "#2ecc71" :
+                    beachHealth > 30 ? "#f1c40f" : "#e74c3c";
+
+    ctx.fillRect(WIDTH - 260, 65, barWidth, 20);
 }
 
-// Interação
-canvas.addEventListener("click", e => {
-  const rect = canvas.getBoundingClientRect();
-  const mx = e.clientX - rect.left;
-  const my = e.clientY - rect.top;
-
-  trash.forEach(t => {
-    if (!t.alive) return;
-    const d = Math.hypot(mx - t.x, my - t.y);
-    if (d < t.r + 4) {
-      t.alive = false;
-      engagement = Math.min(100, engagement + 8);
-    }
-  });
-
-  if (trash.every(t => !t.alive) && engagement < 100) {
-    setTimeout(spawnTrash, 1200);
-  }
-});
-
-// Loop principal
-function loop() {
-  ctx.clearRect(0, 0, 1100, 600);
-
-  drawSky();
-  drawSea();
-  drawSand();
-
-  drawPalm(150, 430);
-  drawPalm(980, 420);
-
-  drawTrash();
-  drawHUD();
-
-  time++;
-  requestAnimationFrame(loop);
+function drawTitle() {
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "28px Arial";
+    ctx.fillText("Eco Beach", WIDTH/2 - 70, 50);
 }
 
-loop();
+// ====================
+// GAME LOOP
+// ====================
+function update() {
+    drawBackground();
+    drawTrash();
+    drawHUD();
+    drawTitle();
+
+    requestAnimationFrame(update);
+}
+
+update();
 </script>
+
 </body>
 </html>
