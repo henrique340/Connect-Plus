@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pixel City - Gamificação Social</title>
+<title>Pixel Beach — Gamificação Social</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -11,76 +11,74 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #0a0a0a;
-  color: white;
+  background: #0b1020;
+  color: #fff;
   font-family: system-ui;
   overflow: hidden;
 }
 
-#game {
-  display: block;
-  margin: 0 auto;
-  border: 2px solid #222;
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#ui {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
+canvas {
+  border-radius: 12px;
   background: #000;
-  padding: 12px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+#hud {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  width: 280px;
+  background: rgba(0,0,0,0.85);
   border: 3px solid #222;
-  width: 260px;
+  border-radius: 12px;
+  padding: 14px;
   font-family: 'Press Start 2P', monospace;
   font-size: 10px;
 }
 
-#ui label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-#ui input {
-  width: 100%;
-  margin-top: 8px;
-  padding: 6px;
-  background: #111;
-  border: 1px solid #333;
-  color: white;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+#title {
+  margin-bottom: 10px;
+  color: #38bdf8;
 }
 
 #bar {
-  height: 10px;
-  background: #222;
-  margin-top: 8px;
+  height: 12px;
+  background: #111;
   border: 1px solid #333;
+  margin-top: 6px;
 }
 
 #fill {
   height: 100%;
-  width: 75%;
+  width: 0%;
   background: #22c55e;
-  transition: width 0.5s ease;
+  transition: width 0.3s linear, background 0.3s linear;
 }
 
 #status {
-  margin-top: 6px;
-  color: #22c55e;
+  margin-top: 8px;
 }
 </style>
 </head>
 <body>
 
-<canvas id="game" width="1100" height="600"></canvas>
+<div id="container">
+  <canvas id="game" width="1100" height="600"></canvas>
+</div>
 
-<div id="ui">
-  <label>ENGAJAMENTO SOCIAL</label>
-  <input id="eng" type="number" min="0" max="100" value="75">
-
+<div id="hud">
+  <div id="title">PIXEL BEACH</div>
+  <div>Engajamento Social</div>
   <div id="bar"><div id="fill"></div></div>
-  <div id="status">Cidade sustentável 🌆</div>
+  <div id="status">Praia poluída ☠️</div>
+  <div style="margin-top:10px; color:#888">Clique no lixo para limpar</div>
 </div>
 
 <script>
@@ -88,173 +86,117 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 ctx.imageSmoothingEnabled = false;
 
-const input = document.getElementById("eng");
 const fill = document.getElementById("fill");
 const statusTxt = document.getElementById("status");
 
-let engagement = 75;
-
-const trashItems = [
-  {x: 650, y: 350, type: 'bottle'},
-  {x: 750, y: 330, type: 'bag'},
-  {x: 820, y: 370, type: 'can'},
-  {x: 720, y: 400, type: 'plastic'},
-];
-
-const cars = [
-  {x: 300, y: 480, vx: 1},
-  {x: 500, y: 500, vx: -0.5},
-];
-
-const people = [
-  {x: 400, y: 450, vx: 0.5},
-  {x: 600, y: 470, vx: -0.3},
-];
-
 let time = 0;
+let engagement = 15;
 
+// Lixos interativos
+let trash = [];
+
+function spawnTrash() {
+  trash = [];
+  for (let i = 0; i < 10; i++) {
+    trash.push({
+      x: 600 + Math.random() * 350,
+      y: 380 + Math.random() * 120,
+      r: 12,
+      alive: true
+    });
+  }
+}
+spawnTrash();
+
+// Utilidades
 function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
-function getSkyColor(eng) {
-  const clean = [135, 206, 235];
-  const polluted = [169, 169, 169];
-  const t = Math.max(0, Math.min(1, (eng - 40) / 30));
-  return `rgb(${Math.round(lerp(polluted[0], clean[0], t))}, ${Math.round(lerp(polluted[1], clean[1], t))}, ${Math.round(lerp(polluted[2], clean[2], t))})`;
+function seaColor() {
+  const clean = [40, 160, 255];
+  const dirty = [70, 90, 60];
+  const t = Math.min(1, engagement / 70);
+  return `rgb(${lerp(dirty[0], clean[0], t)},${lerp(dirty[1], clean[1], t)},${lerp(dirty[2], clean[2], t)})`;
 }
 
+function sandColor() {
+  const clean = [244, 190, 120];
+  const dirty = [150, 110, 80];
+  const t = Math.min(1, engagement / 70);
+  return `rgb(${lerp(dirty[0], clean[0], t)},${lerp(dirty[1], clean[1], t)},${lerp(dirty[2], clean[2], t)})`;
+}
+
+// Desenho
 function drawSky() {
-  const color = getSkyColor(engagement);
-  const g = ctx.createLinearGradient(0, 0, 0, 300);
-  g.addColorStop(0, color);
-  g.addColorStop(1, "#E0F6FF");
+  const g = ctx.createLinearGradient(0, 0, 0, 280);
+  g.addColorStop(0, "#4facfe");
+  g.addColorStop(1, "#c2e9fb");
   ctx.fillStyle = g;
-  ctx.fillRect(0, 0, 1100, 300);
+  ctx.fillRect(0, 0, 1100, 280);
 
-  // Sol
+  ctx.fillStyle = "#fff6b0";
   ctx.beginPath();
-  ctx.arc(850, 80, 35, 0, Math.PI * 2);
-  ctx.fillStyle = "#FFF8A8";
+  ctx.arc(900, 80, 35, 0, Math.PI * 2);
   ctx.fill();
+}
 
-  // Nuvens
-  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-  for (let i = 0; i < 6; i++) {
-    const x = (i * 180 + time * 0.3) % 1200 - 100;
-    const y = 80 + Math.sin(i * 0.5) * 30;
-    ctx.fillRect(x, y, 80, 25);
+function drawSea() {
+  ctx.fillStyle = seaColor();
+  ctx.fillRect(0, 260, 1100, 180);
+
+  ctx.fillStyle = "rgba(255,255,255,0.3)";
+  for (let i = 0; i < 60; i++) {
+    const x = i * 20 + (time % 20);
+    const y = 420 + Math.sin(time * 0.05 + i) * 6;
+    ctx.fillRect(x, y, 16, 4);
   }
 
-  // Poluição se engajamento < 70
-  if (engagement < 70) {
-    ctx.fillStyle = "rgba(128, 128, 128, 0.3)";
-    for (let i = 0; i < 50; i++) {
-      const x = Math.random() * 1100;
-      const y = Math.random() * 300;
-      ctx.fillRect(x, y, 2, 2);
+  if (engagement >= 70) {
+    ctx.fillStyle = "#00e5ff";
+    for (let i = 0; i < 4; i++) {
+      const fx = 300 + Math.sin(time * 0.02 + i) * 120;
+      const fy = 330 + i * 25;
+      ctx.fillRect(fx, fy, 24, 10);
+      ctx.fillRect(fx + 22, fy + 3, 6, 4);
     }
   }
 }
 
-function drawBuildings() {
-  // Prédios isométricos
-  ctx.fillStyle = "#696969";
-  // Prédio 1
-  ctx.beginPath();
-  ctx.moveTo(200, 300);
-  ctx.lineTo(250, 280);
-  ctx.lineTo(250, 200);
-  ctx.lineTo(200, 220);
-  ctx.closePath();
-  ctx.fill();
-  ctx.fillStyle = "#FFFF00"; // Janelas
-  ctx.fillRect(210, 210, 5, 5);
-  ctx.fillRect(220, 210, 5, 5);
+function drawSand() {
+  ctx.fillStyle = sandColor();
+  ctx.fillRect(0, 440, 1100, 160);
 
-  // Prédio 2
-  ctx.fillStyle = "#696969";
-  ctx.beginPath();
-  ctx.moveTo(400, 320);
-  ctx.lineTo(450, 300);
-  ctx.lineTo(450, 220);
-  ctx.lineTo(400, 240);
-  ctx.closePath();
-  ctx.fill();
-
-  // Sombras
-  ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-  ctx.fillRect(205, 305, 50, 15);
+  ctx.fillStyle = "rgba(0,0,0,0.08)";
+  for (let i = 0; i < 1200; i++) {
+    ctx.fillRect(Math.random() * 1100, 440 + Math.random() * 160, 1, 1);
+  }
 }
 
-function drawStreets() {
-  // Ruas
-  ctx.fillStyle = "#333";
-  ctx.fillRect(0, 440, 1100, 160);
-  // Linhas da rua
-  ctx.fillStyle = "#FFF";
-  for (let i = 0; i < 10; i++) {
-    ctx.fillRect(100 + i * 100, 520, 50, 2);
-  }
+function drawPalm(x, y) {
+  ctx.fillStyle = "#8b5a2b";
+  ctx.fillRect(x, y, 14, 70);
 
-  // Calçadas
-  ctx.fillStyle = "#D2B48C";
-  ctx.fillRect(0, 430, 1100, 10);
+  const sway = Math.sin(time * 0.03) * 4;
+  ctx.fillStyle = "#1fa84f";
+  ctx.beginPath();
+  ctx.arc(x + 7 + sway, y, 34, 0, Math.PI * 2);
+  ctx.fill();
 }
 
 function drawTrash() {
-  if (engagement >= 70) return;
-
-  trashItems.forEach((t, i) => {
-    if (engagement < 40 || (engagement < 70 && i % 2 === 0)) {
-      ctx.fillStyle = "#444";
-      if (t.type === 'bottle') ctx.fillRect(t.x, t.y, 8, 15);
-      else if (t.type === 'bag') ctx.fillRect(t.x, t.y, 15, 12);
-      else if (t.type === 'can') ctx.fillRect(t.x, t.y, 6, 10);
-      else if (t.type === 'plastic') ctx.fillRect(t.x, t.y, 12, 8);
-    }
-  });
-}
-
-function drawCars() {
-  cars.forEach(car => {
-    car.x += car.vx;
-    if (car.x < 0) car.x = 1100;
-    if (car.x > 1100) car.x = 0;
-
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(car.x, car.y, 20, 10);
-    // Fumaça se poluído
-    if (engagement < 70) {
-      ctx.fillStyle = "rgba(128, 128, 128, 0.5)";
-      ctx.fillRect(car.x + 5, car.y - 5, 3, 3);
-    }
-  });
-}
-
-function drawPeople() {
-  people.forEach(person => {
-    person.x += person.vx;
-    if (person.x < 0) person.x = 1100;
-    if (person.x > 1100) person.x = 0;
-
-    ctx.fillStyle = "#000";
-    ctx.fillRect(person.x, person.y, 5, 10); // Corpo
-    ctx.fillStyle = "#FFD700";
-    ctx.fillRect(person.x - 1, person.y - 3, 7, 3); // Cabeça
-  });
-}
-
-function drawParks() {
-  if (engagement >= 70) {
-    // Árvores
-    ctx.fillStyle = "#228B22";
+  trash.forEach(t => {
+    if (!t.alive) return;
+    ctx.fillStyle = "#444";
     ctx.beginPath();
-    ctx.arc(800, 450, 20, 0, Math.PI * 2);
+    ctx.arc(t.x, t.y, t.r, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = "#8B4513";
-    ctx.fillRect(795, 470, 10, 20);
-  }
+
+    ctx.fillStyle = "#222";
+    ctx.beginPath();
+    ctx.arc(t.x + 3, t.y + 3, t.r - 4, 0, Math.PI * 2);
+    ctx.fill();
+  });
 }
 
 function drawHUD() {
@@ -262,41 +204,58 @@ function drawHUD() {
 
   if (engagement >= 70) {
     fill.style.background = "#22c55e";
-    statusTxt.textContent = "Cidade sustentável 🌆";
+    statusTxt.textContent = "Praia saudável 🌴";
     statusTxt.style.color = "#22c55e";
   } else if (engagement >= 40) {
     fill.style.background = "#eab308";
-    statusTxt.textContent = "Cidade em recuperação ⚠️";
+    statusTxt.textContent = "Em recuperação ⚠️";
     statusTxt.style.color = "#eab308";
   } else {
     fill.style.background = "#ef4444";
-    statusTxt.textContent = "Cidade poluída ☠️";
+    statusTxt.textContent = "Praia poluída ☠️";
     statusTxt.style.color = "#ef4444";
   }
 }
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// Interação
+canvas.addEventListener("click", e => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+
+  trash.forEach(t => {
+    if (!t.alive) return;
+    const d = Math.hypot(mx - t.x, my - t.y);
+    if (d < t.r + 4) {
+      t.alive = false;
+      engagement = Math.min(100, engagement + 8);
+    }
+  });
+
+  if (trash.every(t => !t.alive) && engagement < 100) {
+    setTimeout(spawnTrash, 1200);
+  }
+});
+
+// Loop principal
+function loop() {
+  ctx.clearRect(0, 0, 1100, 600);
 
   drawSky();
-  drawBuildings();
-  drawStreets();
+  drawSea();
+  drawSand();
+
+  drawPalm(150, 430);
+  drawPalm(980, 420);
+
   drawTrash();
-  drawCars();
-  drawPeople();
-  drawParks();
   drawHUD();
 
   time++;
-  requestAnimationFrame(draw);
+  requestAnimationFrame(loop);
 }
 
-input.addEventListener("input", () => {
-  engagement = Math.max(0, Math.min(100, Number(input.value)));
-});
-
-draw();
+loop();
 </script>
-
 </body>
 </html>
