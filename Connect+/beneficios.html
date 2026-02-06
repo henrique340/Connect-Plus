@@ -1,351 +1,268 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-br"><head>
+<html class="dark" lang="pt-br">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Benefícios Oracle Interativo</title>
+
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#f20d0d",
-                        "background-light": "#f8f5f5",
-                        "background-dark": "#0a0a0a",
-                    },
-                    fontFamily: {
-                        "display": ["Public Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-<style type="text/tailwindcss">
-        @layer base {
-            body {
-                font-family: "Public Sans", sans-serif;
-            }
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #331111;
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #f20d0d;
-        }.no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }.no-scrollbar {
-            -ms-overflow-style: none;scrollbar-width: none;}
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#f20d0d",
+        "background-dark": "#0a0a0a",
+      },
+      fontFamily: {
+        display: ["Public Sans", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.custom-scrollbar::-webkit-scrollbar{width:6px}
+.custom-scrollbar::-webkit-scrollbar-track{background:#0a0a0a}
+.custom-scrollbar::-webkit-scrollbar-thumb{background:#331111;border-radius:10px}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{background:#f20d0d}
+</style>
 </head>
-<body class="bg-background-dark text-white h-screen flex flex-col overflow-hidden">
-<header class="flex items-center justify-between border-b border-white/10 px-8 py-3 bg-[#181111] shrink-0 z-50">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-3 text-primary">
-<div class="size-8 flex items-center justify-center bg-primary text-white rounded shadow-[0_0_15px_rgba(242,13,13,0.4)]">
-<span class="material-symbols-outlined text-2xl font-bold">token</span>
+
+<body class="bg-background-dark text-white h-screen flex flex-col overflow-hidden font-display">
+
+<!-- NAVBAR ORIGINAL -->
+<header class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 text-primary">
 </div>
-<h2 class="text-white text-lg font-black uppercase tracking-tighter leading-tight">Oracle <span class="text-primary">Benefits</span></h2>
+<h1 class="text-white font-bold text-xl tracking-tight">Connect <span class="text-primary font-white">+</span>Benefits</h1>
 </div>
-<div class="hidden md:flex items-center">
-<label class="flex items-center min-w-64 h-10">
-<div class="flex w-full items-stretch rounded-lg bg-[#221010] border border-white/5 px-3 focus-within:border-primary/50 transition-colors">
-<span class="material-symbols-outlined text-[#ba9c9c] self-center text-xl">search</span>
-<input class="w-full border-none bg-transparent focus:ring-0 text-sm placeholder-[#ba9c9c] text-white" placeholder="Search benefits..." type="text"/>
+<nav class="hidden md:flex items-center gap-8">
+    <a href="home.html" class="text-white hover:text-primary text-sm font-bold transition-colors">
+    Home
+    </a>
+  <a
+    href="ferramentas.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Ferramentas
+  </a>
+
+  <a
+    href="cultura.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Cultura e Inclusão
+  </a>
+    <a
+    href="impacto.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Impacto Social
+  </a>
+    <a
+    href="beneficios.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Benefícios
+  </a>
+    <a
+    href="bemestar.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Bem-estar
+  </a>
+    <a
+    href="rankImpacto.html"
+    class="text-white/60 hover:text-white text-sm font-medium transition-colors"
+  >
+    Ranking
+  </a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="h-8 w-[1px] bg-white/10 mx-1"></div>
+<div class="flex flex-col items-end mr-2 hidden sm:flex">
+<span class="text-xs text-primary font-semibold">Nível 1</span>
+<span class="text-sm font-bold text-white">Impact Beginner</span>
 </div>
-</label>
+<div class="h-10 w-10 rounded-full border-2 border-primary p-0.5 cursor-pointer hover:scale-105 transition-transform relative group">
+<img alt="User avatar profile picture" class="rounded-full h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLEDCVKSMWIIehwQRQQJEgraKhy88pxiSgDn8TWAeKkqMWGhNPX9i-hI5Wpxn7jrLPk2DrdEF1ffBjMuWPuTk5k6TKFGP54nKHjZVMTSfYpANUlM24tncQw4SlEmf5L7WeZV73dBmj5qfeXaxkG7dqS62DGWK9UN8FHP3hHSoop2VxaklDTlh_0p1-YyZ8II8mZfh_zssqKxxB1ZteBhDnaKZP4bnbQpkGhLGAo-SX_hQwwh0yKVPSxtheZlTDEOVJj6Xvb6ECxU"/>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
 </div>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-4 border-r border-white/10 pr-6">
-<div class="flex flex-col items-end">
-<p class="text-white text-xs font-bold uppercase tracking-widest opacity-60">Level 3</p>
-<p class="text-primary text-sm font-black">450 XP</p>
-</div>
-<div class="size-10 rounded-full border-2 border-primary p-0.5">
-<div class="w-full h-full rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4AfqzkmxDO92BUPSqUWxtIsWt1z0pw9BxD5gV-QkNCDtiw6lD9MA6O00eL8PbxMpsM3E95ZkBxzvcPMsnrH2MWN8-KMecnc7eiKU8bIMw9lrWjUVmVgGUFMAJFRqvp2wHkUt5EaL6M4BTeSNIHCnl4A2ITiJIBSx9fKH5ytoHD1O3Q3QfifZrKcGsCgjRRUC-Bu2jtEshg-RTPjd9GOeYOHs22Ws9L16M2Gh926zwsFkBgj5kuSOi2yu2yZ2kj_pBLLBqOhuUcvo');"></div>
-</div>
-</div>
-<div class="flex gap-2">
-<button class="size-10 flex items-center justify-center rounded-lg bg-[#221010] hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-white text-xl">notifications</span>
-</button>
-<button class="size-10 flex items-center justify-center rounded-lg bg-[#221010] hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-white text-xl">settings</span>
-</button>
 </div>
 </div>
 </header>
+
 <main class="flex flex-1 overflow-hidden">
+
+<!-- SIDEBAR -->
 <aside class="w-80 border-r border-white/10 bg-[#0f0707] flex flex-col shrink-0">
+
 <div class="p-6 border-b border-white/10 bg-[#120808]">
 <h1 class="text-white text-xl font-bold">Benefit Catalog</h1>
 <p class="text-[#ba9c9c] text-sm mt-1">Select to view details</p>
 </div>
+
 <nav class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl bg-primary/10 border border-primary/30 relative focus:outline-none transition-all">
-<div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-full"></div>
-<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shrink-0 shadow-[0_0_10px_rgba(242,13,13,0.3)]">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl bg-primary/10 border border-primary/30"
+data-benefit="porto">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center">
 <span class="material-symbols-outlined">shield</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-bold">Porto Seguro</span>
-<span class="text-primary text-[10px] font-bold uppercase tracking-tighter">Current Plan</span>
-</div>
+<span class="font-bold">Porto Seguro</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="itau">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">account_balance</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Banco Itaú</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Finance</span>
-</div>
+<span>Banco Itaú</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="gympass">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">fitness_center</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Gympass</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Well-being</span>
-</div>
+<span>Gympass</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="education">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">school</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Education Aid</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Growth</span>
-</div>
+<span>Education Aid</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="retirement">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">savings</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Retirement Fund</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Future</span>
-</div>
+<span>Retirement Fund</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="meal">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">restaurant</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Meal Voucher</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Daily</span>
-</div>
+<span>Meal Voucher</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="mobility">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">directions_car</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Mobility Allowance</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Transport</span>
-</div>
+<span>Mobility Allowance</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="home">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">home_work</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Home Office Stipend</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Workspace</span>
-</div>
+<span>Home Office Stipend</span>
 </button>
-<button class="w-full text-left group cursor-pointer flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent transition-all focus:outline-none">
-<div class="size-10 rounded-lg bg-[#221010] group-hover:bg-primary/20 flex items-center justify-center text-white shrink-0">
+
+<button class="benefit-btn w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-white/5 border border-transparent"
+data-benefit="language">
+<div class="size-10 rounded-lg bg-[#221010] flex items-center justify-center">
 <span class="material-symbols-outlined">language</span>
 </div>
-<div class="flex flex-col">
-<span class="text-white text-sm font-medium group-hover:text-primary transition-colors">Language Courses</span>
-<span class="text-[#ba9c9c] text-[10px] font-medium uppercase tracking-tighter">Education</span>
-</div>
+<span>Language Courses</span>
 </button>
+
 </nav>
-<div class="p-6 bg-[#1a0b0b] border-t border-white/10 shrink-0">
-<div class="flex items-center justify-between mb-2">
-<span class="text-xs font-bold uppercase text-[#ba9c9c]">Onboarding Progress</span>
-<span class="text-xs font-bold text-primary">75%</span>
-</div>
-<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-3/4 shadow-[0_0_10px_#f20d0d]"></div>
-</div>
-</div>
 </aside>
-<section class="flex-1 overflow-y-auto custom-scrollbar bg-background-dark">
-<div class="relative w-full h-[450px] shrink-0">
-<div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(0deg, #0a0a0a 0%, rgba(10,10,10,0.6) 50%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAphWmriHnaBh19W7Rb9zIdsCmHeCdxtndFyPq02U7xTm8LinuqBaLurKIQj_8wc5m6M6wPudmRqcTH0g4XUWmafGstv7-_6eam69_LoiFmavrZ6Qs8d2HAsqAekcEeqN2wjm8rIFfwtKP6JuImWo6tKHaHoOBKd7tirrF-DaAVet7BQXZongk7L9W0INBJKKRcIu1VlyzRLlzebWUL6RbsHbWfZcnx9zT1_AiCkMzRRHxJpcfKxp4-6R3nKnRZcgvu0CWdKeoJ79k');"></div>
+
+<!-- MAIN PANEL -->
+<section class="flex-1 overflow-y-auto custom-scrollbar">
+
+<div class="relative w-full h-[450px]">
+
+<div id="benefit-banner" class="absolute inset-0 bg-cover bg-center"
+style="background-image:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.6) 50%,transparent 100%),url('https://lh3.googleusercontent.com/aida-public/AB6AXuAphWmriHnaBh19W7Rb9zIdsCmHeCdxtndFyPq02U7xTm8LinuqBaLurKIQj_8wc5m6M6wPudmRqcTH0g4XUWmafGstv7-_6eam69_LoiFmavrZ6Qs8d2HAsqAekcEeqN2wjm8rIFfwtKP6JuImWo6tKHaHoOBKd7tirrF-DaAVet7BQXZongk7L9W0INBJKKRcIu1VlyzRLlzebWUL6RbsHbWfZcnx9zT1_AiCkMzRRHxJpcfKxp4-6R3nKnRZcgvu0CWdKeoJ79k');">
+</div>
+
 <div class="absolute inset-0 flex flex-col justify-end p-12">
-<div class="flex items-center gap-2 mb-6">
-<span class="px-3 py-1 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded">Premium Category</span>
-<span class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded border border-white/10">Health &amp; Dental</span>
-</div>
-<h2 class="text-white text-7xl font-black tracking-tighter leading-[0.9] mb-6">Porto Seguro <br/> Health Plan</h2>
-<p class="text-[#ba9c9c] text-xl max-w-2xl font-normal leading-relaxed">
-                    Comprehensive medical coverage designed for Oracle employees and their dependents. Experience world-class healthcare with Brazil's most trusted network.
-                </p>
-</div>
-</div>
-<div class="px-12 py-16 max-w-6xl">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-<div class="lg:col-span-8 space-y-12">
-<div>
-<h3 class="text-white text-2xl font-bold mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl">verified</span> What's Included
-                        </h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">medical_services</span>
-<h4 class="text-white font-bold text-lg mb-2">Full Coverage</h4>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">Access to premium hospitals like Albert Einstein and Sírio-Libanês across Brazil.</p>
-</div>
-<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">dentistry</span>
-<h4 class="text-white font-bold text-lg mb-2">Dental Care</h4>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">Standard and aesthetic treatments included for all direct family members.</p>
-</div>
-<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">family_restroom</span>
-<h4 class="text-white font-bold text-lg mb-2">Dependents</h4>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">Add your spouse and children up to 24 years old at no extra base monthly cost.</p>
-</div>
-<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform">travel_explore</span>
-<h4 class="text-white font-bold text-lg mb-2">Global Support</h4>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">International emergency travel insurance included for business or leisure.</p>
+
+<span id="benefit-category"
+class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded border border-white/10 mb-6 transition-all">
+Health & Dental
+</span>
+
+<h2 id="benefit-title" class="text-white text-7xl font-black tracking-tighter leading-[0.9] mb-6">
+Porto Seguro <br> Health Plan
+</h2>
+
+<p id="benefit-description" class="text-[#ba9c9c] text-xl max-w-2xl">
+Comprehensive medical coverage designed for Oracle employees and their dependents.
+</p>
+
 </div>
 </div>
+
+<div class="px-12 py-16">
+<h3 class="text-2xl font-bold mb-4">Plan Specifications</h3>
+<p class="text-[#ba9c9c] max-w-3xl">
+All benefits are customizable according to your employment plan and region.
+</p>
 </div>
-<div class="prose prose-invert max-w-none">
-<h3 class="text-white text-2xl font-bold mb-6">Plan Specifications</h3>
-<p class="text-[#ba9c9c] text-lg leading-relaxed mb-8">
-                            The Porto Seguro Premium Plan is Oracle's flagship healthcare offering. It includes $0 co-pay for essential consultations and a 90% reimbursement rate for out-of-network specialists. Our goal is to ensure you have peace of mind while focusing on your career growth.
-                        </p>
-<div class="space-y-6">
-<div class="flex items-start gap-4 p-4 rounded-xl bg-primary/5 border-l-4 border-primary">
-<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
-<div>
-<p class="text-white font-bold mb-1 text-base">24/7 Telemedicine</p>
-<p class="text-[#ba9c9c] text-sm">Instant access to general practitioners and pediatricians via the Porto Seguro app.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
-<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
-<div>
-<p class="text-white font-bold mb-1 text-base">Pharmacy Program</p>
-<p class="text-[#ba9c9c] text-sm">Discounts up to 70% in partner drugstores including Drogasil and Raia.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
-<span class="material-symbols-outlined text-primary text-2xl mt-0.5">check_circle</span>
-<div>
-<p class="text-white font-bold mb-1 text-base">Maternity Care</p>
-<p class="text-[#ba9c9c] text-sm">Personalized health coaches and specialized programs for expecting parents.</p>
-</div>
-</div>
-</div>
-</div>
-<div>
-<h3 class="text-white text-2xl font-bold mb-6">Frequently Asked Questions</h3>
-<div class="space-y-4">
-<div class="p-5 bg-white/5 rounded-xl border border-white/5">
-<p class="text-white font-bold mb-2">When does the coverage start?</p>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">Coverage starts on your first day of employment at Oracle. You will receive your digital card via email within 48 hours.</p>
-</div>
-<div class="p-5 bg-white/5 rounded-xl border border-white/5">
-<p class="text-white font-bold mb-2">How do I add dependents?</p>
-<p class="text-[#ba9c9c] text-sm leading-relaxed">You can upload birth or marriage certificates directly through the Oracle Benefits Portal during the first 30 days.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="lg:col-span-4">
-<div class="sticky top-0 space-y-6">
-<div class="p-8 rounded-2xl bg-[#1a1111] border border-primary/20 flex flex-col items-center text-center shadow-2xl">
-<div class="size-20 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-6 ring-4 ring-primary/10">
-<span class="material-symbols-outlined text-4xl font-bold">military_tech</span>
-</div>
-<h4 class="text-white font-black text-2xl mb-2">Earn 100 XP</h4>
-<p class="text-[#ba9c9c] text-base mb-8">Complete your health enrollment today to unlock your first achievement badge.</p>
-<button class="w-full py-5 bg-primary hover:bg-red-600 text-white font-black uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(242,13,13,0.4)] flex items-center justify-center gap-3 active:scale-95">
-<span>Enroll Now</span>
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<button class="w-full mt-4 py-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl transition-all border border-white/10">
-                                Download Network PDF
-                            </button>
-</div>
-<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
-<h5 class="text-white font-bold text-sm mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-lg">analytics</span>
-                                Benefit Statistics
-                            </h5>
-<div class="space-y-5">
-<div class="flex items-center justify-between">
-<span class="text-[#ba9c9c] text-sm">Employee Adoption</span>
-<span class="text-white text-sm font-bold">98.4%</span>
-</div>
-<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-[98%]"></div>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-[#ba9c9c] text-sm">Satisfaction Score</span>
-<div class="flex items-center gap-1">
-<span class="text-primary text-sm font-bold">4.9/5.0</span>
-<span class="material-symbols-outlined text-xs text-primary fill-1">star</span>
-</div>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-[#ba9c9c] text-sm">Reimbursement Speed</span>
-<span class="text-white text-sm font-bold">Avg. 3 days</span>
-</div>
-</div>
-</div>
-<div class="p-6 rounded-2xl bg-gradient-to-br from-[#221010] to-background-dark border border-white/5">
-<p class="text-white font-bold text-sm mb-2">Need help?</p>
-<p class="text-[#ba9c9c] text-xs leading-relaxed mb-4">Our HR support team is available 24/7 for benefit queries.</p>
-<a class="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1" href="#">
-                                Contact Support <span class="material-symbols-outlined text-sm">open_in_new</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 </section>
 </main>
-<footer class="h-10 bg-black border-t border-white/10 flex items-center justify-between px-8 text-[10px] text-[#ba9c9c] font-medium uppercase tracking-[0.2em] shrink-0 z-50">
-<div class="flex items-center gap-4">
-<span class="flex items-center gap-1.5"><span class="size-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></span> Systems Active</span>
-<span class="opacity-50">|</span>
-<span>Benefícios Oracle - Split View</span>
-<span class="opacity-50">|</span>
-<span class="text-primary">Interactive Mode</span>
-</div>
-<div class="flex items-center gap-4">
-<span>Region: Latin America</span>
-<span class="opacity-50">|</span>
-<span>Oracle Onboarding Experience © 2024</span>
-</div>
-</footer>
 
-</body></html>
+<!-- SCRIPT -->
+<script>
+const benefits = {
+  porto:{title:"Porto Seguro <br> Health Plan",description:"Comprehensive medical coverage designed for Oracle employees and their dependents.",category:"Health & Dental",image:"https://lh3.googleusercontent.com/aida-public/AB6AXuAphWmriHnaBh19W7Rb9zIdsCmHeCdxtndFyPq02U7xTm8LinuqBaLurKIQj_8wc5m6M6wPudmRqcTH0g4XUWmafGstv7-_6eam69_LoiFmavrZ6Qs8d2HAsqAekcEeqN2wjm8rIFfwtKP6JuImWo6tKHaHoOBKd7tirrF-DaAVet7BQXZongk7L9W0INBJKKRcIu1VlyzRLlzebWUL6RbsHbWfZcnx9zT1_AiCkMzRRHxJpcfKxp4-6R3nKnRZcgvu0CWdKeoJ79k"},
+  gympass:{title:"Gympass <br> Well-being Program",description:"Access to gyms and wellness services.",category:"Well-being",image:"https://images.unsplash.com/photo-1554284126-aa88f22d8b74"},
+  itau:{title:"Banco Itaú <br> Financial Benefits",description:"Corporate banking services.",category:"Finance",image:"https://images.unsplash.com/photo-1554224154-22dec7ec8818"},
+  education:{title:"Education Aid",description:"Support for education.",category:"Growth",image:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1"},
+  retirement:{title:"Retirement Fund",description:"Long term pension plan.",category:"Future",image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f"},
+  meal:{title:"Meal Voucher",description:"Daily meal allowance.",category:"Daily",image:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"},
+  mobility:{title:"Mobility Allowance",description:"Transport benefits.",category:"Transport",image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70"},
+  home:{title:"Home Office Stipend",description:"Remote work support.",category:"Workspace",image:"https://images.unsplash.com/photo-1587614382346-4ec70e388b28"},
+  language:{title:"Language Courses",description:"Language learning.",category:"Education",image:"https://images.unsplash.com/photo-1529070538774-1843cb3265df"}
+};
+
+const buttons=document.querySelectorAll(".benefit-btn");
+const titleEl=document.getElementById("benefit-title");
+const descEl=document.getElementById("benefit-description");
+const catEl=document.getElementById("benefit-category");
+const bannerEl=document.getElementById("benefit-banner");
+
+buttons.forEach(btn=>{
+btn.onclick=()=>{
+buttons.forEach(b=>{
+b.classList.remove("bg-primary/10","border-primary/30");
+b.classList.add("border-transparent");
+});
+btn.classList.add("bg-primary/10","border-primary/30");
+
+const data=benefits[btn.dataset.benefit];
+if(!data)return;
+
+titleEl.innerHTML=data.title;
+descEl.textContent=data.description;
+catEl.textContent=data.category;
+
+bannerEl.style.backgroundImage=`linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.6) 50%,transparent 100%),url('${data.image}')`;
+};
+});
+</script>
+
+</body>
+</html>
