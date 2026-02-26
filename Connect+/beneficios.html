@@ -1,203 +1,306 @@
 <!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Connect + | Porto Seguro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect + | Porto Seguro</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        primary: "#f20d0d",
-        "primary-dark": "#b30000",
-        "background-dark": "#050000",
-        "accent-dark": "#2b0a0a",
-        "card-dark": "#120303",
-      },
-      fontFamily: {
-        display: ["Public Sans", "sans-serif"],
-      },
-    },
-  },
-};
-</script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#f20d0d",
+                        "primary-dark": "#b30000",
+                        "background-dark": "#050000",
+                        "accent-dark": "#2b0a0a",
+                        "card-dark": "#120303",
+                        "background-light": "#f8f6f6",
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "sans-serif"],
+                        sans: ["Public Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        };
+    </script>
 
-<style>
-body { font-family: "Public Sans", sans-serif; }
-</style>
+    <style>
+        body { font-family: "Public Sans", sans-serif; }
+        .font-display { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
 
 <body class="bg-background-dark min-h-screen text-white">
 
-<!-- ================= NAVBAR ================= -->
-<header class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md">
-  <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+    <header class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+            <h1 class="text-white font-bold text-xl tracking-tight">
+                Connect <span class="text-primary">+</span>
+            </h1>
 
-    <h1 class="text-white font-bold text-xl tracking-tight">
-      Connect <span class="text-primary">+</span>
-    </h1>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-white font-bold text-sm">Home</a>
+                <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Benefícios</a>
+                <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Bem-estar</a>
+                <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Ranking</a>
+            </nav>
 
-    <nav class="hidden md:flex items-center gap-8">
-      <a href="#" class="text-white font-bold text-sm">Home</a>
-      <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Benefícios</a>
-      <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Bem-estar</a>
-      <a href="#" class="text-white/60 hover:text-white text-sm font-medium transition">Ranking</a>
-    </nav>
-
-    <div class="flex items-center gap-4">
-      <div class="hidden sm:flex flex-col items-end">
-        <span class="text-xs text-primary font-semibold">Nível 1</span>
-        <span class="text-sm font-bold text-white">Impact Beginner</span>
-      </div>
-
-      <div class="h-10 w-10 rounded-full border-2 border-primary p-0.5">
-        <div class="rounded-full h-full w-full bg-cover bg-center"
-          style="background-image:url('https://images.unsplash.com/photo-1502685104226-ee32379fefbe');">
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex flex-col items-end">
+                    <span class="text-xs text-primary font-semibold">Nível 1</span>
+                    <span class="text-sm font-bold text-white">Impact Beginner</span>
+                </div>
+                <div class="h-10 w-10 rounded-full border-2 border-primary p-0.5">
+                    <div class="rounded-full h-full w-full bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1502685104226-ee32379fefbe');"></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </header>
 
-  </div>
-</header>
+    <main class="max-w-[1400px] mx-auto px-6 py-10">
+        <div class="grid lg:grid-cols-4 gap-10">
 
-<!-- ================= CONTEÚDO ================= -->
-<main class="max-w-[1400px] mx-auto px-6 py-10">
+            <aside class="lg:col-span-1">
+                <div class="sticky top-24 space-y-4">
+                    <h3 class="text-sm font-bold text-white/40 uppercase tracking-wider">Outros Benefícios</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block p-4 rounded-xl border border-primary bg-primary/10 text-white font-semibold">Porto Seguro Saúde</a>
+                        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">Gympass Corporativo</a>
+                        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">Auxílio Educação</a>
+                        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">Vale Cultura</a>
+                        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">Seguro de Vida</a>
+                    </div>
+                </div>
+            </aside>
 
-<div class="grid lg:grid-cols-4 gap-10">
+            <div class="lg:col-span-3 space-y-12">
+                
+                <header class="rounded-xl bg-white/5 border border-white/10 px-6 py-3 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined">health_and_safety</span>
+                        </div>
+                        <h2 class="text-lg font-bold tracking-tight hidden sm:block font-display">Porto Seguro <span class="text-primary">Simplificado</span></h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <nav class="hidden md:flex items-center gap-6">
+                            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Benefícios</a>
+                            <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Rede Médica</a>
+                        </nav>
+                        <button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-primary/90 transition-all">Portal Oracle</button>
+                    </div>
+                </header>
 
-  <!-- ================= SIDEBAR ================= -->
-  <aside class="lg:col-span-1">
-    <div class="sticky top-24 space-y-4">
+                <section class="@container">
+                    <div class="relative overflow-hidden rounded-xl min-h-[400px] flex flex-col justify-end p-6 md:p-12 group">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: linear-gradient(to top, rgba(5,0,0, 0.95) 0%, rgba(5,0,0, 0.4) 50%, rgba(5,0,0, 0.1) 100%), url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070");'></div>
+                        <div class="relative z-10 max-w-2xl space-y-4">
+                            <span class="inline-block bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Exclusivo Oracle</span>
+                            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight font-display">Seu guia de saúde <span class="text-primary italic">concierge</span></h1>
+                            <p class="text-slate-300 text-lg">Cuidamos de você para que você possa focar no que importa. Descubra seus benefícios de forma clara e objetiva.</p>
+                            <div class="flex flex-wrap gap-4 pt-4">
+                                <button class="bg-primary text-white font-bold h-12 px-8 rounded-xl flex items-center gap-2 hover:translate-y-[-2px] transition-all">
+                                    Ver Meus Benefícios <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                                <button class="bg-white/10 backdrop-blur-sm text-white font-bold h-12 px-8 rounded-xl border border-white/20 hover:bg-white/20 transition-all">Baixar Guia PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-      <h3 class="text-sm font-bold text-white/40 uppercase tracking-wider">
-        Outros Benefícios
-      </h3>
+                <section>
+                    <div class="flex items-center gap-2 mb-6 px-4">
+                        <span class="material-symbols-outlined text-primary">groups</span>
+                        <h2 class="text-2xl font-bold font-display">Elegibilidade e Acesso</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark flex flex-col gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">badge</span></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1">CLT</h3>
+                                <p class="text-slate-400 text-sm">Cobertura integral e imediata para todos os colaboradores efetivos.</p>
+                            </div>
+                        </div>
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark flex flex-col gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">school</span></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1">Estagiários</h3>
+                                <p class="text-slate-400 text-sm">Acesso total ao plano de saúde desde o primeiro dia de contrato.</p>
+                            </div>
+                        </div>
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark flex flex-col gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">family_restroom</span></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1">Dependentes</h3>
+                                <p class="text-slate-400 text-sm">Inclusão simplificada para cônjuges e filhos com documentação básica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-      <div class="space-y-2">
+                <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-primary p-8 rounded-xl text-white flex flex-col justify-between relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 size-40 bg-white/10 rounded-full blur-3xl"></div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="material-symbols-outlined">medical_services</span>
+                                <h2 class="text-xl font-bold uppercase tracking-widest text-sm">Cirurgias & Prazos</h2>
+                            </div>
+                            <h3 class="text-4xl font-black mb-6">Coparticipação ZERO em cirurgias</h3>
+                            <div class="bg-white/10 p-4 rounded-lg flex items-start gap-3">
+                                <span class="material-symbols-outlined">event_available</span>
+                                <p class="text-sm font-medium">Prazo máximo de 21 dias para autorização de procedimentos eletivos complexos.</p>
+                            </div>
+                        </div>
+                        <p class="mt-8 text-xs opacity-80 italic font-medium border-t border-white/20 pt-6">Consulte a rede credenciada Diamond para atendimento premium.</p>
+                    </div>
 
-        <a href="#" class="block p-4 rounded-xl border border-primary bg-primary/10 text-white font-semibold">
-          Porto Seguro Saúde
-        </a>
+                    <div class="bg-card-dark p-8 rounded-xl border border-accent-dark">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                            <h2 class="text-xl font-bold font-display">Isenções Especiais</h2>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-3">
+                                <div class="size-10 rounded-lg bg-background-dark flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">child_care</span></div>
+                                <div><p class="font-bold text-sm">Recém-nascidos</p><p class="text-xs text-slate-500">Isenção total até 1 ano.</p></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="size-10 rounded-lg bg-background-dark flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">pregnant_woman</span></div>
+                                <div><p class="font-bold text-sm">Maternidade</p><p class="text-xs text-slate-500">Pré-natal sem custos extras.</p></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="size-10 rounded-lg bg-background-dark flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">clinical_notes</span></div>
+                                <div><p class="font-bold text-sm">Oncologia</p><p class="text-xs text-slate-500">Isenção de taxas em tratamentos.</p></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="size-10 rounded-lg bg-background-dark flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">chronic</span></div>
+                                <div><p class="font-bold text-sm">Crônicos</p><p class="text-xs text-slate-500">Programas de gestão de saúde.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">
-          Gympass Corporativo
-        </a>
+                <section class="bg-card-dark rounded-2xl border border-accent-dark overflow-hidden">
+                    <div class="p-8 border-b border-accent-dark">
+                        <h2 class="text-2xl font-bold font-display">Entendendo a Coparticipação</h2>
+                        <p class="text-slate-500">Regras claras para você nunca ter surpresas.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8 bg-black/20">
+                            <div class="flex items-center gap-2 mb-6 text-slate-400">
+                                <span class="material-symbols-outlined">info</span>
+                                <h3 class="font-bold uppercase text-xs tracking-widest">Regra Padrão (30%)</h3>
+                            </div>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex justify-between"><span>Consultas Eletivas</span><span class="font-bold">30%</span></li>
+                                <li class="flex justify-between"><span>Pronto Socorro</span><span class="font-bold">30%</span></li>
+                                <li class="flex justify-between"><span>Exames de Rotina</span><span class="font-bold">30%</span></li>
+                                <li class="flex justify-between"><span>Fisioterapia</span><span class="font-bold">30%</span></li>
+                            </ul>
+                        </div>
+                        <div class="p-8 border-l border-accent-dark">
+                            <div class="flex items-center gap-2 mb-6 text-primary">
+                                <span class="material-symbols-outlined">star</span>
+                                <h3 class="font-bold uppercase text-xs tracking-widest">Custo ZERO</h3>
+                            </div>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex justify-between font-semibold italic"><span>Internações</span><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ISENTO</span></li>
+                                <li class="flex justify-between font-semibold italic"><span>Cirurgias</span><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ISENTO</span></li>
+                                <li class="flex justify-between font-semibold italic"><span>Parto</span><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ISENTO</span></li>
+                                <li class="flex justify-between font-semibold italic"><span>Telemedicina 24h</span><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ISENTO</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">
-          Auxílio Educação
-        </a>
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2 bg-gradient-to-br from-primary to-rose-700 p-8 rounded-2xl text-white flex flex-col md:flex-row items-center gap-8">
+                        <div class="size-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined !text-4xl">e911_emergency</span>
+                        </div>
+                        <div class="text-center md:text-left space-y-2">
+                            <h2 class="text-2xl font-bold font-display">Alô Saúde & Telemedicina</h2>
+                            <p class="text-white/80">Atendimento médico 24h por vídeo ou telefone. Sem filas e sem custo.</p>
+                            <div class="pt-4 flex flex-wrap justify-center md:justify-start gap-4">
+                                <a class="bg-white text-primary font-bold px-6 py-3 rounded-xl flex items-center gap-2" href="tel:08007272748">0800 727 2748</a>
+                                <button class="bg-black/20 text-white font-bold px-6 py-3 rounded-xl border border-white/20">Iniciar Vídeo</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-card-dark p-8 rounded-2xl border border-accent-dark flex flex-col justify-center items-center text-center space-y-4">
+                        <div class="size-16 rounded-full bg-white/5 flex items-center justify-center text-primary"><span class="material-symbols-outlined !text-3xl">qr_code_2</span></div>
+                        <h3 class="font-bold">App Porto Saúde</h3>
+                        <button class="w-full py-2 border border-primary text-primary rounded-lg text-sm font-bold">Baixar App</button>
+                    </div>
+                </section>
 
-        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">
-          Vale Cultura
-        </a>
-
-        <a href="#" class="block p-4 rounded-xl border border-accent-dark hover:border-primary/40 hover:bg-accent-dark transition text-white/70 hover:text-white">
-          Seguro de Vida
-        </a>
-
-      </div>
-    </div>
-  </aside>
-
-  <!-- ================= CONTEÚDO PRINCIPAL ================= -->
-  <div class="lg:col-span-3">
-
-    <!-- HERO -->
-    <section class="relative rounded-3xl overflow-hidden border border-accent-dark mb-12">
-
-      <div class="absolute inset-0 bg-cover bg-center"
-      style="background-image:
-      linear-gradient(0deg,#050000 0%,rgba(5,0,0,.6) 50%,transparent 100%),
-      url('https://lh3.googleusercontent.com/aida-public/AB6AXuAphWmriHnaBh19W7Rb9zIdsCmHeCdxtndFyPq02U7xTm8LinuqBaLurKIQj_8wc5m6M6wPudmRqcTH0g4XUWmafGstv7-_6eam69_LoiFmavrZ6Qs8d2HAsqAekcEeqN2wjm8rIFfwtKP6JuImWo6tKHaHoOBKd7tirrF-DaAVet7BQXZongk7L9W0INBJKKRcIu1VlyzRLlzebWUL6RbsHbWfZcnx9zT1_AiCkMzRRHxJpcfKxp4-6R3nKnRZcgvu0CWdKeoJ79k');">
-      </div>
-
-      <div class="relative p-16">
-        <h2 class="text-5xl font-black mb-6">
-          Porto Seguro Health Plan
-        </h2>
-        <p class="text-white/70 max-w-2xl text-lg">
-          Plano de saúde premium com cobertura nacional e internacional,
-          disponível para colaboradores Oracle e dependentes.
-        </p>
-      </div>
-
-    </section>
-
-    <!-- GRID PRINCIPAL -->
-    <div class="grid lg:grid-cols-3 gap-10">
-
-      <!-- INFORMAÇÕES -->
-      <div class="lg:col-span-2 space-y-8">
-
-        <h3 class="text-2xl font-bold">O que está incluso</h3>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="p-6 bg-card-dark border border-accent-dark rounded-xl">
-            <h4 class="font-bold mb-2">Cobertura Hospitalar</h4>
-            <p class="text-white/60 text-sm">Hospitais premium em todo o Brasil.</p>
-          </div>
-
-          <div class="p-6 bg-card-dark border border-accent-dark rounded-xl">
-            <h4 class="font-bold mb-2">Plano Odontológico</h4>
-            <p class="text-white/60 text-sm">Tratamentos preventivos e estéticos.</p>
-          </div>
-
-          <div class="p-6 bg-card-dark border border-accent-dark rounded-xl">
-            <h4 class="font-bold mb-2">Dependentes</h4>
-            <p class="text-white/60 text-sm">Inclusão de cônjuge e filhos.</p>
-          </div>
-
-          <div class="p-6 bg-card-dark border border-accent-dark rounded-xl">
-            <h4 class="font-bold mb-2">Seguro Viagem</h4>
-            <p class="text-white/60 text-sm">Cobertura médica internacional.</p>
-          </div>
-
+                <section>
+                    <div class="flex items-center gap-2 mb-6 px-4">
+                        <span class="material-symbols-outlined text-primary">add_circle</span>
+                        <h2 class="text-2xl font-bold font-display">Serviços Extras</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark hover:border-primary transition-all">
+                            <span class="material-symbols-outlined text-white/40 mb-4">home_repair_service</span>
+                            <h4 class="font-bold text-sm mb-1">Assistência Residencial</h4>
+                            <p class="text-xs text-slate-500">Chaveiro, encanador e eletricista.</p>
+                        </div>
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark hover:border-primary transition-all">
+                            <span class="material-symbols-outlined text-white/40 mb-4">prescriptions</span>
+                            <h4 class="font-bold text-sm mb-1">Desconto Farmácia</h4>
+                            <p class="text-xs text-slate-500">Até 60% em medicamentos.</p>
+                        </div>
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark hover:border-primary transition-all">
+                            <span class="material-symbols-outlined text-white/40 mb-4">flight_takeoff</span>
+                            <h4 class="font-bold text-sm mb-1">Seguro Viagem</h4>
+                            <p class="text-xs text-slate-500">Cobertura internacional.</p>
+                        </div>
+                        <div class="bg-card-dark p-6 rounded-xl border border-accent-dark hover:border-primary transition-all">
+                            <span class="material-symbols-outlined text-white/40 mb-4">fitness_center</span>
+                            <h4 class="font-bold text-sm mb-1">Gympass</h4>
+                            <p class="text-xs text-slate-500">Academias e bem-estar.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
+    </main>
 
-      </div>
-
-      <!-- CARD XP + BOTÃO JOGO -->
-      <div>
-        <div class="p-8 bg-card-dark border border-primary/20 rounded-2xl text-center space-y-6">
-
-          <h4 class="text-xl font-bold">Ganhe 100 XP</h4>
-
-          <button class="w-full py-4 bg-primary hover:bg-primary-dark rounded-xl font-bold uppercase tracking-wide transition">
-            Inscrever-se
-          </button>
-
-          <div class="h-px bg-white/10"></div>
-
-          <a href="porto_gamificado/index.html"
-             class="block w-full py-4 border border-primary rounded-xl font-bold uppercase tracking-wide hover:bg-primary hover:text-white transition">
-            Checkpoint benefício
-          </a>
-
-          <p class="text-white/40 text-xs">
-            Complete o desafio para ganhar XP extra.
-          </p>
-
+    <footer class="border-t border-accent-dark mt-16 py-12 bg-black/20">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <div class="flex items-center gap-3">
+                        <div class="size-6 bg-primary rounded flex items-center justify-center text-white"><span class="material-symbols-outlined !text-sm">health_and_safety</span></div>
+                        <h2 class="font-bold tracking-tight">Porto Seguro Simplificado</h2>
+                    </div>
+                    <p class="text-xs text-white/40">Oracle Corporation - Benefícios 2026</p>
+                </div>
+                <div class="flex gap-8 text-xs font-medium text-white/40">
+                    <a class="hover:text-primary transition-colors" href="#">Privacidade</a>
+                    <a class="hover:text-primary transition-colors" href="#">Ouvidoria</a>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-[10px] text-white/20">Connect + Experience © 2026 | Este é um guia simplificado. Consulte a apólice oficial no Portal RH.</p>
         </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer class="border-t border-accent-dark mt-16 py-6 text-center text-white/40 text-xs">
-  Connect + Experience © 2026
-</footer>
+    </footer>
 
 </body>
 </html>
