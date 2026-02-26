@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Onboarding — Alianças e Canais</title>
+  <title>Onboarding — CSS (Customer Success)</title>
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -18,6 +20,7 @@
       }
     }
   </script>
+
   <style type="text/tailwindcss">
     @layer utilities {
       .glass-card { background: rgba(20,20,20,.65); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.1); }
@@ -26,6 +29,7 @@
     }
   </style>
 </head>
+
 <body class="bg-bgDark bg-radial text-white font-display min-h-screen">
 <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-bgDark/95 backdrop-blur-md">
   <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -35,16 +39,18 @@
     <a href="m1.html" class="text-white/70 hover:text-white text-sm font-medium">← Voltar para Missões</a>
   </div>
 </header>
+
 <main class="max-w-[1000px] mx-auto px-6 py-12">
   <section class="glass-card red-glow rounded-[2rem] p-8 mb-8">
     <span class="inline-flex px-3 py-1 mb-3 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">
-      Ecossistema
+      Customer Success
     </span>
-    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Onboarding — Alianças e Canais</h2>
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Onboarding — CSS (Customer Success)</h2>
     <p class="text-zinc-400 mt-2">
       Ferramentas, cursos, onboarding e links úteis da área.
     </p>
   </section>
+
   <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="glass-card rounded-[2rem] p-7">
       <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
@@ -52,53 +58,76 @@
         Ferramentas que usam
       </h3>
       <ul class="space-y-3 text-white/80 text-sm">
-        <li>• PRM / Portal de parceiros</li>
-        <li>• CRM (deal reg / co-sell / oportunidades)</li>
-        <li>• BI (pipeline/forecast/performance)</li>
-        <li>• Enablement/Assets (SharePoint/Confluence + LMS)</li>
+        <li>• CRM / Gestão de contas</li>
+        <li>• Plataforma de Customer Success (se aplicável)</li>
+        <li>• BI / Dashboards (ex.: Oracle Analytics / Power BI / Tableau)</li>
+        <li>• Tickets/Solicitações (ex.: ServiceNow / Jira)</li>
+        <li>• Base de conhecimento (SharePoint/Confluence)</li>
       </ul>
     </div>
+
     <div class="glass-card rounded-[2rem] p-7">
       <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">school</span>
         Cursos para se especializar
       </h3>
       <ul class="space-y-3 text-white/80 text-sm">
-        <li>• Modelos de canal (SI, ISV, reseller, distribuição)</li>
-        <li>• Co-sell motion (deal reg, MDF, regras de engajamento)</li>
-        <li>• Governança e compliance (contratos, risco, políticas)</li>
-        <li>• Trilhas de produto/indústria conforme foco do time</li>
+        <li>• Fundamentos de CS: health score, QBR, churn, adoção, expansão</li>
+        <li>• Data literacy: NPS, cohort analysis, leitura de dashboards</li>
+        <li>• Comunicação consultiva e stakeholder management</li>
+        <li>• Trilhas/certificações do portfólio atendido (quando aplicável)</li>
       </ul>
       <p class="text-[12px] text-zinc-500 mt-4">
         Confirme cursos/links conforme diretrizes internas (segurança e compliance).
       </p>
     </div>
+
+    <!-- ONBOARDING DA ÁREA (COM BOTÃO) -->
     <div class="glass-card rounded-[2rem] p-7">
       <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">checklist</span>
         Onboarding da área (exemplo)
       </h3>
+
       <ol class="space-y-2 text-white/80 text-sm list-decimal list-inside">
-        <li>Entender estratégia: tipos de parceiros, tiers e coverage.</li>
-        <li>Revisar regras: deal reg, MDF e governança.</li>
-        <li>Mapear top parceiros + joint account planning.</li>
-        <li>Garantir acessos (PRM/CRM/assets) e templates.</li>
-        <li>Quick wins: enablement e cadência com parceiros.</li>
+        <li>Entender carteira, segmentação e metas.</li>
+        <li>Revisar playbooks (onboarding, adoção, risco, expansão, renovação).</li>
+        <li>Garantir acessos (CRM, BI, tickets, KB, templates).</li>
+        <li>Shadowing (calls + QBR + reunião de risco).</li>
+        <li>Quick wins: plano 30/60/90 + action plan por conta.</li>
       </ol>
+
+      <!-- Botão para linkar o onboarding oficial -->
+      <div class="mt-6">
+        <a
+          href="9dc693e80d9b469480d7afe00e743931.identity.oraclecloud.com/ui/v1/error?signature=S5qOZj7wobLal%2FVq6B9ghChys6k2USHSx%2B4Urm2gW1VwjXDCj0mN0Eqry5N7kwWDfAtgCfq2%2FrwLotLFDL1oKjzhdu5ZV9l3tems3C6KCJlNaDjf%2BJTo%2Frpkop2h9TCdmPrfD2PPnc5DgqXRUr4iIImGNhLG6UdoR2HWzm0r6wCojLStUv4ZcEJJ2Thl2YgD7GZOhuMhGemQmXhW9KHwfVZKhTxgdEUNenHcNnldmG4%2Bpkb4pJBxot3hFBvoM8Dk7ZbIli7cV1lR1%2BTmqkdyoreNR%2FCEtt8NbimwAWTxT1rdGu61BjWICLZwqs0iq812tFlLwBau%2F33cuIHFPjOTvQ%3D%3D&amp;errorCtx=AL00rPbeBOV6g0lNkpQte5Oe%2FSHHitkQ7vVJKXUrEBimvYcYDHRfyHwGBT6YzK9yPncdGEB9dRGB1BNil3%2FMg9Ur0N5H%2BMYsMz59Fnd%2Bz5n2A4bmYK1%2BC%2BjIapZ7nQpT"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 px-5 py-3 rounded-xl font-bold"
+        >
+          Acessar Onboarding Oficial
+          <span class="material-symbols-outlined">open_in_new</span>
+        </a>
+        <p class="text-[12px] text-zinc-500 mt-3">
+          Troque o <code class="text-zinc-300">href="#"</code> pelo link do onboarding (SharePoint/Confluence/LMS).
+        </p>
+      </div>
     </div>
+
     <div class="glass-card rounded-[2rem] p-7">
       <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
         <span class="material-symbols-outlined text-primary">bookmarks</span>
         Links úteis
       </h3>
       <ul class="space-y-3 text-sm">
-        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Portal/Programa de Parceiros (inserir link interno)</a></li>
-        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Templates e assets (inserir link interno)</a></li>
-        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Políticas de compliance para parceiros (inserir link interno)</a></li>
+        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Playbook de CS (inserir link interno)</a></li>
+        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Modelo de QBR (inserir link interno)</a></li>
+        <li><a class="underline text-white/90 hover:text-primary" href="#" target="_blank" rel="noopener noreferrer">Glossário de métricas (inserir link interno)</a></li>
       </ul>
     </div>
   </section>
 </main>
+
 <footer class="mt-16 py-10 border-t border-zinc-900 text-center text-xs text-zinc-500">
   © 2025 Oracle Corporate Onboarding
 </footer>
