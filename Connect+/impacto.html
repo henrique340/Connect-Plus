@@ -47,19 +47,22 @@
     </style>
 </head>
 <body class="bg-background-dark text-white min-h-screen">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#1a1a1a] px-10 py-3 bg-background-dark sticky top-0 z-50">
-<div class="flex items-center gap-10">
-<div class="flex items-center gap-3 text-primary">
-<div class="size-7">
-<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
-</svg>
-</div>
-<h2 class="text-white text-xl font-black leading-tight tracking-tighter uppercase">Connect+</h2>
-</div>
-<nav class="hidden md:flex items-center gap-8">
+<header
+      class="sticky top-0 z-50 w-full border-b border-accent-dark bg-background-dark/95 backdrop-blur-md"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 text-primary"></div>
+          <h1 class="text-white font-bold text-xl tracking-tight">
+            Connect <span class="text-primary font-white">+</span>
+          </h1>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8">
           <a href="home.html"
-            class="text-white hover:text-primary text-sm font-bold transition-colors">
+            class="text-white/60 hover:text-white text-sm font-medium transition-colors">
             Home
           </a>
 
@@ -69,7 +72,7 @@
           </a>
 
           <a href="impacto.html"
-            class="text-white/60 hover:text-white text-sm font-medium transition-colors">
+            class="text-white hover:text-primary text-sm font-bold transition-colors">
             Impacto Social
           </a>
 
@@ -93,19 +96,30 @@
             class="text-white/60 hover:text-white text-sm font-medium transition-colors">
             Ilhas
           </a>
-</nav>
-</div>
-<div class="flex items-center gap-6">
-<div class="hidden xl:flex flex-col items-end mr-2">
-<p class="text-white text-xs font-black uppercase tracking-widest">Nível 1</p>
-<p class="text-primary text-[10px] font-bold uppercase">Impact Beginner</p>
-</div>
-<div class="relative group cursor-pointer">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvs3vZAzRblLn7SMQ8va_vxLpVpszzAdMK77fzohTruFhgVDbJuLU60q0zC5NZ42LTvSpAa_bLAXko2bLPVdrBeqZiRPd13bCTKQxCF_bBUqHSk9tIGCDIxQ0bhXzRKAKiZJJ9-dGXA8yC-R5kxOuS5tMkxGR08C4Q99S73xwSE-2czpe2pgBd90tKgXhkRL_bZSonTviGPptkLlor2NDT7et2qHvnX1jdRZN4ib1uWa856tQeJtCaIMrnhYxPhDtyUISDwcx4ln6N");'></div>
-<div class="absolute -bottom-1 -right-1 bg-primary text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border border-background-dark">1</div>
-</div>
-</div>
-</header>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <div class="h-8 w-[1px] bg-white/10 mx-1"></div>
+          <div class="flex flex-col items-end mr-2 hidden sm:flex">
+            <span class="text-xs text-primary font-semibold">Nível 1</span>
+            <span class="text-sm font-bold text-white">Impact Beginner</span>
+          </div>
+
+          <div
+            class="h-10 w-10 rounded-full border-2 border-primary p-0.5 cursor-pointer hover:scale-105 transition-transform relative group"
+          >
+            <img
+              alt="User avatar profile picture"
+              class="rounded-full h-full w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmLEDCVKSMWIIehwQRQQJEgraKhy88pxiSgDn8TWAeKkqMWGhNPX9i-hI5Wpxn7jrLPk2DrdEF1ffBjMuWPuTk5k6TKFGP54nKHjZVMTSfYpANUlM24tncQw4SlEmf5L7WeZV73dBmj5qfeXaxkG7dqS62DGWK9UN8FHP3hHSoop2VxaklDTlh_0p1-YyZ8II8mZfh_zssqKxxB1ZteBhDnaKZP4bnbQpkGhLGAo-SX_hQwwh0yKVPSxtheZlTDEOVJj6Xvb6ECxU"
+            />
+            <div
+              class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-black"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </header>
 <main class="max-w-[1400px] mx-auto px-6 py-10">
 <div class="relative w-full h-[550px] rounded-[2rem] overflow-hidden mb-16 border border-[#1a1a1a] shadow-2xl">
 <div class="absolute inset-0 beach-gradient"></div>
